@@ -1,0 +1,45 @@
+D:\JORGE\ARDUINO\02 Prusa\VS\SLT Printer\SLT Printer\bin\Debug\SLT Printer.exe
+D:\JORGE\ARDUINO\02 Prusa\VS\SLT Printer\SLT Printer\bin\Debug\SLT Printer.pdb
+D:\JORGE\ARDUINO\02 Prusa\VS\SLT Printer\SLT Printer\obj\x86\Debug\SLT Printer.csprojResolveAssemblyReference.cache
+D:\JORGE\ARDUINO\02 Prusa\VS\SLT Printer\SLT Printer\obj\x86\Debug\SLT_Printer.Properties.Resources.resources
+D:\JORGE\ARDUINO\02 Prusa\VS\SLT Printer\SLT Printer\obj\x86\Debug\SLT Printer.csproj.GenerateResource.Cache
+D:\JORGE\ARDUINO\02 Prusa\VS\SLT Printer\SLT Printer\obj\x86\Debug\SLT Printer.exe
+D:\JORGE\ARDUINO\02 Prusa\VS\SLT Printer\SLT Printer\obj\x86\Debug\SLT Printer.pdb
+D:\JORGE\ARDUINO\02 Prusa\VS\SLT Printer\SLT Printer\obj\x86\Debug\SLT_Printer.Configuracion.resources
+D:\JORGE\ARDUINO\02 Prusa\VS\SLT Printer\SLT Printer\obj\x86\Debug\SLT_Printer.Main.resources
+D:\JORGE\ARDUINO\02 Prusa\VS\SLT Printer\SLT Printer\bin\Debug\SLT Printer.exe.config
+D:\JORGE\ARDUINO\02 Prusa\VS\SLT Printer\SLT Printer\bin\Debug\SharpGL.dll
+D:\JORGE\ARDUINO\02 Prusa\VS\SLT Printer\SLT Printer\bin\Debug\SharpGL.SceneGraph.dll
+D:\JORGE\ARDUINO\02 Prusa\VS\SLT Printer\SLT Printer\bin\Debug\SharpGL.WinForms.dll
+D:\JORGE\ARDUINO\02 Prusa\VS\SLT Printer + SharpGL\SLT Printer\bin\Debug\SLT Printer.exe.config
+D:\JORGE\ARDUINO\02 Prusa\VS\SLT Printer + SharpGL\SLT Printer\bin\Debug\SLT Printer.exe
+D:\JORGE\ARDUINO\02 Prusa\VS\SLT Printer + SharpGL\SLT Printer\bin\Debug\SLT Printer.pdb
+D:\JORGE\ARDUINO\02 Prusa\VS\SLT Printer + SharpGL\SLT Printer\bin\Debug\GlmNet.dll
+D:\JORGE\ARDUINO\02 Prusa\VS\SLT Printer + SharpGL\SLT Printer\bin\Debug\SharpGL.dll
+D:\JORGE\ARDUINO\02 Prusa\VS\SLT Printer + SharpGL\SLT Printer\bin\Debug\SharpGL.SceneGraph.dll
+D:\JORGE\ARDUINO\02 Prusa\VS\SLT Printer + SharpGL\SLT Printer\bin\Debug\SharpGL.WinForms.dll
+D:\JORGE\ARDUINO\02 Prusa\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT_Printer.FrmParametros.resources
+D:\JORGE\ARDUINO\02 Prusa\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT_Printer.FrmConexion.resources
+D:\JORGE\ARDUINO\02 Prusa\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT_Printer.Main.resources
+D:\JORGE\ARDUINO\02 Prusa\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT_Printer.Properties.Resources.resources
+D:\JORGE\ARDUINO\02 Prusa\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT Printer.csproj.GenerateResource.Cache
+D:\JORGE\ARDUINO\02 Prusa\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT Printer.exe
+D:\JORGE\ARDUINO\02 Prusa\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT Printer.pdb
+D:\JORGE\ARDUINO\02 Prusa\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT Printer.csprojResolveAssemblyReference.cache
+D:\JORGE\ARDUINO\02 Prusa\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT_Printer.FrmCierre.resources
+E:\JORGE\Programas propios\ARDUINO\02 Prusa\VS\SLT Printer + SharpGL\SLT Printer\bin\Debug\SLT Printer.exe.config
+E:\JORGE\Programas propios\ARDUINO\02 Prusa\VS\SLT Printer + SharpGL\SLT Printer\bin\Debug\SLT Printer.exe
+E:\JORGE\Programas propios\ARDUINO\02 Prusa\VS\SLT Printer + SharpGL\SLT Printer\bin\Debug\SLT Printer.pdb
+E:\JORGE\Programas propios\ARDUINO\02 Prusa\VS\SLT Printer + SharpGL\SLT Printer\bin\Debug\GlmNet.dll
+E:\JORGE\Programas propios\ARDUINO\02 Prusa\VS\SLT Printer + SharpGL\SLT Printer\bin\Debug\SharpGL.dll
+E:\JORGE\Programas propios\ARDUINO\02 Prusa\VS\SLT Printer + SharpGL\SLT Printer\bin\Debug\SharpGL.SceneGraph.dll
+E:\JORGE\Programas propios\ARDUINO\02 Prusa\VS\SLT Printer + SharpGL\SLT Printer\bin\Debug\SharpGL.WinForms.dll
+E:\JORGE\Programas propios\ARDUINO\02 Prusa\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT Printer.csprojResolveAssemblyReference.cache
+E:\JORGE\Programas propios\ARDUINO\02 Prusa\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT_Printer.FrmCierre.resources
+E:\JORGE\Programas propios\ARDUINO\02 Prusa\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT_Printer.FrmParametros.resources
+E:\JORGE\Programas propios\ARDUINO\02 Prusa\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT_Printer.FrmConexion.resources
+E:\JORGE\Programas propios\ARDUINO\02 Prusa\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT_Printer.Main.resources
+E:\JORGE\Programas propios\ARDUINO\02 Prusa\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT_Printer.Properties.Resources.resources
+E:\JORGE\Programas propios\ARDUINO\02 Prusa\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT Printer.csproj.GenerateResource.Cache
+E:\JORGE\Programas propios\ARDUINO\02 Prusa\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT Printer.exe
+E:\JORGE\Programas propios\ARDUINO\02 Prusa\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT Printer.pdb

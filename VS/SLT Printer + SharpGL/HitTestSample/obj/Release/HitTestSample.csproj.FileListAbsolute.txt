@@ -1,0 +1,17 @@
+C:\Users\Jorge\Documents\GitHub\sharpgl\source\SharpGL\Samples\WinForms\HitTestSample\bin\Release\HitTestSample.exe.config
+C:\Users\Jorge\Documents\GitHub\sharpgl\source\SharpGL\Samples\WinForms\HitTestSample\bin\Release\HitTestSample.exe
+C:\Users\Jorge\Documents\GitHub\sharpgl\source\SharpGL\Samples\WinForms\HitTestSample\bin\Release\HitTestSample.pdb
+C:\Users\Jorge\Documents\GitHub\sharpgl\source\SharpGL\Samples\WinForms\HitTestSample\bin\Release\SharpGL.dll
+C:\Users\Jorge\Documents\GitHub\sharpgl\source\SharpGL\Samples\WinForms\HitTestSample\bin\Release\SharpGL.SceneGraph.dll
+C:\Users\Jorge\Documents\GitHub\sharpgl\source\SharpGL\Samples\WinForms\HitTestSample\bin\Release\SharpGL.WinForms.dll
+C:\Users\Jorge\Documents\GitHub\sharpgl\source\SharpGL\Samples\WinForms\HitTestSample\bin\Release\SharpGL.SceneGraph.pdb
+C:\Users\Jorge\Documents\GitHub\sharpgl\source\SharpGL\Samples\WinForms\HitTestSample\bin\Release\SharpGL.SceneGraph.xml
+C:\Users\Jorge\Documents\GitHub\sharpgl\source\SharpGL\Samples\WinForms\HitTestSample\bin\Release\SharpGL.WinForms.pdb
+C:\Users\Jorge\Documents\GitHub\sharpgl\source\SharpGL\Samples\WinForms\HitTestSample\bin\Release\SharpGL.WinForms.xml
+C:\Users\Jorge\Documents\GitHub\sharpgl\source\SharpGL\Samples\WinForms\HitTestSample\bin\Release\SharpGL.pdb
+C:\Users\Jorge\Documents\GitHub\sharpgl\source\SharpGL\Samples\WinForms\HitTestSample\bin\Release\SharpGL.xml
+C:\Users\Jorge\Documents\GitHub\sharpgl\source\SharpGL\Samples\WinForms\HitTestSample\obj\Release\HitTestSample.FormHitTestSample.resources
+C:\Users\Jorge\Documents\GitHub\sharpgl\source\SharpGL\Samples\WinForms\HitTestSample\obj\Release\HitTestSample.Properties.Resources.resources
+C:\Users\Jorge\Documents\GitHub\sharpgl\source\SharpGL\Samples\WinForms\HitTestSample\obj\Release\HitTestSample.csproj.GenerateResource.Cache
+C:\Users\Jorge\Documents\GitHub\sharpgl\source\SharpGL\Samples\WinForms\HitTestSample\obj\Release\HitTestSample.exe
+C:\Users\Jorge\Documents\GitHub\sharpgl\source\SharpGL\Samples\WinForms\HitTestSample\obj\Release\HitTestSample.pdb
