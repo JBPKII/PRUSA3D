@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLT Printer", "SLT Printer\SLT Printer.csproj", "{41506654-88D3-4120-A59E-798E66896958}"
 EndProject
@@ -10,6 +10,61 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0DF0223F-229F-4E39-95A0-C70A95F1FB6C}"
 	ProjectSection(SolutionItems) = preProject
 		HitTestSample\Properties\AssemblyInfo.cs = HitTestSample\Properties\AssemblyInfo.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "INO Sketch", "INO Sketch", "{F404E69A-580E-4A07-BB4B-86C062F57D98}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Librerías", "Librerías", "{6CA286DF-4B61-474A-8B1B-A2259B3238F2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Adafruit_MAX31855", "Adafruit_MAX31855", "{93697D8E-0C43-46FA-B32C-5EA4272E39B0}"
+	ProjectSection(SolutionItems) = preProject
+		INO Sketch\Librerias\Adafruit_MAX31855\Adafruit_MAX31855.cpp = INO Sketch\Librerias\Adafruit_MAX31855\Adafruit_MAX31855.cpp
+		INO Sketch\Librerias\Adafruit_MAX31855\Adafruit_MAX31855.h = INO Sketch\Librerias\Adafruit_MAX31855\Adafruit_MAX31855.h
+		INO Sketch\Librerias\Adafruit_MAX31855\keywords.txt = INO Sketch\Librerias\Adafruit_MAX31855\keywords.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CNC", "CNC", "{BA1B6A0B-5047-49E5-A205-D7D540AEBD60}"
+	ProjectSection(SolutionItems) = preProject
+		INO Sketch\Librerias\CNC\CNC.cpp = INO Sketch\Librerias\CNC\CNC.cpp
+		INO Sketch\Librerias\CNC\CNC.h = INO Sketch\Librerias\CNC\CNC.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PAP", "PAP", "{D1D1FB11-11A0-4C9C-8429-1078526B831B}"
+	ProjectSection(SolutionItems) = preProject
+		INO Sketch\Librerias\PAP\Nuevo acceso directo a Internet (2).url = INO Sketch\Librerias\PAP\Nuevo acceso directo a Internet (2).url
+		INO Sketch\Librerias\PAP\Nuevo acceso directo a Internet.url = INO Sketch\Librerias\PAP\Nuevo acceso directo a Internet.url
+		INO Sketch\Librerias\PAP\PAP.cpp = INO Sketch\Librerias\PAP\PAP.cpp
+		INO Sketch\Librerias\PAP\PAP.h = INO Sketch\Librerias\PAP\PAP.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{65425143-C371-4AFA-825E-1B6AF1B7C854}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lcdthermocouple", "lcdthermocouple", "{02DFB1C0-814D-4E58-85E4-4FEE0ADF3F62}"
+	ProjectSection(SolutionItems) = preProject
+		INO Sketch\Librerias\Adafruit_MAX31855\examples\lcdthermocouple\lcdthermocouple.ino = INO Sketch\Librerias\Adafruit_MAX31855\examples\lcdthermocouple\lcdthermocouple.ino
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "serialthermocouple", "serialthermocouple", "{7784FB1D-FF4E-4F3E-A8A3-796D5953BBA7}"
+	ProjectSection(SolutionItems) = preProject
+		INO Sketch\Librerias\Adafruit_MAX31855\examples\serialthermocouple\serialthermocouple.pde = INO Sketch\Librerias\Adafruit_MAX31855\examples\serialthermocouple\serialthermocouple.pde
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{45114B0D-B4C6-4D2F-BEF2-F070C6EFF4C5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{5AFF0A26-1AB7-4676-AE8E-AAFB3681FEE4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PAP1", "PAP1", "{A6C556B4-BCB3-4299-B5D5-32FA87C54C90}"
+	ProjectSection(SolutionItems) = preProject
+		INO Sketch\Librerias\PAP\examples\PAP1\PAP1.ino = INO Sketch\Librerias\PAP\examples\PAP1\PAP1.ino
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PRUSA", "PRUSA", "{35CFA7BA-3D74-44D3-95FF-ABA83B654FD3}"
+	ProjectSection(SolutionItems) = preProject
+		INO Sketch\PRUSA\CNC.cpp = INO Sketch\PRUSA\CNC.cpp
+		INO Sketch\PRUSA\CNC.h = INO Sketch\PRUSA\CNC.h
+		INO Sketch\PRUSA\PAP.cpp = INO Sketch\PRUSA\PAP.cpp
+		INO Sketch\PRUSA\PAP.h = INO Sketch\PRUSA\PAP.h
+		INO Sketch\PRUSA\PRUSA.ino = INO Sketch\PRUSA\PRUSA.ino
 	EndProjectSection
 EndProject
 Global
@@ -48,5 +103,21 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6CA286DF-4B61-474A-8B1B-A2259B3238F2} = {F404E69A-580E-4A07-BB4B-86C062F57D98}
+		{93697D8E-0C43-46FA-B32C-5EA4272E39B0} = {6CA286DF-4B61-474A-8B1B-A2259B3238F2}
+		{BA1B6A0B-5047-49E5-A205-D7D540AEBD60} = {6CA286DF-4B61-474A-8B1B-A2259B3238F2}
+		{D1D1FB11-11A0-4C9C-8429-1078526B831B} = {6CA286DF-4B61-474A-8B1B-A2259B3238F2}
+		{65425143-C371-4AFA-825E-1B6AF1B7C854} = {93697D8E-0C43-46FA-B32C-5EA4272E39B0}
+		{02DFB1C0-814D-4E58-85E4-4FEE0ADF3F62} = {65425143-C371-4AFA-825E-1B6AF1B7C854}
+		{7784FB1D-FF4E-4F3E-A8A3-796D5953BBA7} = {65425143-C371-4AFA-825E-1B6AF1B7C854}
+		{45114B0D-B4C6-4D2F-BEF2-F070C6EFF4C5} = {BA1B6A0B-5047-49E5-A205-D7D540AEBD60}
+		{5AFF0A26-1AB7-4676-AE8E-AAFB3681FEE4} = {D1D1FB11-11A0-4C9C-8429-1078526B831B}
+		{A6C556B4-BCB3-4299-B5D5-32FA87C54C90} = {5AFF0A26-1AB7-4676-AE8E-AAFB3681FEE4}
+		{35CFA7BA-3D74-44D3-95FF-ABA83B654FD3} = {F404E69A-580E-4A07-BB4B-86C062F57D98}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {83C5E404-9F98-4218-98DE-49C4DD8E9FA6}
 	EndGlobalSection
 EndGlobal

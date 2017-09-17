@@ -1,6 +1,6 @@
 #include <SPI.h>
 //#include "Adafruit_MAX31855.h"
-#include "PAP.h"
+#include "PAP.h" 
 #include "CNC.h"
 
 static String SistemaID = "3D-PRINTER_001";
@@ -16,7 +16,7 @@ float X = 0.0f;
 float Y = 0.0f;
 float Z = 0.0f;
 float E = 0.0f;
-byte Modo = 1;//Modo=1, 2, 4 o 8
+PAPModes Modo = PAPModes::Fine;//PAPModes = Fine, Normal, Draft, Faster
 
 boolean SendWait = false;
 
@@ -117,12 +117,12 @@ void loop()
       int Temp = atoi(carray); //convert the array into an Integer
       if (Temp < 255 && (Temp == 1 || Temp == 2 || Temp == 4 || Temp == 8))
       {
-        Modo = byte(Temp);
+        Modo = (PAPModes)Temp;
       }
       else
       {
         Serial.println("WRNEl valor de 'M =' debe ser 1,2,4 u 8");
-        Modo = 1;
+        Modo = PAPModes::Fine;
       }
     }
     else if (CommandType == "RUN")
@@ -140,16 +140,16 @@ void loop()
       
       for(int lay = 0; lay < 20; lay++)
       {
-        CNCRouter.DefineDestino(5.0, 5.0, CurrLayer, 0.0, 1);
+        CNCRouter.DefineDestino(5.0f, 5.0f, CurrLayer, 0.0f, PAPModes::Fine);
         CNCRouter.Run(false);
-        CNCRouter.DefineDestino(20.0, 20.0, CurrLayer, 40.0, 4);
+        CNCRouter.DefineDestino(20.0f, 20.0f, CurrLayer, 40.0f, PAPModes::Draft);
         CNCRouter.Run(false);
         CurrLayer += IncLayer;
       }
       
       CNCRouter.SetTempFusor(100, false);
       
-      CNCRouter.DefineDestino(0.0, 0.0, CurrLayer + 50.0, 0.0, 1);
+      CNCRouter.DefineDestino(0.0f, 0.0f, CurrLayer + 50.0f, 0.0f, PAPModes::Fine);
       CNCRouter.Run(false);
     }
     else if (CommandType == "ST=")
