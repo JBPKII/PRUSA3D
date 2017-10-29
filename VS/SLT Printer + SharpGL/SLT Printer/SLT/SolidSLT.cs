@@ -3,338 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using SharpGL;
-
-namespace SLT_Printer
+namespace SLT_Printer.SLT
 {
-    public class FacetSLT
-    {
-        public VertexSLT _Normal;
-        public IList<LoopSLT> _Loops;
-        public UInt16 _Attribute;
-
-        public FacetSLT()
-        {
-            _Normal = new VertexSLT();
-            _Attribute = 0;
-            _Loops = new List<LoopSLT>();
-        }
-
-        public void Trasladar(VertexSLT T)
-        {
-            for (int i = 0; i < _Loops.Count; i++)
-            {
-                _Loops[i].Trasladar(T);
-            }
-        }
-
-        public bool EsValido()
-        {
-            if (_Normal.EsValido && _Loops.Count() > 0)
-            {
-                bool Res = true;
-
-                foreach (LoopSLT L in _Loops)
-                {
-                    if (!L.EsValido())
-                    {
-                        Res = false;
-                        break;
-                    }
-                }
-
-                return Res;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public bool CortaPlanoZ(double Z)
-        {
-            foreach(LoopSLT L in _Loops)
-            {
-                if(L.CortaPlanoZ(Z))
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        public bool CortePlanoZ(double Z, out IList<RectaSLT> Corte)
-        {
-            return Intersecciones.IntFacetPlano(this, Z, out Corte);
-        }
-    }
-
-    public class LoopSLT
-    {
-        public IList<VertexSLT> Vertices;
-
-        private double _ZMax;
-        private double _Zmin;
-
-        public LoopSLT()
-        {
-            Vertices = new List<VertexSLT>();
-            _ZMax = double.NaN;
-            _Zmin = double.NaN;
-        }
-
-        public void ActualizaBoundingZ()
-        {
-            foreach (VertexSLT V in Vertices)
-            {
-                //compara mínimos
-                if (double.IsNaN(_Zmin) || V.Z < _Zmin)
-                {
-                    _Zmin = V.Z;
-                }
-
-                //compara Máximos
-                if (double.IsNaN(_ZMax) || V.Z > _ZMax)
-                {
-                    _ZMax = V.Z;
-                }
-            }
-        }
-
-        public void Trasladar(VertexSLT T)
-        {
-            for (int i = 0; i < Vertices.Count; i++)
-            {
-                Vertices[i].Trasladar(T);
-            }
-        }
-
-        public bool CortaPlanoZ(double Z)
-        {
-            if (double.IsNaN(_Zmin) || double.IsNaN(_ZMax))
-            {
-                this.ActualizaBoundingZ();
-            }
-
-            if (Z >= _Zmin - 0.000001 && Z <= _ZMax + 0.000001)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public bool CortePlanoZ(double Z, out RectaSLT Corte)
-        {
-            return Intersecciones.IntLoopPlano(this, Z, out Corte);
-        }
-
-        public bool EsValido()
-        {
-            if (Vertices.Count() > 0)
-            {
-                bool Res = true;
-
-                foreach (VertexSLT V in Vertices)
-                {
-                    if(!V.EsValido)
-                    {
-                        Res = false;
-                        break;
-                    }
-                }
-
-                return Res;
-            }
-            else
-            {
-                return false;
-            }
-        }
-    }
-
-    public class VertexSLT
-    {
-        double _X;
-        double _Y;
-        double _Z;
-
-        public VertexSLT()
-        {
-            _X = double.NaN;
-            _Y = double.NaN;
-            _Z = double.NaN;
-        }
-
-        public VertexSLT(double X, double Y, double Z)
-        {
-            _X = X;
-            _Y = Y;
-            _Z = Z;
-        }
-
-        public bool EsValido
-        {
-            get
-            {
-                if (double.IsNaN(_X) || double.IsNaN(_Y) || double.IsNaN(_Z))
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
-            }
-        }
-
-        public double X
-        {
-            get
-            {
-                return _X;
-            }
-        }
-        public double Y
-        {
-            get
-            {
-                return _Y;
-            }
-        }
-        public double Z
-        {
-            get
-            {
-                return _Z;
-            }
-        }
-
-        public float Xf
-        {
-            get
-            {
-                return (float)_X;
-            }
-        }
-        public float Yf
-        {
-            get
-            {
-                return (float)_Y;
-            }
-        }
-        public float Zf
-        {
-            get
-            {
-                return (float)_Z;
-            }
-        }
-
-        public void Trasladar(VertexSLT T)
-        {
-            _X += T.X;
-            _Y += T.Y;
-            _Z += T.Z;
-        }
-
-        public bool EsIgual(VertexSLT Valor)
-        {
-            bool Res = false;
-            const double Margen = 0.00001;
-            if (Math.Abs(X - Valor.X) < Margen)
-            {
-                if (Math.Abs(Y - Valor.Y) < Margen)
-                {
-                    if (Math.Abs(Z - Valor.Z) < Margen)
-                    {
-                        Res = true;
-                    }
-                }
-            }
-
-            return Res;
-        }
-    }
-
-    public class RectaSLT
-    {
-        VertexSLT _V1;
-        VertexSLT _V2;
-
-        public RectaSLT()
-        {
-            _V1 = new VertexSLT();
-            _V2 = new VertexSLT();
-        }
-
-        public RectaSLT(VertexSLT V1, VertexSLT V2)
-        {
-            _V1 = V1;
-            _V2 = V2;
-        }
-
-        public bool EsValido
-        {
-            get
-            {
-                if (_V1.EsValido && _V2.EsValido)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-        }
-
-        public VertexSLT V1
-        {
-            get
-            {
-                return _V1;
-            }
-        }
-        public VertexSLT V2
-        {
-            get
-            {
-                return _V2;
-            }
-        }
-        
-        public void Trasladar(VertexSLT T)
-        {
-            _V1.Trasladar(T);
-            _V2.Trasladar(T);
-        }
-
-        public bool EsIgual(RectaSLT Valor)
-        {
-            if (_V1.EsIgual(Valor.V1) && _V2.EsIgual(Valor.V2))
-            {
-                return true;
-            }
-            else if (_V2.EsIgual(Valor.V1) && _V1.EsIgual(Valor.V2))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-    }
-
     // A delegate type for hooking up change notifications.
     public delegate void ChangedEventHandler(object sender, EventArgs e);
 
-    class SolidoSLT
+    class SolidSLT
     {
         private string _Nombre;
         private IList<string> _Fallos;
@@ -518,6 +192,14 @@ namespace SLT_Printer
             }
         }
 
+        public double Top
+        {
+            get
+            {
+                return _DerPostSup.Z;
+            }
+        }
+
         public bool PassTest
         {
             get
@@ -533,8 +215,7 @@ namespace SLT_Printer
         // Invoke the Changed event; called whenever list changes
         protected virtual void OnReading(EventArgs e)
         {
-            if (Changed != null)
-                Changed(this, e);
+            Changed?.Invoke(this, e);
         }
 
         private void _Inicializa()
@@ -557,12 +238,12 @@ namespace SLT_Printer
             _Tz = 0.0;
         }
 
-        public SolidoSLT()
+        public SolidSLT()
         {
             _Inicializa();
         }
 
-        public SolidoSLT(String FicheroSLT)
+        public SolidSLT(String FicheroSLT)
         {
             _Inicializa();
             LeeSLT(FicheroSLT);
@@ -1205,16 +886,16 @@ namespace SLT_Printer
             return false;
         }
 
-        public bool CortePlanoZ(double Z, out IList<RectaSLT> Corte)
+        public bool CortePlanoZ(double Z, out IList<LineSLT> Corte)
         {
-            Corte = new List<RectaSLT>();
+            Corte = new List<LineSLT>();
 
             foreach (FacetSLT F in _Facets)
             {
-                IList<RectaSLT> TempCorte = new List<RectaSLT>();
-                if (Intersecciones.IntFacetPlano(F, Z, out TempCorte))
+                IList<LineSLT> TempCorte = new List<LineSLT>();
+                if (Intersecctions.IntFacetPlane(F, Z, out TempCorte))
                 {
-                    foreach (RectaSLT TC in TempCorte)
+                    foreach (LineSLT TC in TempCorte)
                     {
                         Corte.Add(TC);
                     }

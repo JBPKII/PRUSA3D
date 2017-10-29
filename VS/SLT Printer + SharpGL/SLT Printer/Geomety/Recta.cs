@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace SLT_Printer
+﻿namespace SLT_Printer
 {
     public class Segmento
     {

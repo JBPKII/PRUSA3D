@@ -1,19 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-
-using SharpGL;
 using SharpGL.SceneGraph;
 using SharpGL.SceneGraph.Cameras;
-using SharpGL.SceneGraph.Collections;
-using SharpGL.SceneGraph.Core;
-using SharpGL.SceneGraph.Lighting;
-using SharpGL.SceneGraph.Primitives;
+using SLT_Printer.SLT;
 
 namespace SLT_Printer
 {
@@ -46,7 +35,7 @@ namespace SLT_Printer
 
             Aspecto = sceneControl.Scene.CurrentCamera.AspectRatio;
 
-            Modelo = new Model(ref serialPort1);
+            Modelo = new ModelSLT(ref serialPort1);
 
             Modelo.Information += OnInformation;
             Modelo.ChangeXYZ += OnChangeXYZ;
@@ -59,10 +48,14 @@ namespace SLT_Printer
             // InvokeRequired required compares the thread ID of the
             // calling thread to the thread ID of the creating thread.
             // If these threads are different, it returns true.
-            if (this.TxtWarning.InvokeRequired)
+            if (this.TxtInfo.InvokeRequired)
             {
-                SetInformationCallback d = new SetInformationCallback(OnInformation);
-                this.Invoke(d, new object[] { Info });
+                try
+                {
+                    SetInformationCallback d = new SetInformationCallback(OnInformation);
+                    this.Invoke(d, new object[] { Info });
+                }
+                catch (Exception) { }
             }
             else
             {
@@ -113,8 +106,12 @@ namespace SLT_Printer
             // If these threads are different, it returns true.
             if (this.TxtX.InvokeRequired)
             {
-                SetXYZCallback d = new SetXYZCallback(OnChangeXYZ);
-                this.Invoke(d, new object[] { X, Y, Z });
+                try
+                {
+                    SetXYZCallback d = new SetXYZCallback(OnChangeXYZ);
+                    this.Invoke(d, new object[] { X, Y, Z });
+                }
+                catch (Exception) { }
             }
             else
             {
@@ -126,20 +123,24 @@ namespace SLT_Printer
 
         delegate void SetWarningCallback(string Warn);
         private void OnWarning(string Warn)
-		{
-			// InvokeRequired required compares the thread ID of the
-			// calling thread to the thread ID of the creating thread.
-			// If these threads are different, it returns true.
+        {
+            // InvokeRequired required compares the thread ID of the
+            // calling thread to the thread ID of the creating thread.
+            // If these threads are different, it returns true.
             if (this.TxtWarning.InvokeRequired)
-			{
-                SetWarningCallback d = new SetWarningCallback(OnWarning);
-				this.Invoke(d, new object[] { Warn });
-			}
-			else
-			{
+            {
+                try
+                {
+                    SetWarningCallback d = new SetWarningCallback(OnWarning);
+                    this.Invoke(d, new object[] { Warn });
+                }
+                catch (Exception) { }
+            }
+            else
+            {
                 this.TxtWarning.Text += (System.Environment.NewLine + "WARN:" + Warn);
-			}
-		}
+            }
+        }
         void sceneControl_OpenGLDraw(object sender, SharpGL.RenderEventArgs args)
         {
             UpdateViewPoint();
@@ -288,7 +289,7 @@ namespace SLT_Printer
             sceneControl.Refresh();
         }
 
-        #endregion
+        
 
         private void CmBZoomIn_Click(object sender, EventArgs e)
         {
@@ -441,6 +442,7 @@ namespace SLT_Printer
                 UpdateViewPoint();
             }
         }
+        #endregion
 
         private void CmBConex_Click(object sender, EventArgs e)
         {
@@ -467,19 +469,19 @@ namespace SLT_Printer
 
         #region Trazado
 
-        Model Modelo;
+        ModelSLT Modelo;
 
         private void CmBIniciar_Click(object sender, EventArgs e)
         {
             this.Enabled = false;
             //Realiza la impresión del modelo
-            Modelo.Trazar();
+            Modelo.Draw();
 
                 System.Threading.Thread.Sleep(1000);
 
             this.Enabled = true;
 
-            if(Modelo.Imprimiendo)
+            if(Modelo.Printing)
             {
                 CmBTestSLT.Enabled = false;
                 CmBIniciar.Enabled = false;
@@ -508,12 +510,20 @@ namespace SLT_Printer
             // If these threads are different, it returns true.
             if (this.sceneControl.InvokeRequired)
             {
-                RefrescoEscena Ref = _RefrescoEscena;
-                this.Invoke(Ref);
+                try
+                {
+                    RefrescoEscena Ref = _RefrescoEscena;
+                    this.Invoke(Ref);
+                }
+                catch (Exception) { }
             }
             else
             {
-                UpdateViewPoint();
+                try
+                {
+                    UpdateViewPoint();
+                }
+                catch (Exception) { }
             }
         }
 
@@ -543,7 +553,7 @@ namespace SLT_Printer
 
         private void _RefrescoImpresion()
         {
-            while (Modelo.Imprimiendo)
+            while (Modelo.Printing)
             {
                 _RefrescoEscena();
 
@@ -560,14 +570,14 @@ namespace SLT_Printer
 
         private void CmBPausar_Click(object sender, EventArgs e)
         {
-            if(Modelo.Pausado)
+            if(Modelo.Paused)
             {
-                Modelo.ReanudarTrazado();
+                Modelo.ResumeDraw();
                 CmBPausar.Text = "Pausar";
             }
             else
             {
-                Modelo.PausarTrazado();
+                Modelo.PauseDraw();
                 CmBPausar.Text = "Reanudar";
             }
             
@@ -575,7 +585,7 @@ namespace SLT_Printer
 
         private void CmBDetener_Click(object sender, EventArgs e)
         {
-            Modelo.DetenerTrazado();
+            Modelo.StopDraw();
 
             CmBTestSLT.Enabled = true;
             CmBIniciar.Enabled = true;
@@ -594,11 +604,11 @@ namespace SLT_Printer
 
         private void Main_Closing(object sender, FormClosingEventArgs e)
         {
-            if (Modelo.Imprimiendo)
+            if (Modelo.Printing)
             {
                 if (System.Windows.Forms.MessageBox.Show("La impresión se detendrá ¿Está seguro?", "Cerrar:", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                 {
-                    Modelo.DetenerTrazado();
+                    Modelo.StopDraw();
                 }
                 else
                 {
@@ -609,12 +619,12 @@ namespace SLT_Printer
 
         private void CmBOrigen_Click(object sender, EventArgs e)
         {
-            Trazo Origen = new Trazo();
+            Stroke Origen = new Stroke();
             Origen.Destino = new VertexSLT(0.0, 0.0, 0.0);
             Origen.Pendiente = true;
-            Origen.Modo = Modos.ModoTraslacion;
+            Origen.Mode = Modes.ModeTraslation;
 
-            Modelo.EnviaTrazo(ref Origen);
+            Modelo.SendStroke(ref Origen);
         }
 
         private void CmBGoTo_Click(object sender, EventArgs e)
@@ -622,12 +632,12 @@ namespace SLT_Printer
             double X, Y, Z;
             if (double.TryParse(TxtGoToX.Text.Replace('.', ','), out X) && double.TryParse(TxtGoToY.Text.Replace('.', ','), out Y) && double.TryParse(TxtGoToZ.Text.Replace('.', ','), out Z))
             {
-                Trazo Origen = new Trazo();
+                Stroke Origen = new Stroke();
                 Origen.Destino = new VertexSLT(X, Y, Z);
                 Origen.Pendiente = true;
-                Origen.Modo = Modos.ModoTraslacion;
+                Origen.Mode = Modes.ModeTraslation;
 
-                Modelo.EnviaTrazo(ref Origen);
+                Modelo.SendStroke(ref Origen);
             }
             else
             {
@@ -635,9 +645,50 @@ namespace SLT_Printer
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void CmBIniciarTest_Click(object sender, EventArgs e)
         {
+            Modelo.Log += this.OnLog;
+
             CmBIniciar_Click(sender, e);
+        }
+
+        private void TxtWarning_DoubleClick(object sender, EventArgs e)
+        {
+            FrmShowLog WarningLog = new FrmShowLog("Warning:", ((TextBox)sender).Text);
+            WarningLog.Show(this);
+            Modelo.Warning += WarningLog.OnLog;
+        }
+
+        private void TxtInfo_DoubleClick(object sender, EventArgs e)
+        {
+            FrmShowLog InformationLog = new FrmShowLog("Information:", ((TextBox)sender).Text);
+            InformationLog.Show(this);
+            Modelo.Information += InformationLog.OnLog;
+        }
+
+        private System.IO.StreamWriter sw = null;
+        delegate void SetLogCallback(string Warn);
+        public void OnLog(string Log)
+        {
+            // InvokeRequired required compares the thread ID of the
+            // calling thread to the thread ID of the creating thread.
+            // If these threads are different, it returns true.
+            if (this.InvokeRequired)
+            {
+                SetLogCallback d = new SetLogCallback(OnLog);
+                this.Invoke(d, new object[] { Log });
+            }
+            else
+            {
+                if (sw == null)
+                {
+                    sw = new System.IO.StreamWriter(string.Format(  "{0}\\{1}.log", 
+                                                                    System.Environment.CurrentDirectory, 
+                                                                    System.DateTime.Now.ToString("yyyyMMdd HHmmss")),true);
+                }
+
+                sw.WriteLine(Log);
+            }
         }
     }
 

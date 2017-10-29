@@ -582,7 +582,7 @@
             // 
             // CmBRotateUp
             // 
-            this.CmBRotateUp.Font = new System.Drawing.Font("Symbol", 8.25f);
+            this.CmBRotateUp.Font = new System.Drawing.Font("Symbol", 8.25F);
             this.CmBRotateUp.Location = new System.Drawing.Point(37, 19);
             this.CmBRotateUp.Name = "CmBRotateUp";
             this.CmBRotateUp.Size = new System.Drawing.Size(25, 23);
@@ -593,7 +593,7 @@
             // 
             // CmBRotateDown
             // 
-            this.CmBRotateDown.Font = new System.Drawing.Font("Symbol", 8.25f);
+            this.CmBRotateDown.Font = new System.Drawing.Font("Symbol", 8.25F);
             this.CmBRotateDown.Location = new System.Drawing.Point(37, 77);
             this.CmBRotateDown.Name = "CmBRotateDown";
             this.CmBRotateDown.Size = new System.Drawing.Size(25, 23);
@@ -624,7 +624,7 @@
             // 
             // CmBRotateRight
             // 
-            this.CmBRotateRight.Font = new System.Drawing.Font("Symbol", 8.25f);
+            this.CmBRotateRight.Font = new System.Drawing.Font("Symbol", 8.25F);
             this.CmBRotateRight.Location = new System.Drawing.Point(68, 48);
             this.CmBRotateRight.Name = "CmBRotateRight";
             this.CmBRotateRight.Size = new System.Drawing.Size(25, 23);
@@ -635,7 +635,7 @@
             // 
             // CmBRotateLeft
             // 
-            this.CmBRotateLeft.Font = new System.Drawing.Font("Symbol", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.CmBRotateLeft.Font = new System.Drawing.Font("Symbol", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.CmBRotateLeft.Location = new System.Drawing.Point(6, 48);
             this.CmBRotateLeft.Name = "CmBRotateLeft";
             this.CmBRotateLeft.Size = new System.Drawing.Size(25, 23);
@@ -666,8 +666,8 @@
             // 
             // TxtTz
             // 
-            this.TxtTz.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtTz.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtTz.Location = new System.Drawing.Point(179, 60);
             this.TxtTz.Name = "TxtTz";
             this.TxtTz.Size = new System.Drawing.Size(51, 20);
@@ -696,8 +696,8 @@
             // 
             // TxtTy
             // 
-            this.TxtTy.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtTy.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtTy.Location = new System.Drawing.Point(122, 60);
             this.TxtTy.Name = "TxtTy";
             this.TxtTy.Size = new System.Drawing.Size(51, 20);
@@ -716,8 +716,8 @@
             // 
             // TxtTx
             // 
-            this.TxtTx.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtTx.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtTx.Location = new System.Drawing.Point(65, 60);
             this.TxtTx.Name = "TxtTx";
             this.TxtTx.Size = new System.Drawing.Size(51, 20);
@@ -736,8 +736,8 @@
             // 
             // TxtFileSLT
             // 
-            this.TxtFileSLT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtFileSLT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtFileSLT.Location = new System.Drawing.Point(65, 21);
             this.TxtFileSLT.Name = "TxtFileSLT";
             this.TxtFileSLT.ReadOnly = true;
@@ -777,15 +777,16 @@
             // 
             // TxtWarning
             // 
-            this.TxtWarning.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtWarning.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtWarning.Location = new System.Drawing.Point(6, 19);
             this.TxtWarning.Multiline = true;
             this.TxtWarning.Name = "TxtWarning";
             this.TxtWarning.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.TxtWarning.Size = new System.Drawing.Size(328, 37);
             this.TxtWarning.TabIndex = 0;
+            this.TxtWarning.DoubleClick += new System.EventHandler(this.TxtWarning_DoubleClick);
             // 
             // TS1
             // 
@@ -873,8 +874,8 @@
             // 
             // groupBox7
             // 
-            this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox7.Controls.Add(this.button1);
             this.groupBox7.Controls.Add(this.CmBTestSLT);
             this.groupBox7.Controls.Add(this.CmbSalir);
@@ -907,7 +908,7 @@
             this.button1.TabIndex = 24;
             this.button1.Text = "INICIAR T";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.CmBIniciarTest_Click);
             // 
             // CmBTestSLT
             // 
@@ -933,8 +934,8 @@
             // 
             // TxtGoToZ
             // 
-            this.TxtGoToZ.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtGoToZ.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtGoToZ.Location = new System.Drawing.Point(32, 197);
             this.TxtGoToZ.Name = "TxtGoToZ";
             this.TxtGoToZ.Size = new System.Drawing.Size(104, 20);
@@ -963,8 +964,8 @@
             // 
             // TxtGoToY
             // 
-            this.TxtGoToY.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtGoToY.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtGoToY.Location = new System.Drawing.Point(32, 171);
             this.TxtGoToY.Name = "TxtGoToY";
             this.TxtGoToY.Size = new System.Drawing.Size(104, 20);
@@ -993,8 +994,8 @@
             // 
             // TxtGoToX
             // 
-            this.TxtGoToX.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtGoToX.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtGoToX.Location = new System.Drawing.Point(32, 145);
             this.TxtGoToX.Name = "TxtGoToX";
             this.TxtGoToX.Size = new System.Drawing.Size(104, 20);
@@ -1023,9 +1024,9 @@
             // 
             // GBPreview
             // 
-            this.GBPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.GBPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.GBPreview.Controls.Add(this.sceneControl);
             this.GBPreview.Location = new System.Drawing.Point(358, 12);
             this.GBPreview.Name = "GBPreview";
@@ -1036,8 +1037,8 @@
             // 
             // groupBox9
             // 
-            this.groupBox9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox9.Controls.Add(this.TxtInfo);
             this.groupBox9.Location = new System.Drawing.Point(358, 425);
             this.groupBox9.Name = "groupBox9";
@@ -1048,15 +1049,16 @@
             // 
             // TxtInfo
             // 
-            this.TxtInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtInfo.Location = new System.Drawing.Point(6, 19);
             this.TxtInfo.Multiline = true;
             this.TxtInfo.Name = "TxtInfo";
             this.TxtInfo.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.TxtInfo.Size = new System.Drawing.Size(641, 37);
             this.TxtInfo.TabIndex = 0;
+            this.TxtInfo.DoubleClick += new System.EventHandler(this.TxtInfo_DoubleClick);
             // 
             // Main
             // 

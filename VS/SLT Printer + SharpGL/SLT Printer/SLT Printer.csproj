@@ -90,8 +90,14 @@
     <Compile Include="FrmParametros.Designer.cs">
       <DependentUpon>FrmParametros.cs</DependentUpon>
     </Compile>
-    <Compile Include="Intersecciones.cs" />
-    <Compile Include="Layer.cs" />
+    <Compile Include="FrmShowLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmShowLog.Designer.cs">
+      <DependentUpon>FrmShowLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SLT\IntersectionsSLT.cs" />
+    <Compile Include="SLT\ModelSLT.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,13 +110,18 @@
     <Compile Include="FrmConexion.Designer.cs">
       <DependentUpon>FrmConexion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Matriz.cs" />
-    <Compile Include="Poligonos.cs" />
+    <Compile Include="Math\Matrix.cs" />
+    <Compile Include="Geomety\Poligonos.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Punto.cs" />
-    <Compile Include="Recta.cs" />
-    <Compile Include="SolidoSLT.cs" />
+    <Compile Include="Geomety\Punto.cs" />
+    <Compile Include="Geomety\Recta.cs" />
+    <Compile Include="SLT\LoopSLT.cs" />
+    <Compile Include="SLT\LineSLT.cs" />
+    <Compile Include="SLT\StrokeSLT.cs" />
+    <Compile Include="SLT\VertexSLT.cs" />
+    <Compile Include="SLT\FacetSLT.cs" />
+    <Compile Include="SLT\SolidSLT.cs" />
     <EmbeddedResource Include="FrmCierre.resx">
       <DependentUpon>FrmCierre.cs</DependentUpon>
     </EmbeddedResource>
@@ -119,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmConexion.resx">
       <DependentUpon>FrmConexion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmShowLog.resx">
+      <DependentUpon>FrmShowLog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>

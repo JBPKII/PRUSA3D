@@ -1,7 +1,6 @@
-﻿using System;
+﻿using SLT_Printer.SLT;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace SLT_Printer
 {
@@ -21,7 +20,7 @@ namespace SLT_Printer
             _Inicializa();
         }
 
-        public Poligonos(IList<RectaSLT> Bordes)
+        public Poligonos(IList<LineSLT> Bordes)
         {
             _Inicializa();
 
@@ -122,14 +121,14 @@ namespace SLT_Printer
             return Res;
         }
 
-        public IList<Trazo> TrazarPerimetro(Modos M)
+        public IList<Stroke> TrazarPerimetro(Modes M)
         {
-            IList<Trazo> Res = new List<Trazo>();
+            IList<Stroke> Res = new List<Stroke>();
 
             foreach (Poligono P in _Poligonos)
             {
-                IList<Trazo> ResP = P.TrazarPerimetro(M);
-                foreach (Trazo tP in ResP)
+                IList<Stroke> ResP = P.TrazarPerimetro(M);
+                foreach (Stroke tP in ResP)
                 {
                     Res.Add(tP);
                 }
@@ -180,7 +179,7 @@ namespace SLT_Printer
             _Bownding = new BBox(S.Bownding.Minimos, S.Bownding.Maximos);
         }
 
-        public Poligono(IList<RectaSLT> Bordes)
+        public Poligono(IList<LineSLT> Bordes)
         {
             _Inicializa();
             //obtengo cada uno de los distintos polígonos cerrados
@@ -294,20 +293,20 @@ namespace SLT_Printer
             return Res;
         }
 
-        public IList<Trazo> TrazarPerimetro(Modos M)
+        public IList<Stroke> TrazarPerimetro(Modes M)
         {
-            IList<Trazo> Res = new List<Trazo>();
+            IList<Stroke> Res = new List<Stroke>();
 
-            IList<Trazo> ResExt = _Exterior.TrazarPerimetro(M);
-            foreach (Trazo tE in ResExt)
+            IList<Stroke> ResExt = _Exterior.TrazarPerimetro(M);
+            foreach (Stroke tE in ResExt)
             {
                 Res.Add(tE);
             }
 
             foreach (Shape S in _Islas)
             {
-                IList<Trazo> ResIsl = S.TrazarPerimetro(M);
-                foreach (Trazo tI in ResExt)
+                IList<Stroke> ResIsl = S.TrazarPerimetro(M);
+                foreach (Stroke tI in ResExt)
                 {
                     Res.Add(tI);
                 }
@@ -454,19 +453,19 @@ namespace SLT_Printer
             }
         }
 
-        public static IList<Shape> GenerarPoligonos(IList<RectaSLT> Bordes)
+        public static IList<Shape> GenerarPoligonos(IList<LineSLT> Bordes)
         {
             IList<Shape> resIslas = new List<Shape>();
-            IList<KeyValuePair<RectaSLT, bool>> _Bordes = new List<KeyValuePair<RectaSLT, bool>>();
+            IList<KeyValuePair<LineSLT, bool>> _Bordes = new List<KeyValuePair<LineSLT, bool>>();
 
             if (Bordes.Count > 0)
             {
                 //almaceno los bordes para usar
-                foreach (RectaSLT r in Bordes)
+                foreach (LineSLT r in Bordes)
                 {
                     if (!r.V1.EsIgual(r.V2))
                     {
-                        _Bordes.Add(new KeyValuePair<RectaSLT, bool>(r, false));
+                        _Bordes.Add(new KeyValuePair<LineSLT, bool>(r, false));
                     }
                 }
 
@@ -475,13 +474,13 @@ namespace SLT_Printer
                 while (QuedanSinProcesar)
                 {
                     //Comienzo a crear el shape con el primer punto sin procesar
-                    IList<RectaSLT> BordesConcat = new List<RectaSLT>();
+                    IList<LineSLT> BordesConcat = new List<LineSLT>();
                     for (int i = 0; i < _Bordes.Count; i++)
                     {
                         if (!_Bordes[i].Value)
                         {
                             BordesConcat.Add(_Bordes[i].Key);
-                            _Bordes[i] = new KeyValuePair<RectaSLT, bool>(_Bordes[i].Key, true);
+                            _Bordes[i] = new KeyValuePair<LineSLT, bool>(_Bordes[i].Key, true);
                             break;
                         }
                     }
@@ -499,13 +498,13 @@ namespace SLT_Printer
                             {
                                 if (!_Bordes[i].Value)
                                 {
-                                    KeyValuePair<RectaSLT, bool> kv = _Bordes[i];
+                                    KeyValuePair<LineSLT, bool> kv = _Bordes[i];
                                     bool Usado = false;
 
                                     if (kv.Key.V1.EsIgual(BordesConcat.First().V1))
                                     {
                                         //rotar el borde y almacenar al principio
-                                        BordesConcat.Insert(0, new RectaSLT(kv.Key.V2, kv.Key.V1));
+                                        BordesConcat.Insert(0, new LineSLT(kv.Key.V2, kv.Key.V1));
                                         Usado = true;
                                     }
                                     else if (kv.Key.V2.EsIgual(BordesConcat.First().V1))
@@ -523,14 +522,14 @@ namespace SLT_Printer
                                     else if (kv.Key.V2.EsIgual(BordesConcat.Last().V2))
                                     {
                                         //rotar el borde y almacenar al final
-                                        BordesConcat.Add(new RectaSLT(kv.Key.V2, kv.Key.V1));
+                                        BordesConcat.Add(new LineSLT(kv.Key.V2, kv.Key.V1));
                                         Usado = true;
                                     }
 
                                     //ha sido marcado como utilizado y se almacena como tal
                                     if (Usado)
                                     {
-                                        _Bordes[i] = new KeyValuePair<RectaSLT, bool>(kv.Key, Usado);
+                                        _Bordes[i] = new KeyValuePair<LineSLT, bool>(kv.Key, Usado);
 
                                         //Para continuar buscando más polígonos
                                         Añadido = true;
@@ -541,7 +540,7 @@ namespace SLT_Printer
 
                         //Genero el shape con el conjunto de bordes
                         Shape TempShape = new Shape();
-                        foreach (RectaSLT r in BordesConcat)
+                        foreach (LineSLT r in BordesConcat)
                         {
                             TempShape.AddPunto(r.V1);
                         }
@@ -563,7 +562,7 @@ namespace SLT_Printer
                         }
 
                         //evaluo si quedan para continuar o terminar el proceso
-                        foreach (KeyValuePair<RectaSLT, bool> kv in _Bordes)
+                        foreach (KeyValuePair<LineSLT, bool> kv in _Bordes)
                         {
                             if (!kv.Value)
                             {
@@ -940,23 +939,23 @@ namespace SLT_Printer
             return Res;
         }
 
-        public IList<Trazo> TrazarPerimetro(Modos M)
+        public IList<Stroke> TrazarPerimetro(Modes M)
         {
-            IList<Trazo> Res = new List<Trazo>();
+            IList<Stroke> Res = new List<Stroke>();
 
             if (_Puntos.Count > 0)
             {
                 foreach (Punto p in _Puntos)
                 {
-                    Trazo TempTrazo = new Trazo();
+                    Stroke TempTrazo = new Stroke();
                     TempTrazo.Pendiente = true;
                     if (Res.Count == 0)
                     {
-                        TempTrazo.Modo = Modos.ModoTraslacion;
+                        TempTrazo.Mode = Modes.ModeTraslation;
                     }
                     else
                     {
-                        TempTrazo.Modo = M;
+                        TempTrazo.Mode = M;
                     }
                     TempTrazo.Destino = new VertexSLT(p.X, p.Y, p.Z);
 
@@ -964,9 +963,9 @@ namespace SLT_Printer
                 }
 
                 //cierro
-                Trazo TempT = new Trazo();
+                Stroke TempT = new Stroke();
                 TempT.Pendiente = true;
-                TempT.Modo = Modos.ModoBorde;
+                TempT.Mode = Modes.ModoRim;
                 TempT.Destino = new VertexSLT(_Puntos[0].X, _Puntos[0].Y, _Puntos[0].Z);
 
                 Res.Add(TempT);

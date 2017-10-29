@@ -176,13 +176,13 @@ int PAP::DoStep(void)
       if (_Steps < 0 && EstadoFin < 989)
       {
         //Serial.begin(115200);
-        Serial.println("----Sentido -");
+        //Serial.println("----Sentido -");
         END = true;
       }
       else if (_Steps > 0 && EstadoFin > 989)
       {
         //Serial.begin(115200);
-        Serial.println("----Sentido +");
+        //Serial.println("----Sentido +");
         END = true;
       }
 

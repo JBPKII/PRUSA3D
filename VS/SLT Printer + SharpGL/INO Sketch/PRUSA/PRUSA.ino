@@ -1,6 +1,6 @@
 #include <SPI.h>
 //#include "Adafruit_MAX31855.h"
-#include "PAP.h" 
+#include "PAP.h"
 #include "CNC.h"
 
 static String SistemaID = "3D-PRINTER_001";
@@ -19,6 +19,7 @@ float E = 0.0f;
 PAPModes Modo = PAPModes::Fine;//PAPModes = Fine, Normal, Draft, Faster
 
 boolean SendWait = false;
+boolean SendWARNBuffer = false;
 
 void setup()
 {
@@ -43,12 +44,12 @@ void setup()
   Serial.println("INFArranque de maquina:");
   //Serial.end();
   /*CNCRouter.Attach(byte EnabledX, byte StepX, byte DirectionX, byte M0X, byte M1X, byte M2X, bool InvertirX, byte EndX, byte TempDriverX,
-   byte EnabledY, byte StepY, byte DirectionY, byte M0Y, byte M1Y, byte M2Y, bool InvertirY, byte EndY, byte TempDriverY,
-   byte EnabledZ, byte StepZ, byte DirectionZ, byte M0Z, byte M1Z, byte M2Z, bool InvertirZ, byte EndZ, byte TempDriverZ,
-   byte PWMVentDrivers,
-   byte EnabledE, byte StepE, byte DirectionE, byte M0E, byte M1E, byte M2E, bool InvertirE, byte TempDriverE,
+    byte EnabledY, byte StepY, byte DirectionY, byte M0Y, byte M1Y, byte M2Y, bool InvertirY, byte EndY, byte TempDriverY,
+    byte EnabledZ, byte StepZ, byte DirectionZ, byte M0Z, byte M1Z, byte M2Z, bool InvertirZ, byte EndZ, byte TempDriverZ,
+    byte PWMVentDrivers,
+    byte EnabledE, byte StepE, byte DirectionE, byte M0E, byte M1E, byte M2E, bool InvertirE, byte TempDriverE,
    	     byte TempExtrusor, byte PWMVentE, byte TempHotEnd, byte TRIACFusor
-   );*/
+    );*/
 
   //
 
@@ -130,15 +131,16 @@ void loop()
       CNCRouter.DefineDestino(X, Y, Z, E, Modo);
       E = 0.0f;//es incremental no absoluta como X, Y y Z
       CNCRouter.Run(false);
+      Serial.println("DONE");
     }
     else if (CommandType == "LIN")
     {
       CNCRouter.SetTempFusor(341, true);
-      
+
       float const IncLayer = 0.2;
       float CurrLayer = 0.0;
-      
-      for(int lay = 0; lay < 20; lay++)
+
+      for (int lay = 0; lay < 20; lay++)
       {
         CNCRouter.DefineDestino(5.0f, 5.0f, CurrLayer, 0.0f, PAPModes::Fine);
         CNCRouter.Run(false);
@@ -146,9 +148,9 @@ void loop()
         CNCRouter.Run(false);
         CurrLayer += IncLayer;
       }
-      
+
       CNCRouter.SetTempFusor(100, false);
-      
+
       CNCRouter.DefineDestino(0.0f, 0.0f, CurrLayer + 50.0f, 0.0f, PAPModes::Fine);
       CNCRouter.Run(false);
     }
@@ -184,6 +186,7 @@ void loop()
     {
       Serial.println("WAITING...");
       SendWait = true;
+      Serial.println("DONE");
     }
 
     //Tareas de mantenimiento
@@ -232,19 +235,24 @@ void serialEvent()
   char inChar;
   while (Serial.available())
   {
-    // get the new byte:
-    inChar = (char)Serial.read();
-    // add it to the inputString:
-    LastCommand += inChar;
-    // if the incoming character is a newline, set a flag
-    // so the main loop can do something about it:
-    if (inChar == '\n')
+    if (Commands[InputIndex] != "")
     {
-      if (Commands[InputIndex] != "")
+      if(!SendWARNBuffer)
       {
-        Serial.println("WRNBuffer Serial Completo.");
+        Serial.println("BFRBuffer Serial Completo.");
+        SendWARNBuffer = true;
       }
-      else
+      break;
+    }
+    else
+    {
+      SendWARNBuffer = false;
+      // get the new byte:
+      inChar = (char)Serial.read();
+      
+      // if the incoming character is a newline, set a flag
+      // so the main loop can do something about it:
+      if (inChar == '\n')
       {
         Commands[InputIndex] = LastCommand;
         //Serial.print("InputIndex: ");
@@ -253,6 +261,11 @@ void serialEvent()
         InputIndex = NextIndex(InputIndex);
         //Serial.println(InputIndex);
         LastCommand = "";
+      }
+      else
+      {
+        // add it to the inputString:
+        LastCommand += inChar;
       }
     }
   }

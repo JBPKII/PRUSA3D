@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace SLT_Printer
+namespace SLT_Printer.SLT
 {
-    public class Intersecciones
+    public class Intersecctions
     {
-        public static bool IntRectaPlano(RectaSLT Recta, double ZPlano, out RectaSLT Corte)
+        public static bool IntLinePlane(LineSLT Recta, double ZPlano, out LineSLT Corte)
         {
             bool Res = false;
-            Corte = new RectaSLT();
+            Corte = new LineSLT();
 
             if (Recta.V1.Z != Recta.V2.Z)
             {
@@ -39,7 +36,7 @@ namespace SLT_Printer
                     ResX = (Tempz * (Recta.V2.X - Recta.V1.X)) + Recta.V1.X;
                     ResY = (Tempz * (Recta.V2.Y - Recta.V1.Y)) + Recta.V1.Y; 
 
-                    Corte = new RectaSLT(new VertexSLT(ResX, ResY, ZPlano),
+                    Corte = new LineSLT(new VertexSLT(ResX, ResY, ZPlano),
                                          new VertexSLT(ResX, ResY, ZPlano));
                 }
             }
@@ -55,12 +52,12 @@ namespace SLT_Printer
             return Res;
         }
 
-        public static bool IntLoopPlano(LoopSLT L1, double ZPlano, out RectaSLT Corte)
+        public static bool IntLoopPlane(LoopSLT L1, double ZPlano, out LineSLT Corte)
         {
             bool Res = false;
-            Corte = new RectaSLT();
+            Corte = new LineSLT();
 
-            IList<RectaSLT> TempLstCorte = new List<RectaSLT>();
+            IList<LineSLT> TempLstCorte = new List<LineSLT>();
 
             //omito los loop contenidos en el plano Z
             bool Omite = true; ;
@@ -77,17 +74,17 @@ namespace SLT_Printer
             {
                 for (int i = 1; i < L1.Vertices.Count; i++)
                 {
-                    RectaSLT TempCorte = new RectaSLT();
+                    LineSLT TempCorte = new LineSLT();
 
-                    if (IntRectaPlano(new RectaSLT(L1.Vertices[i - 1], L1.Vertices[i]), ZPlano, out TempCorte))
+                    if (IntLinePlane(new LineSLT(L1.Vertices[i - 1], L1.Vertices[i]), ZPlano, out TempCorte))
                     {
                         TempLstCorte.Add(TempCorte);
                     }
                 }
 
-                RectaSLT TempCorteCierre = new RectaSLT();
+                LineSLT TempCorteCierre = new LineSLT();
 
-                if (IntRectaPlano(new RectaSLT(L1.Vertices[L1.Vertices.Count - 1], L1.Vertices[0]), ZPlano, out TempCorteCierre))
+                if (IntLinePlane(new LineSLT(L1.Vertices[L1.Vertices.Count - 1], L1.Vertices[0]), ZPlano, out TempCorteCierre))
                 {
                     TempLstCorte.Add(TempCorteCierre);
                 }
@@ -102,12 +99,12 @@ namespace SLT_Printer
                 Res = true;
 
                 //busco los puntos didtintos
-                IList<RectaSLT> TempList = new List<RectaSLT>();
+                IList<LineSLT> TempList = new List<LineSLT>();
 
-                foreach (RectaSLT V in TempLstCorte)
+                foreach (LineSLT V in TempLstCorte)
                 {
                     bool TR = false;
-                    foreach(RectaSLT R in TempList)
+                    foreach(LineSLT R in TempList)
                     {
                         if(R.EsIgual(V))
                         {
@@ -128,20 +125,20 @@ namespace SLT_Printer
                         Corte = TempList[0];
                         break;
                     case 2:
-                        Corte = new RectaSLT(TempList[0].V1, TempList[1].V1);
+                        Corte = new LineSLT(TempList[0].V1, TempList[1].V1);
                         break;
                     case 3:
                         if (!TempList[0].V1.EsIgual (TempList[0].V2))
                         {
-                            Corte = new RectaSLT(TempList[0].V1, TempList[0].V2);
+                            Corte = new LineSLT(TempList[0].V1, TempList[0].V2);
                         }
                         else if (!TempList[1].V1.EsIgual(TempList[1].V2))
                         {
-                            Corte = new RectaSLT(TempList[1].V1, TempList[1].V2);
+                            Corte = new LineSLT(TempList[1].V1, TempList[1].V2);
                         }
                         else if(!TempList[2].V1.EsIgual (TempList[2].V2))
                         {
-                            Corte = new RectaSLT(TempList[2].V1, TempList[2].V2);
+                            Corte = new LineSLT(TempList[2].V1, TempList[2].V2);
                         }
                         else
                         {
@@ -158,16 +155,16 @@ namespace SLT_Printer
             return Res;
         }
 
-        public static bool IntFacetPlano(FacetSLT F1, double ZPlano, out IList<RectaSLT> Corte)
+        public static bool IntFacetPlane(FacetSLT F1, double ZPlano, out IList<LineSLT> Corte)
         {
             bool Res = false;
-            Corte = new List<RectaSLT>();
+            Corte = new List<LineSLT>();
 
             foreach (LoopSLT L in F1._Loops )
             {
-                RectaSLT TempCorte = new RectaSLT();
+                LineSLT TempCorte = new LineSLT();
 
-                if (IntLoopPlano(L, ZPlano, out TempCorte))
+                if (IntLoopPlane(L, ZPlano, out TempCorte))
                 {
                     Corte.Add(TempCorte);
                 }
@@ -182,12 +179,12 @@ namespace SLT_Printer
                 Res = true;
 
                 //busco los puntos didtintos
-                IList<RectaSLT> TempList = new List<RectaSLT>();
+                IList<LineSLT> TempList = new List<LineSLT>();
 
-                foreach (RectaSLT R in Corte)
+                foreach (LineSLT R in Corte)
                 {
                     bool TR = false;
-                    foreach (RectaSLT T in TempList)
+                    foreach (LineSLT T in TempList)
                     {
                         if(T.EsIgual(R))
                         {
@@ -203,11 +200,11 @@ namespace SLT_Printer
                 }
 
                 //Los segmentos y los puntos de unión pueden repetirse, elimina los puntos de unión.
-                IList<RectaSLT> ResList = new List<RectaSLT>();
+                IList<LineSLT> ResList = new List<LineSLT>();
 
-                IList<RectaSLT> TempListPuntos = new List<RectaSLT>();
+                IList<LineSLT> TempListPuntos = new List<LineSLT>();
 
-                foreach(RectaSLT r in TempList)
+                foreach(LineSLT r in TempList)
                 {
                     if (r.V1.EsIgual(r.V2))
                     {
@@ -222,10 +219,10 @@ namespace SLT_Printer
                     }
                 }
 
-                foreach (RectaSLT r in TempListPuntos) 
+                foreach (LineSLT r in TempListPuntos) 
                 {
                     bool TempBol = false;
-                    foreach (RectaSLT t in ResList)
+                    foreach (LineSLT t in ResList)
                     {
                         if(t.V1.EsIgual(t.V1) || t.V1.EsIgual(t.V2))
                         {
