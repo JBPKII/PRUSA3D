@@ -83,5 +83,10 @@ namespace SLT_Printer
         {
             this.Close();
         }
+
+        private void CBPuertos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

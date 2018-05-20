@@ -1,3 +1,10 @@
+/***************************************************
+  This is a library for the comunication with Windows application
+
+  Written by Jorge Belenguer.
+  BSD license, all text above must be included in any redistribution
+ ****************************************************/
+
 #include <SPI.h>
 //#include "Adafruit_MAX31855.h"
 #include "PAP.h"
@@ -28,7 +35,7 @@ void setup()
   TCCR4B = TCCR4B & (0b11111000 | 0x05); //timer 4 (controls pin 8, 7, 6)
 
   //Inicio el Buffer de Comandos
-  for (int i = 0; i > LongBuffer; i++)
+  for (int i = 0; i < LongBuffer; i++)
   {
     Commands[i] = "";
   }
@@ -131,10 +138,9 @@ void loop()
       CNCRouter.DefineDestino(X, Y, Z, E, Modo);
       E = 0.0f;//es incremental no absoluta como X, Y y Z
       CNCRouter.Run(false);
-      Serial.println("DONE");
     }
-    else if (CommandType == "LIN")
-    {
+    /*else if (CommandType == "LIN")
+      {
       CNCRouter.SetTempFusor(341, true);
 
       float const IncLayer = 0.2;
@@ -153,7 +159,7 @@ void loop()
 
       CNCRouter.DefineDestino(0.0f, 0.0f, CurrLayer + 50.0f, 0.0f, PAPModes::Fine);
       CNCRouter.Run(false);
-    }
+      }*/
     else if (CommandType == "ST=")
     {
       char carray[Command.length() + 1];
@@ -169,14 +175,11 @@ void loop()
     {
       //No se contempla el comando
       //Serial.begin(115200);
-      Serial.print("WRNNo se ha reconocido el comando: '");
-      Serial.print(Commands[CurrentIndex]);
-      Serial.println("'");
+      Serial.println("WRNNo se ha reconocido el comando: '" + Commands[CurrentIndex] + "'.");
       //Serial.end();
     }
 
-    Commands[CurrentIndex] = "";
-    CurrentIndex = NextIndex(CurrentIndex);
+    Commands[CurrentIndex] = ""; //Borra el último command
     SendWait = false;
   }
   else
@@ -184,9 +187,8 @@ void loop()
     //Espera Comando
     if (!SendWait)
     {
-      Serial.println("WAITING...");
+      Serial.println("WAITING");
       SendWait = true;
-      Serial.println("DONE");
     }
 
     //Tareas de mantenimiento
@@ -197,11 +199,13 @@ void loop()
 
     //...
   }
+
+  CurrentIndex = NextIndex(CurrentIndex);
 }
 
 boolean RunCommand()
 {
-  if (InputIndex == CurrentIndex && Commands[CurrentIndex] == "")
+  if (Commands[CurrentIndex] == "")
   {
     return false;
   }
@@ -227,6 +231,12 @@ int NextIndex(int Index)
     Temp++;
   }
   //Serial.println(Temp);
+
+  //The next calculated index is de current input index. Return current index again for 'wait'
+  if(Temp == InputIndex)
+  {
+    Temp = Index;
+  }
   return Temp;
 }
 
@@ -237,7 +247,7 @@ void serialEvent()
   {
     if (Commands[InputIndex] != "")
     {
-      if(!SendWARNBuffer)
+      if (!SendWARNBuffer)
       {
         Serial.println("BFRBuffer Serial Completo.");
         SendWARNBuffer = true;
@@ -249,23 +259,31 @@ void serialEvent()
       SendWARNBuffer = false;
       // get the new byte:
       inChar = (char)Serial.read();
-      
+
       // if the incoming character is a newline, set a flag
       // so the main loop can do something about it:
-      if (inChar == '\n')
+      if (inChar == '\n' || inChar == '\r')
       {
-        Commands[InputIndex] = LastCommand;
-        //Serial.print("InputIndex: ");
-        //Serial.print(InputIndex);
-        //Serial.print(" --> ");
-        InputIndex = NextIndex(InputIndex);
-        //Serial.println(InputIndex);
-        LastCommand = "";
+        if (LastCommand != "")
+        {
+          Commands[InputIndex] = LastCommand;
+          //Serial.print("InputIndex: ");
+          //Serial.print(InputIndex);
+          //Serial.print(" --> ");
+          InputIndex = NextIndex(InputIndex);
+          //Serial.println(InputIndex);
+          LastCommand = "";
+        }
       }
       else
       {
         // add it to the inputString:
         LastCommand += inChar;
+      }
+
+      if (!Serial.available())
+      {
+        Serial.println("DONE");
       }
     }
   }

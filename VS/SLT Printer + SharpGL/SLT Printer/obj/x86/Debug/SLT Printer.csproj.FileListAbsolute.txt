@@ -50,14 +50,15 @@ E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\bin\Debug\GlmNet.d
 E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\bin\Debug\SharpGL.dll
 E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\bin\Debug\SharpGL.SceneGraph.dll
 E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\bin\Debug\SharpGL.WinForms.dll
-E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT Printer.csprojResolveAssemblyReference.cache
 E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT_Printer.FrmCierre.resources
 E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT_Printer.FrmParametros.resources
 E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT_Printer.FrmConexion.resources
+E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT_Printer.FrmShowLog.resources
 E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT_Printer.Main.resources
 E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT_Printer.Properties.Resources.resources
-E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT Printer.csproj.GenerateResource.Cache
+E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT Printer.csproj.GenerateResource.cache
 E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT Printer.csproj.CoreCompileInputs.cache
+E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT Printer.csproj.CopyComplete
 E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT Printer.exe
 E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT Printer.pdb
-E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT_Printer.FrmShowLog.resources
+E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT Printer.csprojAssemblyReference.cache

@@ -10,6 +10,12 @@ namespace SLT_Printer.SLT
 
     class SolidSLT
     {
+        private const string constPlanoSLT = "PlanoSLT";
+        private const string constModeloSLT = "ModeloSLT";
+        private const string constDesignPrimitives = "Design Primitives";
+        private const string constDesignGrid = "Design Time Grid";
+        private const string constDesignAxie = "Design Time Axies";
+
         private string _Nombre;
         private IList<string> _Fallos;
         private IList<FacetSLT> _Facets;
@@ -747,62 +753,131 @@ namespace SLT_Printer.SLT
             return Res;
         }
 
-        public bool Renderiza(ref SharpGL.SceneControl scene_GLControl, double CotaZ = double.NaN, bool BBox = false)
+        public bool Renderiza(ref SharpGL.SceneControl scene_GLControl, bool Grid = false, bool Modelo = false, double CotaZ = double.NaN, bool BBox = false)
         {
             bool Res = true;
 
             scene_GLControl.Scene.RenderBoundingVolumes = BBox;
 
-            for(int i=0;i< scene_GLControl.Scene.SceneContainer.Children.Count();i++)
+            for (int i = 0; i < scene_GLControl.Scene.SceneContainer.Children.Count(); i++)
             {
-                if (scene_GLControl.Scene.SceneContainer.Children[i].Name == "PlanoSLT")
+                switch (scene_GLControl.Scene.SceneContainer.Children[i].Name)
                 {
-                    scene_GLControl.Scene.SceneContainer.RemoveChild(scene_GLControl.Scene.SceneContainer.Children[i]);
-                    i--;
-                }
-                else if(scene_GLControl.Scene.SceneContainer.Children[i].Name == "ModeloSLT")
-                {
-                    scene_GLControl.Scene.SceneContainer.RemoveChild(scene_GLControl.Scene.SceneContainer.Children[i]);
-                    i--;
-                }
-                /*else
-                {
-                    SharpGL.SceneGraph.Primitives.Folder Foldr = scene_GLControl.Scene.SceneContainer.Children[i] as SharpGL.SceneGraph.Primitives.Folder;
-
-                    if (Foldr != null)
-                    {
-                        
-                        foreach (SharpGL.SceneGraph.Core.SceneElement Var in Foldr.Children)
+                    case constPlanoSLT:
+                        if(CotaZ != double.NaN)
                         {
-                            SharpGL.SceneGraph.Primitives.Grid Grd = Var as SharpGL.SceneGraph.Primitives.Grid;
-
-                            if (Grd != null)
+                            scene_GLControl.Scene.SceneContainer.RemoveChild(scene_GLControl.Scene.SceneContainer.Children[i]);
+                            i--;
+                        }
+                        break;
+                    case constModeloSLT:
+                        if (Modelo)
+                        {
+                            scene_GLControl.Scene.SceneContainer.RemoveChild(scene_GLControl.Scene.SceneContainer.Children[i]);
+                            i--;
+                        }
+                        break;
+                    case constDesignPrimitives:
+                        if(Grid)
+                        {
+                            if (scene_GLControl.Scene.SceneContainer.Children[i] is SharpGL.SceneGraph.Primitives.Folder)
                             {
-                                //Grd.Name;
-                            }
-                            else
-                            {
-                                SharpGL.SceneGraph.Primitives.Axies Ax = Var as SharpGL.SceneGraph.Primitives.Axies;
-
-                                if (Ax != null)
+                                SharpGL.SceneGraph.Primitives.Folder Foldr = scene_GLControl.Scene.SceneContainer.Children[i] as SharpGL.SceneGraph.Primitives.Folder;
+                                for (int j = 0; j < Foldr.Children.Count(); j++)
                                 {
+                                    if (Foldr.Children[j] is SharpGL.SceneGraph.Primitives.Grid)
+                                    {
+                                        SharpGL.SceneGraph.Primitives.Grid Grd = Foldr.Children[j] as SharpGL.SceneGraph.Primitives.Grid;
+                                        
+                                        if(Grd.Name == constDesignGrid)
+                                        {
+                                            Foldr.RemoveChild(Grd);
+                                            j--;
+                                        }
+                                    }
+                                    else if(Foldr.Children[j] is SharpGL.SceneGraph.Primitives.Axies)
+                                    {
+                                        SharpGL.SceneGraph.Primitives.Axies Ax = Foldr.Children[j] as SharpGL.SceneGraph.Primitives.Axies;
 
-                                }
-                                else
-                                {
-
+                                        if (Ax.Name == constDesignAxie)
+                                        {
+                                            Foldr.RemoveChild(Ax);
+                                            j--;
+                                        }
+                                    }
                                 }
                             }
                         }
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            if (Grid)
+            {
+                SharpGL.SceneGraph.Primitives.Folder Foldr = null;
+
+                for (int i = 0; i < scene_GLControl.Scene.SceneContainer.Children.Count(); i++)
+                {
+                    if (scene_GLControl.Scene.SceneContainer.Children[i].Name == constDesignPrimitives)
+                    {
+                        if (scene_GLControl.Scene.SceneContainer.Children[i] is SharpGL.SceneGraph.Primitives.Folder)
+                        {
+                            Foldr = scene_GLControl.Scene.SceneContainer.Children[i] as SharpGL.SceneGraph.Primitives.Folder;
+                        }
                     }
-                }*/
+                }
+
+                if (Foldr != null)
+                {
+                    SharpGL.SceneGraph.Primitives.Grid grid = new SharpGL.SceneGraph.Primitives.Grid();
+                    grid.Name = constDesignGrid;
+
+                    SharpGL.SceneGraph.Primitives.Axies axie = new SharpGL.SceneGraph.Primitives.Axies();
+                    axie.Name = constDesignAxie;
+
+                    if (_Facets.Count > 0)
+                    {
+                        //printer Axies
+                        SharpGL.SceneGraph.Transformations.LinearTransformation linearAxiesTransformation = new SharpGL.SceneGraph.Transformations.LinearTransformation();
+
+                        linearAxiesTransformation.ScaleX = 10;
+                        linearAxiesTransformation.ScaleY = 10;
+                        linearAxiesTransformation.ScaleZ = 10;
+
+                        SharpGL.SceneGraph.Effects.LinearTransformationEffect linearAxiesTransformationEffect = new SharpGL.SceneGraph.Effects.LinearTransformationEffect();
+                        linearAxiesTransformationEffect.LinearTransformation = linearAxiesTransformation;
+
+                        axie.AddEffect(linearAxiesTransformationEffect);
+
+
+
+                        //Printer Grid 
+                        SharpGL.SceneGraph.Transformations.LinearTransformation linearGridTransformation = new SharpGL.SceneGraph.Transformations.LinearTransformation();
+
+                        linearGridTransformation.TranslateX = 200;
+                        linearGridTransformation.TranslateY = 200;
+                        linearGridTransformation.ScaleX = 20;
+                        linearGridTransformation.ScaleY = 20;
+
+                        SharpGL.SceneGraph.Effects.LinearTransformationEffect linearGridTransformationEffect = new SharpGL.SceneGraph.Effects.LinearTransformationEffect();
+                        linearGridTransformationEffect.LinearTransformation = linearGridTransformation;
+
+                        grid.AddEffect(linearGridTransformationEffect);
+
+                    }
+
+                    Foldr.AddChild(axie);
+                    Foldr.AddChild(grid);
+                }
             }
 
             if (!double.IsNaN(CotaZ))
             {
                 //Dibuja el plano Z.
                 SharpGL.SceneGraph.Primitives.Polygon Polig = new SharpGL.SceneGraph.Primitives.Polygon();
-                Polig.Name = "PlanoSLT";
+                Polig.Name = constPlanoSLT;
                 Polig.DrawNormals = false;
 
                 SharpGL.SceneGraph.Vertex[] Vertices = new SharpGL.SceneGraph.Vertex[4];
@@ -822,10 +897,10 @@ namespace SLT_Printer.SLT
                 scene_GLControl.Scene.SceneContainer.AddChild(Polig);
             }
 
-            if (_Facets.Count > 0)
+            if (Modelo && _Facets.Count > 0)
             {
                 SharpGL.SceneGraph.Primitives.Polygon Polig = new SharpGL.SceneGraph.Primitives.Polygon();
-                Polig.Name = "ModeloSLT";
+                Polig.Name = constModeloSLT;
                 Polig.DrawNormals = false;
 
                 foreach (FacetSLT F in _Facets)

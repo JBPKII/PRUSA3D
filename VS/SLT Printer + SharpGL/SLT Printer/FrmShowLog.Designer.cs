@@ -31,6 +31,7 @@
             this.TxtLog = new System.Windows.Forms.TextBox();
             this.CmBClearLog = new System.Windows.Forms.Button();
             this.ToClipBoard = new System.Windows.Forms.Button();
+            this.CkAutoScroll = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // TxtLog
@@ -70,11 +71,22 @@
             this.ToClipBoard.UseVisualStyleBackColor = true;
             this.ToClipBoard.Click += new System.EventHandler(this.ToClipBoard_Click);
             // 
+            // CkAutoScroll
+            // 
+            this.CkAutoScroll.AutoSize = true;
+            this.CkAutoScroll.Location = new System.Drawing.Point(12, 277);
+            this.CkAutoScroll.Name = "CkAutoScroll";
+            this.CkAutoScroll.Size = new System.Drawing.Size(75, 17);
+            this.CkAutoScroll.TabIndex = 3;
+            this.CkAutoScroll.Text = "Auto scroll";
+            this.CkAutoScroll.UseVisualStyleBackColor = true;
+            // 
             // FrmShowLog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(574, 308);
+            this.Controls.Add(this.CkAutoScroll);
             this.Controls.Add(this.ToClipBoard);
             this.Controls.Add(this.CmBClearLog);
             this.Controls.Add(this.TxtLog);
@@ -90,5 +102,6 @@
         private System.Windows.Forms.TextBox TxtLog;
         private System.Windows.Forms.Button CmBClearLog;
         private System.Windows.Forms.Button ToClipBoard;
+        private System.Windows.Forms.CheckBox CkAutoScroll;
     }
 }

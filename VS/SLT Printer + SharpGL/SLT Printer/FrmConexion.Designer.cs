@@ -126,6 +126,7 @@
             this.CBPuertos.Name = "CBPuertos";
             this.CBPuertos.Size = new System.Drawing.Size(121, 21);
             this.CBPuertos.TabIndex = 0;
+            this.CBPuertos.SelectedIndexChanged += new System.EventHandler(this.CBPuertos_SelectedIndexChanged);
             // 
             // FrmConexion
             // 

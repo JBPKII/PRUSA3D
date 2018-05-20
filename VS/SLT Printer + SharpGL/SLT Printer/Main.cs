@@ -14,6 +14,20 @@ namespace SLT_Printer
         #region Configuraciones
         public bool MostrarBBox = false;
 
+        public string SerialPortDefaultPortName = "COM4";
+        public int SerialPortDefaultBaudRate = 115200;
+
+        private void InitializeSerialPort()
+        {
+            if(serialPort1.IsOpen)
+            {
+                serialPort1.Close();
+            }
+
+            serialPort1.PortName = SerialPortDefaultPortName;
+            serialPort1.BaudRate = SerialPortDefaultBaudRate;
+        }
+
         #endregion
 
         public Main()
@@ -31,7 +45,7 @@ namespace SLT_Printer
             sceneControl.Scene.SceneContainer.AddChild(cylinder);*/
 
             sceneControl.Cursor = Cursors.Cross;
-            sceneControl.Scene.RenderBoundingVolumes = true;
+            sceneControl.Scene.RenderBoundingVolumes = MostrarBBox;
 
             Aspecto = sceneControl.Scene.CurrentCamera.AspectRatio;
 
@@ -141,10 +155,10 @@ namespace SLT_Printer
                 this.TxtWarning.Text += (System.Environment.NewLine + "WARN:" + Warn);
             }
         }
-        void sceneControl_OpenGLDraw(object sender, SharpGL.RenderEventArgs args)
+        /*void sceneControl_OpenGLDraw(object sender, SharpGL.RenderEventArgs args)
         {
-            UpdateViewPoint();
-        }
+            UpdateViewPoint(false);
+        }*/
 
         void sceneControl_Resized(object sender, System.EventArgs e)
         {
@@ -212,7 +226,7 @@ namespace SLT_Printer
                 VistaCentro[1] = float.Parse(Modelo.Solido.Centro.Y.ToString());
                 VistaCentro[2] = float.Parse(Modelo.Solido.Centro.Z.ToString());
 
-                UpdateViewPoint();
+                UpdateViewPoint(true);
 
                 CmBTestSLT.Enabled = true;
             }
@@ -247,7 +261,7 @@ namespace SLT_Printer
 
                 Res = serialPort1.IsOpen;
                 
-                UpdateViewPoint();
+                UpdateViewPoint(true);
             }
             else
             {
@@ -270,9 +284,9 @@ namespace SLT_Printer
         private float[] VistaOjo = new float[3] { -10.0f, -10.0f, 10.0f };
         private float[] VistaCentro = new float[3] { 0.0f, 0.0f, 0.0f };
 
-        private void UpdateViewPoint()
+        private void UpdateViewPoint(bool LoadedModel)
         {
-            Modelo.Solido.Renderiza(ref sceneControl, Modelo.ZTrazado, MostrarBBox);
+            Modelo.Solido.Renderiza(ref sceneControl, LoadedModel, LoadedModel, Modelo.ZTrazado, MostrarBBox);
 
             LookAtCamera LAC = new LookAtCamera();
 
@@ -298,7 +312,7 @@ namespace SLT_Printer
                 VistaOjo[i] = VistaOjo[i] * 0.8f;
             }
 
-            UpdateViewPoint();
+            UpdateViewPoint(false);
         }
 
         private void CmBZoomOut_Click(object sender, EventArgs e)
@@ -308,7 +322,7 @@ namespace SLT_Printer
                 VistaOjo[i] = VistaOjo[i] * 1.2f;
             }
 
-            UpdateViewPoint();
+            UpdateViewPoint(false);
         }
 
         private void sceneControl_MouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
@@ -330,7 +344,7 @@ namespace SLT_Printer
             VistaOjo[0] = (VistaOjo[0] - VistaCentro[0]) * (float)Math.Cos(alfa) - (VistaOjo[1] - VistaCentro[1]) * (float)Math.Sin(alfa) + VistaCentro[0];
             VistaOjo[1] = (VistaOjo[0] - VistaCentro[0]) * (float)Math.Sin(alfa) + (VistaOjo[1] - VistaCentro[1]) * (float)Math.Cos(alfa) + VistaCentro[1];
 
-            UpdateViewPoint();
+            UpdateViewPoint(false);
         }
 
         private void CmBRotateRight_Click(object sender, EventArgs e)
@@ -340,14 +354,14 @@ namespace SLT_Printer
             VistaOjo[0] = (VistaOjo[0] - VistaCentro[0]) * (float)Math.Cos(-alfa) - (VistaOjo[1] - VistaCentro[1]) * (float)Math.Sin(-alfa) + VistaCentro[0];
             VistaOjo[1] = (VistaOjo[0] - VistaCentro[0]) * (float)Math.Sin(-alfa) + (VistaOjo[1] - VistaCentro[1]) * (float)Math.Cos(-alfa) + VistaCentro[1];
 
-            UpdateViewPoint();
+            UpdateViewPoint(false);
         }
 
         private void CmbRotateUp_Click(object sender, EventArgs e)
         {
             VistaOjo[2] = VistaOjo[2] * 1.2f;
 
-            UpdateViewPoint();
+            UpdateViewPoint(false);
         }
 
         private void CmBRotateDown_Click(object sender, EventArgs e)
@@ -355,7 +369,7 @@ namespace SLT_Printer
 
             VistaOjo[2] = VistaOjo[2] * 0.8f;
 
-            UpdateViewPoint();
+            UpdateViewPoint(false);
         }
 
         private int LastMousePositionX;
@@ -421,7 +435,7 @@ namespace SLT_Printer
             }
         }
 
-        private void CmBaplicatCentrado_Click(object sender, EventArgs e)
+        private void CmBaplicaCentrado_Click(object sender, EventArgs e)
         {
             try
             {
@@ -439,13 +453,15 @@ namespace SLT_Printer
                 TxtTx.Text = Modelo.Solido.Tx.ToString();
                 TxtTy.Text = Modelo.Solido.Ty.ToString();
                 TxtTz.Text = Modelo.Solido.Tz.ToString();
-                UpdateViewPoint();
+                UpdateViewPoint(false);
             }
         }
         #endregion
 
         private void CmBConex_Click(object sender, EventArgs e)
         {
+            InitializeSerialPort();
+
             FrmConexion Conf = new FrmConexion(ref serialPort1);
             Conf.ShowDialog();
 
@@ -521,7 +537,7 @@ namespace SLT_Printer
             {
                 try
                 {
-                    UpdateViewPoint();
+                    UpdateViewPoint(false);
                 }
                 catch (Exception) { }
             }
@@ -690,9 +706,66 @@ namespace SLT_Printer
                 sw.WriteLine(Log);
             }
         }
+
+        int InfoTemperature = 40;//ºC
+        int WarnTemperature = 50;//ºC
+
+        private void Txt_TextChanged(TextBox sender)
+        {
+            int Temp = 0;
+            if (sender.Text.Contains(".") && int.TryParse(sender.Text.Split('.')[0], out Temp))
+            {
+                if(Temp >= WarnTemperature)
+                {
+                    sender.BackColor = System.Drawing.Color.IndianRed;
+                }
+                else if (Temp >= InfoTemperature)
+                {
+                    sender.BackColor = System.Drawing.Color.Orange;
+                }
+                else if (Temp <= 0)
+                {
+                    sender.BackColor = System.Drawing.Color.LightBlue;
+                }
+                else
+                {
+                    sender.BackColor = System.Drawing.Color.LightGreen;
+                }
+            }
+            else
+            {
+                sender.BackColor = System.Drawing.Color.White;
+            }
+
+        }
+
+        private void TxtTempX_TextChanged(object sender, EventArgs e)
+        {
+            Txt_TextChanged(TxtTempX);
+        }
+
+        private void TxtTempY_TextChanged(object sender, EventArgs e)
+        {
+            Txt_TextChanged(TxtTempY);
+        }
+
+        private void TxtTempZ_TextChanged(object sender, EventArgs e)
+        {
+            Txt_TextChanged(TxtTempZ);
+        }
+
+        private void TxtTempE1_TextChanged(object sender, EventArgs e)
+        {
+            Txt_TextChanged(TxtTempE1);
+        }
+
+        private void TxtTempE2_TextChanged(object sender, EventArgs e)
+        {
+            Txt_TextChanged(TxtTempE2);
+        }
     }
 
-    
 
-    
+
+
 }

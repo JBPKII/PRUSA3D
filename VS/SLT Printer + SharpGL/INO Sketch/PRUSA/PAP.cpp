@@ -189,8 +189,8 @@ int PAP::DoStep(void)
       //Solo para DEBUG
       if (END)
       {
-        Serial.print("----Final de carrera con valor: ");
-        Serial.println(EstadoFin);
+        //Serial.print("----Final de carrera con valor: ");
+        //Serial.println(EstadoFin);
         //Serial.end();
       }
     }

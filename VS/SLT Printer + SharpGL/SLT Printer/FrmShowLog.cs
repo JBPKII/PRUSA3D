@@ -31,7 +31,12 @@ namespace SLT_Printer
         {
             if (TxtLog != null && !TxtLog.IsDisposed)
             {
+                
                 TxtLog.AppendText(logLine.EndsWith(Environment.NewLine) ? logLine : (logLine + Environment.NewLine));
+                if(!CkAutoScroll.Checked)
+                {
+                    TxtLog.ScrollToCaret();
+                }
             }
         }
 

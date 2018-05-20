@@ -151,7 +151,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.CmBConex);
             this.groupBox1.Controls.Add(this.groupBox6);
             this.groupBox1.Controls.Add(this.groupBox5);
             this.groupBox1.Location = new System.Drawing.Point(12, 216);
@@ -164,7 +163,7 @@
             // CmBConex
             // 
             this.CmBConex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CmBConex.Location = new System.Drawing.Point(259, 173);
+            this.CmBConex.Location = new System.Drawing.Point(259, 140);
             this.CmBConex.Name = "CmBConex";
             this.CmBConex.Size = new System.Drawing.Size(75, 23);
             this.CmBConex.TabIndex = 23;
@@ -184,9 +183,9 @@
             this.groupBox6.Controls.Add(this.TxtTempExt1);
             this.groupBox6.Controls.Add(this.label3);
             this.groupBox6.Controls.Add(this.label4);
-            this.groupBox6.Location = new System.Drawing.Point(9, 112);
+            this.groupBox6.Location = new System.Drawing.Point(6, 112);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(197, 87);
+            this.groupBox6.Size = new System.Drawing.Size(200, 84);
             this.groupBox6.TabIndex = 9;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Fusor:";
@@ -354,6 +353,7 @@
             this.TxtTempE2.ReadOnly = true;
             this.TxtTempE2.Size = new System.Drawing.Size(38, 20);
             this.TxtTempE2.TabIndex = 13;
+            this.TxtTempE2.TextChanged += new System.EventHandler(this.TxtTempE2_TextChanged);
             // 
             // TxtTempE1
             // 
@@ -362,6 +362,7 @@
             this.TxtTempE1.ReadOnly = true;
             this.TxtTempE1.Size = new System.Drawing.Size(38, 20);
             this.TxtTempE1.TabIndex = 12;
+            this.TxtTempE1.TextChanged += new System.EventHandler(this.TxtTempE1_TextChanged);
             // 
             // TxtTempZ
             // 
@@ -370,6 +371,7 @@
             this.TxtTempZ.ReadOnly = true;
             this.TxtTempZ.Size = new System.Drawing.Size(38, 20);
             this.TxtTempZ.TabIndex = 11;
+            this.TxtTempZ.TextChanged += new System.EventHandler(this.TxtTempZ_TextChanged);
             // 
             // TxtTempY
             // 
@@ -378,6 +380,7 @@
             this.TxtTempY.ReadOnly = true;
             this.TxtTempY.Size = new System.Drawing.Size(38, 20);
             this.TxtTempY.TabIndex = 10;
+            this.TxtTempY.TextChanged += new System.EventHandler(this.TxtTempY_TextChanged);
             // 
             // TxtPotVentDrivers
             // 
@@ -412,6 +415,7 @@
             this.TxtTempX.ReadOnly = true;
             this.TxtTempX.Size = new System.Drawing.Size(38, 20);
             this.TxtTempX.TabIndex = 6;
+            this.TxtTempX.TextChanged += new System.EventHandler(this.TxtTempX_TextChanged);
             // 
             // label19
             // 
@@ -533,6 +537,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.CmBConex);
             this.groupBox2.Controls.Add(this.CmBParams);
             this.groupBox2.Controls.Add(this.groupBox8);
             this.groupBox2.Controls.Add(this.CmBaplicatCentrado);
@@ -653,7 +658,7 @@
             this.CmBaplicatCentrado.TabIndex = 32;
             this.CmBaplicatCentrado.Text = "Aplicar";
             this.CmBaplicatCentrado.UseVisualStyleBackColor = true;
-            this.CmBaplicatCentrado.Click += new System.EventHandler(this.CmBaplicatCentrado_Click);
+            this.CmBaplicatCentrado.Click += new System.EventHandler(this.CmBaplicaCentrado_Click);
             // 
             // label32
             // 
