@@ -720,7 +720,7 @@ namespace SLT_Printer.SLT
                             string[] temp = Comando.Split(';');
                             try
                             {
-                                OnChangeXYZ(Convert.ToSingle(temp[0].Replace('.',',')), Convert.ToSingle(temp[1].Replace('.', ',')), Convert.ToSingle(temp[2].Replace('.',',')));
+                                OnChangeXYZ(Convert.ToSingle(temp[0]), Convert.ToSingle(temp[1]), Convert.ToSingle(temp[2]));
                             }
                             catch (System.Exception)
                             {

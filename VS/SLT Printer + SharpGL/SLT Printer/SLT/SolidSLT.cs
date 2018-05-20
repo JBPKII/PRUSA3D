@@ -825,6 +825,7 @@ namespace SLT_Printer.SLT
                         if (scene_GLControl.Scene.SceneContainer.Children[i] is SharpGL.SceneGraph.Primitives.Folder)
                         {
                             Foldr = scene_GLControl.Scene.SceneContainer.Children[i] as SharpGL.SceneGraph.Primitives.Folder;
+                            break;
                         }
                     }
                 }
@@ -851,8 +852,6 @@ namespace SLT_Printer.SLT
 
                         axie.AddEffect(linearAxiesTransformationEffect);
 
-
-
                         //Printer Grid 
                         SharpGL.SceneGraph.Transformations.LinearTransformation linearGridTransformation = new SharpGL.SceneGraph.Transformations.LinearTransformation();
 
@@ -865,7 +864,6 @@ namespace SLT_Printer.SLT
                         linearGridTransformationEffect.LinearTransformation = linearGridTransformation;
 
                         grid.AddEffect(linearGridTransformationEffect);
-
                     }
 
                     Foldr.AddChild(axie);

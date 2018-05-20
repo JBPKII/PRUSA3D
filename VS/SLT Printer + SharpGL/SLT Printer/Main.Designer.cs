@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.sceneControl = new SharpGL.SceneControl();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.CmBConex = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
@@ -59,6 +58,7 @@
             this.TxtTempX = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
+            this.CmBConex = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.TxtZ = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -120,6 +120,7 @@
             this.GBPreview = new System.Windows.Forms.GroupBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.TxtInfo = new System.Windows.Forms.TextBox();
+            this.CmBCenterView = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.sceneControl)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -136,8 +137,9 @@
             // 
             // sceneControl
             // 
+            this.sceneControl.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.sceneControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sceneControl.DrawFPS = false;
+            this.sceneControl.DrawFPS = true;
             this.sceneControl.FrameRate = 3;
             this.sceneControl.Location = new System.Drawing.Point(3, 16);
             this.sceneControl.Name = "sceneControl";
@@ -146,6 +148,7 @@
             this.sceneControl.RenderTrigger = SharpGL.RenderTrigger.TimerBased;
             this.sceneControl.Size = new System.Drawing.Size(473, 331);
             this.sceneControl.TabIndex = 5;
+            this.sceneControl.Load += new System.EventHandler(this.sceneControl_Load);
             this.sceneControl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.sceneControl_MouseMove);
             this.sceneControl.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.sceneControl_MouseWheel);
             // 
@@ -159,17 +162,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Estado:";
-            // 
-            // CmBConex
-            // 
-            this.CmBConex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CmBConex.Location = new System.Drawing.Point(259, 140);
-            this.CmBConex.Name = "CmBConex";
-            this.CmBConex.Size = new System.Drawing.Size(75, 23);
-            this.CmBConex.TabIndex = 23;
-            this.CmBConex.Text = "Conexión";
-            this.CmBConex.UseVisualStyleBackColor = true;
-            this.CmBConex.Click += new System.EventHandler(this.CmBConex_Click);
             // 
             // groupBox6
             // 
@@ -435,6 +427,17 @@
             this.label20.TabIndex = 1;
             this.label20.Text = "ºC";
             // 
+            // CmBConex
+            // 
+            this.CmBConex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CmBConex.Location = new System.Drawing.Point(259, 140);
+            this.CmBConex.Name = "CmBConex";
+            this.CmBConex.Size = new System.Drawing.Size(75, 23);
+            this.CmBConex.TabIndex = 23;
+            this.CmBConex.Text = "Conexión";
+            this.CmBConex.UseVisualStyleBackColor = true;
+            this.CmBConex.Click += new System.EventHandler(this.CmBConex_Click);
+            // 
             // groupBox4
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -572,6 +575,7 @@
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.CmBCenterView);
             this.groupBox8.Controls.Add(this.CmBRotateUp);
             this.groupBox8.Controls.Add(this.CmBRotateDown);
             this.groupBox8.Controls.Add(this.CmBZoomOut);
@@ -1065,6 +1069,17 @@
             this.TxtInfo.TabIndex = 0;
             this.TxtInfo.DoubleClick += new System.EventHandler(this.TxtInfo_DoubleClick);
             // 
+            // CmBCenterView
+            // 
+            this.CmBCenterView.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmBCenterView.Location = new System.Drawing.Point(37, 48);
+            this.CmBCenterView.Name = "CmBCenterView";
+            this.CmBCenterView.Size = new System.Drawing.Size(25, 23);
+            this.CmBCenterView.TabIndex = 41;
+            this.CmBCenterView.Text = "x";
+            this.CmBCenterView.UseVisualStyleBackColor = true;
+            this.CmBCenterView.Click += new System.EventHandler(this.CmBCenterView_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1214,6 +1229,7 @@
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.TextBox TxtInfo;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button CmBCenterView;
     }
 }
 

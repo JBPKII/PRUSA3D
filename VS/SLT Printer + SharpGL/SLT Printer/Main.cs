@@ -8,6 +8,8 @@ namespace SLT_Printer
 {
     public partial class Main : Form
     {
+        private const string constExtruder = "Extruder";
+
         //private SolidoSLT SolSLt = new SolidoSLT();
         double Aspecto;
 
@@ -132,6 +134,30 @@ namespace SLT_Printer
                 this.TxtX.Text = X.ToString("0.000");
                 this.TxtY.Text = Y.ToString("0.000");
                 this.TxtZ.Text = Z.ToString("0.000");
+
+                foreach (SharpGL.SceneGraph.Core.SceneElement item in sceneControl.Scene.SceneContainer.Children)
+                {
+                    if (item.Name == constExtruder && item is SharpGL.SceneGraph.Primitives.Folder)
+                    {
+                        if (item.Effects.Count != 0)
+                        {
+                            for (int i = 0; i < item.Effects.Count; i++)
+                            {
+                                if(item.Effects[i] is SharpGL.SceneGraph.Effects.LinearTransformationEffect)
+                                {
+                                    item.RemoveEffect(item.Effects[i]);
+                                }
+                            }
+                        }
+
+                        SharpGL.SceneGraph.Effects.LinearTransformationEffect linearTransformationEffect = new SharpGL.SceneGraph.Effects.LinearTransformationEffect();
+                        linearTransformationEffect.LinearTransformation.TranslateX = Convert.ToSingle(X);
+                        linearTransformationEffect.LinearTransformation.TranslateY = Convert.ToSingle(Y);
+                        linearTransformationEffect.LinearTransformation.TranslateZ = Convert.ToSingle(Z);
+
+                        item.AddEffect(linearTransformationEffect);
+                    }
+                }
             }
         }
 
@@ -284,6 +310,12 @@ namespace SLT_Printer
         private float[] VistaOjo = new float[3] { -10.0f, -10.0f, 10.0f };
         private float[] VistaCentro = new float[3] { 0.0f, 0.0f, 0.0f };
 
+        private void _InitViewPoint()
+        {
+            VistaOjo = new float[3] { -10.0f, -10.0f, 10.0f };
+            VistaCentro = new float[3] { 0.0f, 0.0f, 0.0f };
+        }
+
         private void UpdateViewPoint(bool LoadedModel)
         {
             Modelo.Solido.Renderiza(ref sceneControl, LoadedModel, LoadedModel, Modelo.ZTrazado, MostrarBBox);
@@ -303,7 +335,47 @@ namespace SLT_Printer
             sceneControl.Refresh();
         }
 
-        
+        private void sceneControl_Load(object sender, EventArgs e)
+        {
+            SharpGL.SceneGraph.Quadrics.Cylinder cylinder = new SharpGL.SceneGraph.Quadrics.Cylinder
+            {
+                BaseRadius = 0.0,
+                Height = 5.0,
+                TopRadius = 2.0
+            };
+
+            SharpGL.SceneGraph.Quadrics.Cylinder cylinderTop = new SharpGL.SceneGraph.Quadrics.Cylinder
+            {
+                BaseRadius = 2.0,
+                Height = 10.0,
+                TopRadius = 2.0
+            };
+            SharpGL.SceneGraph.Transformations.LinearTransformation linearTransformation = new SharpGL.SceneGraph.Transformations.LinearTransformation
+            {
+                TranslateZ = 5
+            };
+            SharpGL.SceneGraph.Effects.LinearTransformationEffect effect = new SharpGL.SceneGraph.Effects.LinearTransformationEffect
+            {
+                LinearTransformation = linearTransformation
+            };
+            cylinderTop.Effects.Add(effect);
+
+            SharpGL.SceneGraph.Primitives.Folder extruder = new SharpGL.SceneGraph.Primitives.Folder
+            {
+                Name = constExtruder
+            };
+
+            sceneControl.Scene.SceneContainer.AddChild(extruder);
+
+            extruder.AddChild(cylinder);
+            extruder.AddChild(cylinderTop);
+        }
+
+        private void CmBCenterView_Click(object sender, EventArgs e)
+        {
+            _InitViewPoint();
+            UpdateViewPoint(false);
+        }
 
         private void CmBZoomIn_Click(object sender, EventArgs e)
         {
@@ -764,8 +836,4 @@ namespace SLT_Printer
             Txt_TextChanged(TxtTempE2);
         }
     }
-
-
-
-
 }

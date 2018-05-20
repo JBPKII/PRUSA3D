@@ -194,7 +194,7 @@ void loop()
     //Tareas de mantenimiento
     CNCRouter.RegulaVentExtrusor();
     CNCRouter.RegulaVentDrivers();
-    delay(500);
+    delay(200);
     CNCRouter.RegulaFusor(false);
 
     //...
@@ -233,7 +233,7 @@ int NextIndex(int Index)
   //Serial.println(Temp);
 
   //The next calculated index is de current input index. Return current index again for 'wait'
-  if(Temp == InputIndex)
+  if (Temp == InputIndex)
   {
     Temp = Index;
   }
