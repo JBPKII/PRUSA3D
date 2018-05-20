@@ -61,4 +61,3 @@ E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT 
 E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT Printer.csproj.CopyComplete
 E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT Printer.exe
 E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT Printer.pdb
-E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT Printer.csprojAssemblyReference.cache

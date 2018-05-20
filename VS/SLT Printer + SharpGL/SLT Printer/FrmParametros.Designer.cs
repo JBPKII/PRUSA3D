@@ -413,7 +413,7 @@
             this.numericUpDown8.TabIndex = 11;
             this.numericUpDown8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDown8.Value = new decimal(new int[] {
-            200,
+            160,
             0,
             0,
             0});
@@ -532,7 +532,7 @@
             this.numericUpDown1.TabIndex = 0;
             this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDown1.Value = new decimal(new int[] {
-            220,
+            170,
             0,
             0,
             0});

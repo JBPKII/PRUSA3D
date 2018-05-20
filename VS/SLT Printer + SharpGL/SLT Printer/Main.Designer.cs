@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.sceneControl = new SharpGL.SceneControl();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -72,6 +71,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.CmBParams = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.CmBCenterView = new System.Windows.Forms.Button();
             this.CmBRotateUp = new System.Windows.Forms.Button();
             this.CmBRotateDown = new System.Windows.Forms.Button();
             this.CmBZoomOut = new System.Windows.Forms.Button();
@@ -97,7 +97,6 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.TSPGB = new System.Windows.Forms.ToolStripProgressBar();
             this.OFD = new System.Windows.Forms.OpenFileDialog();
-            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.CmBIniciar = new System.Windows.Forms.Button();
             this.CmBDetener = new System.Windows.Forms.Button();
@@ -120,7 +119,6 @@
             this.GBPreview = new System.Windows.Forms.GroupBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.TxtInfo = new System.Windows.Forms.TextBox();
-            this.CmBCenterView = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.sceneControl)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -139,7 +137,7 @@
             // 
             this.sceneControl.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.sceneControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sceneControl.DrawFPS = true;
+            this.sceneControl.DrawFPS = false;
             this.sceneControl.FrameRate = 3;
             this.sceneControl.Location = new System.Drawing.Point(3, 16);
             this.sceneControl.Name = "sceneControl";
@@ -588,6 +586,17 @@
             this.groupBox8.TabIndex = 33;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Vista:";
+            // 
+            // CmBCenterView
+            // 
+            this.CmBCenterView.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmBCenterView.Location = new System.Drawing.Point(37, 48);
+            this.CmBCenterView.Name = "CmBCenterView";
+            this.CmBCenterView.Size = new System.Drawing.Size(25, 23);
+            this.CmBCenterView.TabIndex = 41;
+            this.CmBCenterView.Text = "x";
+            this.CmBCenterView.UseVisualStyleBackColor = true;
+            this.CmBCenterView.Click += new System.EventHandler(this.CmBCenterView_Click);
             // 
             // CmBRotateUp
             // 
@@ -1067,18 +1076,8 @@
             this.TxtInfo.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.TxtInfo.Size = new System.Drawing.Size(641, 37);
             this.TxtInfo.TabIndex = 0;
+            this.TxtInfo.TextChanged += new System.EventHandler(this.TxtInfo_TextChanged);
             this.TxtInfo.DoubleClick += new System.EventHandler(this.TxtInfo_DoubleClick);
-            // 
-            // CmBCenterView
-            // 
-            this.CmBCenterView.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmBCenterView.Location = new System.Drawing.Point(37, 48);
-            this.CmBCenterView.Name = "CmBCenterView";
-            this.CmBCenterView.Size = new System.Drawing.Size(25, 23);
-            this.CmBCenterView.TabIndex = 41;
-            this.CmBCenterView.Text = "x";
-            this.CmBCenterView.UseVisualStyleBackColor = true;
-            this.CmBCenterView.Click += new System.EventHandler(this.CmBCenterView_Click);
             // 
             // Main
             // 
@@ -1224,7 +1223,6 @@
         private System.Windows.Forms.Button CmBRotateUp;
         private System.Windows.Forms.Button CmBRotateDown;
         private System.Windows.Forms.Button CmBConex;
-        internal System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.Button CmBParams;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.TextBox TxtInfo;

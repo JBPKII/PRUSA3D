@@ -10,24 +10,29 @@ namespace SLT_Printer
     {
         private const string constExtruder = "Extruder";
 
+        private static System.IO.Ports.SerialPort SerialPortToArduino;
+        private static ModelSLT Modelo;
+
+
         //private SolidoSLT SolSLt = new SolidoSLT();
         double Aspecto;
 
         #region Configuraciones
         public bool MostrarBBox = false;
+        public bool MostrarFPS = true;
 
         public string SerialPortDefaultPortName = "COM4";
         public int SerialPortDefaultBaudRate = 115200;
 
         private void InitializeSerialPort()
         {
-            if(serialPort1.IsOpen)
+            if(SerialPortToArduino.IsOpen)
             {
-                serialPort1.Close();
+                SerialPortToArduino.Close();
             }
 
-            serialPort1.PortName = SerialPortDefaultPortName;
-            serialPort1.BaudRate = SerialPortDefaultBaudRate;
+            SerialPortToArduino.PortName = SerialPortDefaultPortName;
+            SerialPortToArduino.BaudRate = SerialPortDefaultBaudRate;
         }
 
         #endregion
@@ -36,22 +41,14 @@ namespace SLT_Printer
         {
             InitializeComponent();
 
-            //  Create a cylinder.
-            /*SharpGL.SceneGraph.Quadrics.Cylinder cylinder = new SharpGL.SceneGraph.Quadrics.Cylinder() { Name = "ModeloSLT" };
-            cylinder.BaseRadius = 1.5;
-            cylinder.TopRadius = 1.5;
-            cylinder.Height = 2;
-            cylinder.Transformation.TranslateX = -2;
-            cylinder.Transformation.TranslateY = 2;
-
-            sceneControl.Scene.SceneContainer.AddChild(cylinder);*/
-
             sceneControl.Cursor = Cursors.Cross;
             sceneControl.Scene.RenderBoundingVolumes = MostrarBBox;
+            sceneControl.DrawFPS = MostrarFPS;
 
             Aspecto = sceneControl.Scene.CurrentCamera.AspectRatio;
 
-            Modelo = new ModelSLT(ref serialPort1);
+            SerialPortToArduino = new System.IO.Ports.SerialPort(SerialPortDefaultPortName, SerialPortDefaultBaudRate);
+            Modelo = new ModelSLT(ref SerialPortToArduino);
 
             Modelo.Information += OnInformation;
             Modelo.ChangeXYZ += OnChangeXYZ;
@@ -109,7 +106,7 @@ namespace SLT_Printer
                 }
                 else
                 {
-                     this.TxtInfo.Text = (System.Environment.NewLine + "INFO:" + Info);
+                    this.TxtInfo.Text += (System.Environment.NewLine + "INFO:" + Info);
                 }
             }
         }
@@ -197,8 +194,8 @@ namespace SLT_Printer
 
             try
             {
-                serialPort1.DiscardOutBuffer();
-                serialPort1.DiscardInBuffer();
+                SerialPortToArduino.DiscardOutBuffer();
+                SerialPortToArduino.DiscardInBuffer();
             }
             catch (System.Exception) { }
 
@@ -285,7 +282,7 @@ namespace SLT_Printer
             {
                 TxtWarning.Text += (Environment.NewLine + "INFO:Test del fichero SLT OK.");
 
-                Res = serialPort1.IsOpen;
+                Res = SerialPortToArduino.IsOpen;
                 
                 UpdateViewPoint(true);
             }
@@ -534,12 +531,12 @@ namespace SLT_Printer
         {
             InitializeSerialPort();
 
-            FrmConexion Conf = new FrmConexion(ref serialPort1);
+            FrmConexion Conf = new FrmConexion(ref SerialPortToArduino);
             Conf.ShowDialog();
 
             Conf.Dispose();
 
-            if (serialPort1.IsOpen && Modelo.Solido.PassTest)
+            if (SerialPortToArduino.IsOpen && Modelo.Solido.PassTest)
             {
                 CmBIniciar.Enabled = true;
             }
@@ -557,8 +554,7 @@ namespace SLT_Printer
 
         #region Trazado
 
-        ModelSLT Modelo;
-
+        
         private void CmBIniciar_Click(object sender, EventArgs e)
         {
             this.Enabled = false;
@@ -834,6 +830,11 @@ namespace SLT_Printer
         private void TxtTempE2_TextChanged(object sender, EventArgs e)
         {
             Txt_TextChanged(TxtTempE2);
+        }
+
+        private void TxtInfo_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

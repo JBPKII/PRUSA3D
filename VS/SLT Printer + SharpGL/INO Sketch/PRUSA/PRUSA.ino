@@ -23,7 +23,7 @@ float X = 0.0f;
 float Y = 0.0f;
 float Z = 0.0f;
 float E = 0.0f;
-PAPModes Modo = PAPModes::Fine;//PAPModes = Fine, Normal, Draft, Faster
+PAPModes Modo = PAPModes::Traslation;//PAPModes = Traslation, Fill, Rim, Other
 
 boolean SendWait = false;
 boolean SendWARNBuffer = false;
@@ -130,7 +130,7 @@ void loop()
       else
       {
         Serial.println("WRNEl valor de 'M =' debe ser 1,2,4 u 8");
-        Modo = PAPModes::Fine;
+        Modo = PAPModes::Traslation;
       }
     }
     else if (CommandType == "RUN")
@@ -187,7 +187,7 @@ void loop()
     //Espera Comando
     if (!SendWait)
     {
-      Serial.println("WAITING");
+      Serial.println("BFREMPTY");
       SendWait = true;
     }
 
@@ -249,7 +249,7 @@ void serialEvent()
     {
       if (!SendWARNBuffer)
       {
-        Serial.println("BFRBuffer Serial Completo.");
+        Serial.println("BFRFULL");
         SendWARNBuffer = true;
       }
       break;
@@ -283,7 +283,8 @@ void serialEvent()
 
       if (!Serial.available())
       {
-        Serial.println("DONE");
+        Serial.println("BFREMPTY");
+        SendWait = true;
       }
     }
   }

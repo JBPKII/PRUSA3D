@@ -41,7 +41,7 @@ namespace SLT_Printer.SLT
                 Res += "RUN";
                 Res += "\n";
 
-                Res = Res.Replace(',', '.');
+                //Res = Res.Replace(',', '.');
             }
 
             return Res;

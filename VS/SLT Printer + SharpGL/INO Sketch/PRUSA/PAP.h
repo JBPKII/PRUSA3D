@@ -14,7 +14,7 @@
 #include "WProgram.h"
 #endif
 
-enum class PAPModes { Fine = 1, Normal = 2, Draft = 4, Faster = 8 };
+enum class PAPModes { Traslation = 1, Fill = 2, Rim = 4, Other = 8 };
 
 class PAP {
   public:
@@ -24,7 +24,7 @@ class PAP {
     bool Detach(void);
     bool Attached(void);
 
-    void SetModo(PAPModes Modo);//Modo = Fine, Normal, Draft, Faster
+    void SetModo(PAPModes Modo);//Modo = Traslation, Rim, Rim, Otherter
     PAPModes GetModo(void);
     void ClearSteps(void);
     void SetSteps(long Steps, PAPModes Modo);

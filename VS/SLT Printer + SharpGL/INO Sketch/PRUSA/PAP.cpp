@@ -91,12 +91,12 @@ bool PAP::Attached(void)
   return _Attached;
 }
 
-PAPModes PAP::GetModo(void)//Modo = Fine, Normal, Draft, Faster
+PAPModes PAP::GetModo(void)//Modo = Traslation, Fill, Rim, Other
 {
   return _Modo;
 }
 
-void PAP::SetModo(PAPModes Modo)//Modo = Fine, Normal, Draft, Faster
+void PAP::SetModo(PAPModes Modo)//Modo = Traslation, Fill, Rim, Other
 {
   /*if(Modo != _Modo)
     {
@@ -105,7 +105,7 @@ void PAP::SetModo(PAPModes Modo)//Modo = Fine, Normal, Draft, Faster
 
   switch (Modo)
   {
-    case PAPModes::Fine:
+    case PAPModes::Traslation:
       _Modo = Modo;
       _msParadaPaso = 0;
       //_msParadaFin = 50;
@@ -113,7 +113,7 @@ void PAP::SetModo(PAPModes Modo)//Modo = Fine, Normal, Draft, Faster
       digitalWrite(_PinM1, LOW);
       digitalWrite(_PinM2, LOW);
       break;
-    case PAPModes::Normal:
+    case PAPModes::Fill:
       _Modo = Modo;
       _msParadaPaso = 0;
       //_msParadaFin = 50;
@@ -121,15 +121,7 @@ void PAP::SetModo(PAPModes Modo)//Modo = Fine, Normal, Draft, Faster
       digitalWrite(_PinM1, HIGH);
       digitalWrite(_PinM2, LOW);
       break;
-    case PAPModes::Draft:
-      _Modo = Modo;
-      _msParadaPaso = 0;
-      //_msParadaFin = 50;
-      digitalWrite(_PinM0, HIGH);
-      digitalWrite(_PinM1, LOW);
-      digitalWrite(_PinM2, LOW);
-      break;
-    case PAPModes::Faster:
+    case PAPModes::Rim:
       _Modo = Modo;
       _msParadaPaso = 5;
       //_msParadaFin = 50;
@@ -137,18 +129,25 @@ void PAP::SetModo(PAPModes Modo)//Modo = Fine, Normal, Draft, Faster
       digitalWrite(_PinM1, HIGH);
       digitalWrite(_PinM2, LOW);
       break;
+    case PAPModes::Other:
+      _Modo = Modo;
+      _msParadaPaso = 0;
+      //_msParadaFin = 50;
+      digitalWrite(_PinM0, HIGH);
+      digitalWrite(_PinM1, LOW);
+      digitalWrite(_PinM2, LOW);
+      break;
     default:
       //Modo no válido
-      SetModo(PAPModes::Fine);
+      SetModo(PAPModes::Fill);
       break;
   }
-
 }
 
 void PAP::ClearSteps(void)
 {
   _Steps = 0;
-  SetModo(PAPModes::Fine);
+  SetModo(PAPModes::Traslation);
 }
 
 void PAP::SetSteps(long Steps, PAPModes Modo)

@@ -18,8 +18,8 @@
 #include "PAP.h"
 //#include "Adafruit_MAX31855.h"
 
-//typedef enum { Traslacion, Impresion1, Impresion2} mode ;
-enum class CNCModes {Print = 1, Traslation = 2};
+//typedef enum { Traslacion, Relleno, Bordes} mode ;
+enum class CNCModes {Traslation = 1, Fill = 2, Rim = 4};
 
 class CNC {
   public:
@@ -36,7 +36,7 @@ class CNC {
 
     void GoToOrigen(bool X, bool Y, bool Z);
 
-    void DefineDestino(float X, float Y, float Z, float E, PAPModes Modo);//Modo = Fine, Normal, Draft, Faster
+    void DefineDestino(float X, float Y, float Z, float E, PAPModes Modo);//Modo = Traslation, Fill, Rim
 
     void Run(bool Resto);
 

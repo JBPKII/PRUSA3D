@@ -69,7 +69,7 @@ namespace SLT_Printer.SLT
         private Thread _TImprimir;
         //private Thread _TGenerarLayer;
 
-        private System.IO.Ports.SerialPort _serialPort;
+        private static System.IO.Ports.SerialPort _serialPort;
 
         public ModelSLT(ref System.IO.Ports.SerialPort serialPort)
         {
@@ -392,7 +392,7 @@ namespace SLT_Printer.SLT
 
             IList<Stroke> ResEq = TempPols.TrazarPerimetro(Modes.ModoRim);
 
-            if (ResEq.Count == 0)
+            /*if (ResEq.Count == 0)
             {
                 Stroke stroke = new Stroke
                 {
@@ -409,12 +409,12 @@ namespace SLT_Printer.SLT
                 _LayerCalculo.Add(stroke);
             }
             else
-            {
+            {*/
                 foreach (Stroke t in ResEq)
                 {
                     _LayerCalculo.Add(t);
                 }
-            }
+            //}
 
 
 
@@ -677,7 +677,7 @@ namespace SLT_Printer.SLT
             return Res;
         }
 
-        string _LastCommand = "";//not nullable, requires lock
+        private static string _LastCommand = "";//not nullable, requires lock
 
         void _Port_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
@@ -711,6 +711,8 @@ namespace SLT_Printer.SLT
                     string Tipo = _LastCommand.Substring(0, 3);
                     string Comando = _LastCommand.Substring(3);
 
+                    OnLog("READ: " + Tipo + Comando);
+
                     Executed = true;
 
                     switch (Tipo)
@@ -735,23 +737,30 @@ namespace SLT_Printer.SLT
                             //Advertencia
                             OnWarning(Comando);
                             break;
-                        case "DON"://E
-                            /*if (Comando == "E")
+                        /*case "DON"://E
+                            if (Comando == "E")
                             {
                                 _SendNBextStroke = true;
                             }
-                            OnLog("Comando: " + Tipo);*/
-                            break;
-                        case "WAI"://TING
+                            OnLog("Comando: " + Tipo);
+                            break;*/
+                        /*case "WAI"://TING
                             if (Comando == "TING")
                             {
                                 _SendNextStroke = true;
                             }
                             OnLog("Comando: " + Tipo);
-                            break;
+                            break;*/
                         case "BFR":
-                            _SendNextStroke = false;
-                            OnLog("Comando: " + Tipo);
+                            if (Comando == "FULL")
+                            {
+                                _SendNextStroke = false;
+                            }
+                            else if (Comando == "EMPTY")
+                            {
+                                _SendNextStroke = true;
+                            }
+                            OnLog("Comando: " + Tipo+ Comando);
                             break;
                         default:
                             OnInformation("El tipo de comando '" + Tipo + "' con valor '" + Comando + "' no se reconoce.");

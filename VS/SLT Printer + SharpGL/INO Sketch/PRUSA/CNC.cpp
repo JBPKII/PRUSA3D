@@ -63,21 +63,21 @@ void CNC::Attach(byte EnabledX, byte StepX, byte DirectionX, byte M0X, byte M1X,
 
   SetTempFusor(100, true);//Cambiar a true
 
-  PAPMotorX.SetModo(PAPModes::Fine);
-  PAPMotorY.SetModo(PAPModes::Fine);
-  PAPMotorZ.SetModo(PAPModes::Fine);
-  PAPMotorE.SetModo(PAPModes::Normal);
+  PAPMotorX.SetModo(PAPModes::Traslation);
+  PAPMotorY.SetModo(PAPModes::Traslation);
+  PAPMotorZ.SetModo(PAPModes::Traslation);
+  PAPMotorE.SetModo(PAPModes::Fill);
 }
 
 void CNC::GoToOrigen(bool X, bool Y, bool Z)
 {
-  PAPMotorX.SetModo(PAPModes::Fine);
-  PAPMotorY.SetModo(PAPModes::Fine);
-  PAPMotorZ.SetModo(PAPModes::Fine);
+  PAPMotorX.SetModo(PAPModes::Traslation);
+  PAPMotorY.SetModo(PAPModes::Traslation);
+  PAPMotorZ.SetModo(PAPModes::Traslation);
 
   RegulaVentDrivers();
   //Separo el plano Z;
-  PAPMotorZ.SetSteps(_PasosSepTraslacion, PAPModes::Fine);
+  PAPMotorZ.SetSteps(_PasosSepTraslacion, PAPMotorZ.GetModo());
   PAPMotorZ.AllSteps();
 
   //Serial.begin(115200);
@@ -87,10 +87,10 @@ void CNC::GoToOrigen(bool X, bool Y, bool Z)
     Serial.println("INFGoToOrigen Y");
     PAPMotorY.SetEnable(false);
     PAPMotorY.SetEnable(true);
-    PAPMotorY.SetModo(PAPModes::Fine);
+    //PAPMotorY.SetModo(PAPModes::Traslation);
     do
     {
-      PAPMotorY.SetSteps(-200, PAPModes::Fine);
+      PAPMotorY.SetSteps(-200, PAPMotorY.GetModo());
     }
     while (PAPMotorY.AllSteps() == -200);
     _CurrentY = 0;
@@ -102,10 +102,10 @@ void CNC::GoToOrigen(bool X, bool Y, bool Z)
     Serial.println("INFGoToOrigen X");
     PAPMotorX.SetEnable(false);
     PAPMotorX.SetEnable(true);
-    PAPMotorX.SetModo(PAPModes::Fine);
+    //PAPMotorX.SetModo(PAPModes::Traslation);
     do
     {
-      PAPMotorX.SetSteps(-200, PAPModes::Fine);
+      PAPMotorX.SetSteps(-200, PAPMotorX.GetModo());
     }
     while (PAPMotorX.AllSteps() == -200);
     _CurrentX = 0;
@@ -117,10 +117,10 @@ void CNC::GoToOrigen(bool X, bool Y, bool Z)
     Serial.println("INFGoToOrigen Z");
     PAPMotorZ.SetEnable(false);
     PAPMotorZ.SetEnable(true);
-    PAPMotorZ.SetModo(PAPModes::Fine);
+    //PAPMotorZ.SetModo(PAPModes::Traslation);
     do
     {
-      PAPMotorZ.SetSteps(-200, PAPModes::Fine);
+      PAPMotorZ.SetSteps(-200, PAPMotorZ.GetModo());
     }
     while (PAPMotorZ.AllSteps() == -200);
     _CurrentZ = 0;
@@ -128,7 +128,7 @@ void CNC::GoToOrigen(bool X, bool Y, bool Z)
   }
   else
   { //Retorna a la posición original
-    PAPMotorZ.SetSteps(-_PasosSepTraslacion, PAPModes::Fine);
+    PAPMotorZ.SetSteps(-_PasosSepTraslacion, PAPMotorZ.GetModo());
     PAPMotorZ.AllSteps();
   }
   //Serial.end();
@@ -140,14 +140,14 @@ void CNC::DefineDestino(float X, float Y, float Z, float E, PAPModes Modo)
 {
   if (PAPMotorX.GetModo() != Modo)
   {
-    //Si cambia de impresión 1 o 2 a traslación, Baja el plato 400 pasos
-    if ((PAPMotorX.GetModo() == PAPModes::Normal || PAPMotorX.GetModo() == PAPModes::Draft || PAPMotorX.GetModo() == PAPModes::Faster) &&
-        (Modo == PAPModes::Fine))
+    //Si cambia de impresión 1 o 2 a traslación, Baja el plato 50 pasos
+    if ((PAPMotorX.GetModo() == PAPModes::Fill || PAPMotorX.GetModo() == PAPModes::Rim || PAPMotorX.GetModo() == PAPModes::Other) &&
+        (Modo == PAPModes::Traslation))
     {
-      PAPMotorE.SetSteps(-_PasosExtTraslacion, PAPModes::Fine);//recoge filamento
+      PAPMotorE.SetSteps(-_PasosExtTraslacion, PAPMotorE.GetModo());//recoge filamento
       PAPMotorE.AllSteps();
 
-      PAPMotorZ.SetSteps(-_PasosSepTraslacion, PAPModes::Fine);//baja plataforma
+      PAPMotorZ.SetSteps(-_PasosSepTraslacion, PAPMotorZ.GetModo());//baja plataforma
       PAPMotorZ.AllSteps();
 
       //Termina los pasos pendientes en el modo actual
@@ -159,12 +159,12 @@ void CNC::DefineDestino(float X, float Y, float Z, float E, PAPModes Modo)
       Run(true);
     }
     //Si cambia de traslacion a impresion 1 o 2, Sube el plato 400 pasos
-    else if ((Modo == PAPModes::Normal || Modo == PAPModes::Draft || Modo == PAPModes::Faster) && (PAPMotorX.GetModo() == PAPModes::Normal))
+    else if ((Modo == PAPModes::Fill || Modo == PAPModes::Rim || Modo == PAPModes::Other) && (PAPMotorX.GetModo() == PAPModes::Traslation))
     {
       //Falta liquidar el resto de Pasos
-      PAPMotorZ.SetSteps(_PasosSepTraslacion, PAPModes::Fine);//sube plataforma
+      PAPMotorZ.SetSteps(_PasosSepTraslacion, PAPMotorZ.GetModo());//sube plataforma
       PAPMotorZ.AllSteps();
-      PAPMotorE.SetSteps(_PasosExtTraslacion, PAPModes::Fine);//extrusiona
+      PAPMotorE.SetSteps(_PasosExtTraslacion, PAPMotorE.GetModo());//extrusiona
       PAPMotorE.AllSteps();
     }
   }
@@ -173,7 +173,7 @@ void CNC::DefineDestino(float X, float Y, float Z, float E, PAPModes Modo)
   PAPMotorY.SetModo(Modo);
 
   //Calcula Pasos o semipasos hasta el punto (se parte desde un paso completo)
-  float MicropasoX = _PasoX / (float)Modo;//tamaoo del micropaso en mm
+  float MicropasoX = _PasoX / (float)Modo;//Tamaño del micropaso en mm
   long Pasos = (long)((X - _CurrentX) / MicropasoX);//micropasos hasta la posicion mos cercana
   PAPMotorX.SetSteps(Pasos, Modo);
   /*Serial.print("----PAPMotorX Modo = ");
@@ -187,15 +187,15 @@ void CNC::DefineDestino(float X, float Y, float Z, float E, PAPModes Modo)
   //Calcula los semipasos hasta el paso completo
   _RestoPasosX = _RestoPasosX - (Pasos % (long)Modo);//Resto para un paso completo
 
-  float MicropasoY = _PasoY / (float)Modo;//tamaoo del micropaso en mm
+  float MicropasoY = _PasoY / (float)Modo;//Tamaño del micropaso en mm
   Pasos = (long)((Y - _CurrentY) / MicropasoY);//micropasos hasta la posicion mos cercana
   PAPMotorY.SetSteps(Pasos, Modo);
   //Calcula los semipasos hasta el paso completo
   _RestoPasosY = _RestoPasosY - (Pasos % (long)Modo);//Resto para un paso completo
 
-  float MicropasoZ = _PasoZ;// / (float)1;//tamaoo del micropaso en mm
-  Pasos = (long)((Z - _CurrentZ) / MicropasoZ);//micropasos hasta la posicion mos cercana
-  PAPMotorZ.SetSteps(Pasos, PAPModes::Fine);
+  float MicropasoZ = _PasoZ;// / (float)1;//Tamaño del micropaso en mm
+  Pasos = (long)((Z - _CurrentZ) / MicropasoZ);//micropasos hasta la posicion más cercana
+  PAPMotorZ.SetSteps(Pasos, PAPMotorZ.GetModo());
   //Serial.print("PAPMotorZ Pasos = ");
   //Serial.println(Pasos);
   //Calcula los semipasos hasta el paso completo
@@ -213,7 +213,7 @@ void CNC::Run(bool Resto)
   RegulaFusor(false);
   RegulaVentExtrusor();
 
-  if (Resto || PAPMotorX.GetModo() == PAPModes::Fine)
+  if (Resto || PAPMotorX.GetModo() == PAPModes::Traslation)
   {
     //Serial.println("Modo sin extrusion");
     //Sin extrusion
@@ -255,10 +255,10 @@ void CNC::Run(bool Resto)
     long TempZ = 0;
     long TempE = 0;
 
-    long StepsMax = 
+    long StepsMax =
       max(
         max(abs(PAPMotorX.RemainSteps()), abs(PAPMotorY.RemainSteps()))
-      ,
+        ,
         max(abs(PAPMotorZ.RemainSteps()), abs(PAPMotorE.RemainSteps()))
       );
 
@@ -400,7 +400,7 @@ void CNC::Run(bool Resto)
     //Salida por el puerto serie
     XYZSerial();
   }
-  
+
   RegulaFusor(false);
 }
 
@@ -584,16 +584,19 @@ void CNC::RegulaFusor(bool Esperar)
 
 PAPModes PAPToCNCMode(CNCModes cncMode)
 {
-  PAPModes Res = PAPModes::Fine;
-  //PAPModes = Fine, Normal, Draft, Faster
-  //CNCModes = Print, Traslation
+  PAPModes Res = PAPModes::Fill;
+  ///PAPModes = Traslation, Fill, Rim, Other
+  //CNCModes = Traslation, Fill, Rim
   switch (cncMode)
   {
-    case CNCModes::Print:
-      Res = PAPModes::Fine;
-      break;
     case CNCModes::Traslation:
-      Res = PAPModes::Normal;
+      Res = PAPModes::Traslation;
+      break;
+    case CNCModes::Fill:
+      Res = PAPModes::Fill;
+      break;
+    case CNCModes::Rim:
+      Res = PAPModes::Rim;
       break;
     default:
       //Modo no válido
@@ -608,18 +611,19 @@ PAPModes PAPToCNCMode(CNCModes cncMode)
 
 CNCModes CNCToPAPMode(PAPModes papMode)
 {
-  CNCModes Res = CNCModes::Print;
-  //PAPModes = Fine, Normal, Draft, Faster
-  //CNCModes = Print, Traslation
+  CNCModes Res = CNCModes::Fill;
+  //PAPModes = Traslation, Fill, Rim, Other
+  //CNCModes = Traslation, Fill, Rim
   switch (papMode)
   {
-    case PAPModes::Fine:
-      Res = CNCModes::Print;
-      break;
-    case PAPModes::Normal:
-    case PAPModes::Draft:
-    case PAPModes::Faster:
+    case PAPModes::Traslation:
       Res = CNCModes::Traslation;
+      break;
+    case PAPModes::Fill:
+      Res = CNCModes::Fill;
+      break;
+    case PAPModes::Rim:
+      Res = CNCModes::Rim;
       break;
     default:
       //Modo no válido
