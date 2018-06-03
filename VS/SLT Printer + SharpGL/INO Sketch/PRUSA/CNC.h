@@ -19,7 +19,7 @@
 //#include "Adafruit_MAX31855.h"
 
 //typedef enum { Traslacion, Relleno, Bordes} mode ;
-enum class CNCModes {Traslation = 1, Fill = 2, Rim = 4};
+//enum class CNCModes {Traslation = 1, Fill = 2, Rim = 4};
 
 class CNC {
   public:
@@ -48,12 +48,17 @@ class CNC {
     void RegulaFusor(bool Esperar);
 
   private:
+    void _GoToOrigin(PAP Motor, String Axis, float& _Current, int& _RestoPasos);
+
+    float _GetFloatStepDivisor(PAPModes Modo);
+    long _GetLongStepDivisor(PAPModes Modo);
+    
     byte _PinTempDriverX, _PinTempDriverY, _PinTempDriverZ, _PinTempDriverE, _PinTempExtrusor,
          _PinPWMVentDrivers, _PinPWMVentE, _PinHotEnd, _PinTRIACFusor;
     int _TargetTempFusor;//ºC
     float _CurrentX, _CurrentY , _CurrentZ ;//mm
-    PAPModes CNCToPAPMode(CNCModes cncMode);
-    CNCModes PAPToCNCMode(PAPModes papMode);
+    /*PAPModes CNCToPAPMode(CNCModes cncMode);
+    CNCModes PAPToCNCMode(PAPModes papMode);*/
     //byte _Modo;
 
     //Modificar para calibrar el dispositivo

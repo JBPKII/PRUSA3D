@@ -153,6 +153,11 @@ void PAP::ClearSteps(void)
 void PAP::SetSteps(long Steps, PAPModes Modo)
 {
   SetModo(Modo);
+  SetSteps(Steps);
+}
+
+void PAP::SetSteps(long Steps)
+{
   _Steps = Steps;
 }
 

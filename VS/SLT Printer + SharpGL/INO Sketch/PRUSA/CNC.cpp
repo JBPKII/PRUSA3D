@@ -73,67 +73,47 @@ void CNC::GoToOrigen(bool X, bool Y, bool Z)
 {
   PAPMotorX.SetModo(PAPModes::Traslation);
   PAPMotorY.SetModo(PAPModes::Traslation);
-  PAPMotorZ.SetModo(PAPModes::Traslation);
 
   RegulaVentDrivers();
   //Separo el plano Z;
-  PAPMotorZ.SetSteps(_PasosSepTraslacion, PAPMotorZ.GetModo());
+  PAPMotorZ.SetSteps(_PasosSepTraslacion);
   PAPMotorZ.AllSteps();
 
   //Serial.begin(115200);
 
   if (Y == true)
   {
-    Serial.println("INFGoToOrigen Y");
-    PAPMotorY.SetEnable(false);
-    PAPMotorY.SetEnable(true);
-    //PAPMotorY.SetModo(PAPModes::Traslation);
-    do
-    {
-      PAPMotorY.SetSteps(-200, PAPMotorY.GetModo());
-    }
-    while (PAPMotorY.AllSteps() == -200);
-    _CurrentY = 0;
-    _RestoPasosY = 0;
+    _GoToOrigin(PAPMotorY, "Y", _CurrentY, _RestoPasosY);
   }
 
   if (X == true)
   {
-    Serial.println("INFGoToOrigen X");
-    PAPMotorX.SetEnable(false);
-    PAPMotorX.SetEnable(true);
-    //PAPMotorX.SetModo(PAPModes::Traslation);
-    do
-    {
-      PAPMotorX.SetSteps(-200, PAPMotorX.GetModo());
-    }
-    while (PAPMotorX.AllSteps() == -200);
-    _CurrentX = 0;
-    _RestoPasosX = 0;
+    _GoToOrigin(PAPMotorX, "X", _CurrentX, _RestoPasosX);
   }
 
   if (Z == true)
   {
-    Serial.println("INFGoToOrigen Z");
-    PAPMotorZ.SetEnable(false);
-    PAPMotorZ.SetEnable(true);
-    //PAPMotorZ.SetModo(PAPModes::Traslation);
-    do
-    {
-      PAPMotorZ.SetSteps(-200, PAPMotorZ.GetModo());
-    }
-    while (PAPMotorZ.AllSteps() == -200);
-    _CurrentZ = 0;
-    _RestoPasosZ = 0;
+    _GoToOrigin(PAPMotorZ, "Z", _CurrentZ, _RestoPasosZ);
   }
-  else
-  { //Retorna a la posición original
-    PAPMotorZ.SetSteps(-_PasosSepTraslacion, PAPMotorZ.GetModo());
-    PAPMotorZ.AllSteps();
-  }
+
   //Serial.end();
   XYZSerial();
   RegulaVentDrivers();
+}
+
+void CNC::_GoToOrigin(PAP Motor, String Axis, float& _Current, int& _RestoPasos)
+{
+    Serial.println("INFGoToOrigen " + Axis);
+    Motor.SetEnable(false);
+    Motor.SetEnable(true);
+    Motor.SetModo(PAPModes::Traslation);
+    do
+    {
+      Motor.SetSteps(-200);
+    }
+    while (Motor.AllSteps() == -200);
+    _Current = 0;
+    _RestoPasos = 0;
 }
 
 void CNC::DefineDestino(float X, float Y, float Z, float E, PAPModes Modo)
@@ -144,27 +124,28 @@ void CNC::DefineDestino(float X, float Y, float Z, float E, PAPModes Modo)
     if ((PAPMotorX.GetModo() == PAPModes::Fill || PAPMotorX.GetModo() == PAPModes::Rim || PAPMotorX.GetModo() == PAPModes::Other) &&
         (Modo == PAPModes::Traslation))
     {
-      PAPMotorE.SetSteps(-_PasosExtTraslacion, PAPMotorE.GetModo());//recoge filamento
+      PAPMotorE.SetSteps(-_PasosExtTraslacion);//recoge filamento
       PAPMotorE.AllSteps();
 
-      PAPMotorZ.SetSteps(-_PasosSepTraslacion, PAPMotorZ.GetModo());//baja plataforma
+      PAPMotorZ.SetSteps(-_PasosSepTraslacion);//baja plataforma
       PAPMotorZ.AllSteps();
 
       //Termina los pasos pendientes en el modo actual
-      PAPMotorX.SetSteps(_RestoPasosX, PAPMotorX.GetModo());
-      PAPMotorY.SetSteps(_RestoPasosY, PAPMotorY.GetModo());
-      PAPMotorZ.SetSteps(_RestoPasosZ, PAPMotorZ.GetModo());
+      PAPMotorX.SetSteps(_RestoPasosX);
+      PAPMotorY.SetSteps(_RestoPasosY);
+      PAPMotorZ.SetSteps(_RestoPasosZ);
 
       //Liquida los pasos restantes
       Run(true);
     }
-    //Si cambia de traslacion a impresion 1 o 2, Sube el plato 400 pasos
+    //Si cambia de traslacion a impresion 1 o 2, Sube el plato 50 pasos
     else if ((Modo == PAPModes::Fill || Modo == PAPModes::Rim || Modo == PAPModes::Other) && (PAPMotorX.GetModo() == PAPModes::Traslation))
     {
       //Falta liquidar el resto de Pasos
-      PAPMotorZ.SetSteps(_PasosSepTraslacion, PAPMotorZ.GetModo());//sube plataforma
+      PAPMotorZ.SetSteps(_PasosSepTraslacion);//sube plataforma
       PAPMotorZ.AllSteps();
-      PAPMotorE.SetSteps(_PasosExtTraslacion, PAPMotorE.GetModo());//extrusiona
+      
+      PAPMotorE.SetSteps(_PasosExtTraslacion);//extrusiona
       PAPMotorE.AllSteps();
     }
   }
@@ -173,8 +154,8 @@ void CNC::DefineDestino(float X, float Y, float Z, float E, PAPModes Modo)
   PAPMotorY.SetModo(Modo);
 
   //Calcula Pasos o semipasos hasta el punto (se parte desde un paso completo)
-  float MicropasoX = _PasoX / (float)Modo;//Tamaño del micropaso en mm
-  long Pasos = (long)((X - _CurrentX) / MicropasoX);//micropasos hasta la posicion mos cercana
+  float MicropasoX = _PasoX / _GetFloatStepDivisor(Modo);//Tamaño del micropaso en mm
+  long Pasos = (long)((X - _CurrentX) / MicropasoX);//micropasos hasta la posicion mas cercana
   PAPMotorX.SetSteps(Pasos, Modo);
   /*Serial.print("----PAPMotorX Modo = ");
     Serial.println(Modo);
@@ -185,21 +166,65 @@ void CNC::DefineDestino(float X, float Y, float Z, float E, PAPModes Modo)
     Serial.print("----PAPMotorX Pasos = ");
     Serial.println(Pasos);*/
   //Calcula los semipasos hasta el paso completo
-  _RestoPasosX = _RestoPasosX - (Pasos % (long)Modo);//Resto para un paso completo
+  _RestoPasosX = _RestoPasosX - (Pasos % _GetLongStepDivisor(Modo));//Resto para un paso completo
 
-  float MicropasoY = _PasoY / (float)Modo;//Tamaño del micropaso en mm
+  float MicropasoY = _PasoY / _GetFloatStepDivisor(Modo);//Tamaño del micropaso en mm
   Pasos = (long)((Y - _CurrentY) / MicropasoY);//micropasos hasta la posicion mos cercana
   PAPMotorY.SetSteps(Pasos, Modo);
   //Calcula los semipasos hasta el paso completo
-  _RestoPasosY = _RestoPasosY - (Pasos % (long)Modo);//Resto para un paso completo
+  _RestoPasosY = _RestoPasosY - (Pasos % _GetLongStepDivisor(Modo));//Resto para un paso completo
 
   float MicropasoZ = _PasoZ;// / (float)1;//Tamaño del micropaso en mm
   Pasos = (long)((Z - _CurrentZ) / MicropasoZ);//micropasos hasta la posicion más cercana
-  PAPMotorZ.SetSteps(Pasos, PAPMotorZ.GetModo());
+  PAPMotorZ.SetSteps(Pasos);
   //Serial.print("PAPMotorZ Pasos = ");
   //Serial.println(Pasos);
   //Calcula los semipasos hasta el paso completo
   _RestoPasosZ = _RestoPasosZ - (Pasos % (long)1);//Resto para un paso completo
+}
+
+float CNC::_GetFloatStepDivisor(PAPModes Modo)
+{
+  float res = 1.0f;
+  
+  switch(Modo)
+  {
+    case PAPModes::Fill:
+    case PAPModes::Rim:
+      res = 2.0f;
+      break;
+    case PAPModes::Other:
+      res = 4.0f;
+      break;
+    case PAPModes::Traslation:
+    default:
+        res = 1.0f;
+    break;
+  }
+
+  return res;
+}
+
+long CNC::_GetLongStepDivisor(PAPModes Modo)
+{
+  long res = 1;
+  
+  switch(Modo)
+  {
+    case PAPModes::Fill:
+    case PAPModes::Rim:
+      res = 2;
+      break;
+    case PAPModes::Other:
+      res = 4;
+      break;
+    case PAPModes::Traslation:
+    default:
+        res = 1;
+    break;
+  }
+
+  return res;
 }
 
 void CNC::Run(bool Resto)
@@ -220,17 +245,17 @@ void CNC::Run(bool Resto)
     //Pasos y Modo en Y
     PasosY = (float)PAPMotorY.AllSteps();
     //Modifico current
-    _CurrentY += ((_PasoY / (float)PAPMotorY.GetModo()) * PasosY);
+    _CurrentY += ((_PasoY / _GetFloatStepDivisor(PAPMotorY.GetModo())) * PasosY);
 
     //Pasos y Modo en X
     PasosX = (float)PAPMotorX.AllSteps();
     //Modifico current
-    _CurrentX += ((_PasoX / (float)PAPMotorX.GetModo()) * PasosX);
+    _CurrentX += ((_PasoX / _GetFloatStepDivisor(PAPMotorX.GetModo())) * PasosX);
 
     //Pasos y Modo en Z
     PasosZ = (float)PAPMotorZ.AllSteps();
     //Modifico current
-    _CurrentZ += ((_PasoZ / (float)PAPMotorZ.GetModo()) * PasosZ);
+    _CurrentZ += ((_PasoZ / 1.0f) * PasosZ);
 
     //Salida por el puerto serie
     XYZSerial();
@@ -299,8 +324,8 @@ void CNC::Run(bool Resto)
         if (PAPMotorX.RemainSteps() != 0)
         {
           //Serial.println("----Calculo X:");
-          TempX = (long)(RelSetpX * (float)i);//Distancia desde el origen
-          DestX = TempX - ContX;//Distancia desde la posicion actual
+          TempX = (long)(RelSetpX * (float)i);//Distancia desde el origen del desplazamiento actual, para evitar errores de redondeo
+          DestX = TempX - ContX;//Incremento de desplazamiento desde la posición actual dentro del desplazamiento
           ContX = TempX;//Posicion anterior
         }
         else
@@ -312,8 +337,8 @@ void CNC::Run(bool Resto)
         if (PAPMotorY.RemainSteps() != 0)
         {
           //Serial.println("----Calculo Y:");
-          TempY = (long)(RelSetpY * (float)i);//Distancia desde el origen
-          DestY = (long)(TempY - ContY);//Distancia desde la posicion actual
+          TempY = (long)(RelSetpY * (float)i);//Distancia desde el origen del desplazamiento actual, para evitar errores de redondeo
+          DestY = (long)(TempY - ContY);//Incremento de desplazamiento desde la posición actual dentro del desplazamiento
           ContY = TempY;//Posicion anterior
         }
         else
@@ -325,8 +350,8 @@ void CNC::Run(bool Resto)
         if (PAPMotorZ.RemainSteps() != 0)
         {
           //Serial.println("----Calculo Z:");
-          TempZ = (long)(RelSetpZ * (float)i);//Distancia desde el origen
-          DestZ = (long)(TempZ - ContZ);//Distancia desde la posicion actual
+          TempZ = (long)(RelSetpZ * (float)i);//Distancia desde el origen del desplazamiento actual, para evitar errores de redondeo
+          DestZ = (long)(TempZ - ContZ);//Incremento de desplazamiento desde la posición actual dentro del desplazamiento
           ContZ = TempZ;//Posicion anterior
         }
         else
@@ -338,8 +363,8 @@ void CNC::Run(bool Resto)
         if (PAPMotorE.RemainSteps() != 0)
         {
           //Serial.println("----Calculo E:");
-          TempE = (long)(RelSetpE * (float)i);//Distancia desde el origen
-          DestE = (long)(TempE - ContE);//Distancia desde la posicion actual
+          TempE = (long)(RelSetpE * (float)i);//Distancia desde el origen del desplazamiento actual, para evitar errores de redondeo
+          DestE = (long)(TempE - ContE);//Incremento de desplazamiento desde la posición actual dentro del desplazamiento
           ContE = TempE;//Posicion anterior
         }
         else
@@ -351,12 +376,8 @@ void CNC::Run(bool Resto)
       //interrupts();
 
       //Extrusion
-      if (((i - 1) % (long)PAPMotorX.GetModo()) == 0)
-      {
-        //Extruye
-        //Serial.println("!!!!!!!!!!!!!!!Extruye!!!!!!!!!!!!!");
-        TempE = PAPMotorE.DoSteps(DestE);
-      }
+      //Serial.println("!!!!!!!!!!!!!!!Extruye!!!!!!!!!!!!!");
+      TempE = PAPMotorE.DoSteps(DestE);
 
       //Muevo X
       //if(PAPMotorX.RemainSteps() != 0)
@@ -379,17 +400,17 @@ void CNC::Run(bool Resto)
         //Ubico X
         //if(PAPMotorX.RemainSteps()==0)
         {
-          _CurrentX += (float)(_PasoX / (float)PAPMotorX.GetModo()) * (float)TempX;
+          _CurrentX += (float)(_PasoX / _GetFloatStepDivisor(PAPMotorX.GetModo())) * (float)TempX;
         }
         //Ubico Y
         //if(PAPMotorY.RemainSteps()==0)
         {
-          _CurrentY += (float)(_PasoY / (float)PAPMotorY.GetModo()) * (float)TempY;
+          _CurrentY += (float)(_PasoY / _GetFloatStepDivisor(PAPMotorY.GetModo())) * (float)TempY;
         }
         //Ubico Z
         //if(PAPMotorZ.RemainSteps()==0)
         {
-          _CurrentZ += (float)(_PasoZ / (float)PAPMotorZ.GetModo()) * (float)TempZ;
+          _CurrentZ += (float)(_PasoZ / 1.0f) * (float)TempZ;
         }
       }
       //interrupts();
@@ -582,7 +603,7 @@ void CNC::RegulaFusor(bool Esperar)
 //TermoPar = NULL;
 //Serial.println("INFFin Regula Fusor");
 
-PAPModes PAPToCNCMode(CNCModes cncMode)
+/*PAPModes PAPToCNCMode(CNCModes cncMode)
 {
   PAPModes Res = PAPModes::Fill;
   ///PAPModes = Traslation, Fill, Rim, Other
@@ -607,9 +628,9 @@ PAPModes PAPToCNCMode(CNCModes cncMode)
   }
 
   return Res;
-}
+}*/
 
-CNCModes CNCToPAPMode(PAPModes papMode)
+/*CNCModes CNCToPAPMode(PAPModes papMode)
 {
   CNCModes Res = CNCModes::Fill;
   //PAPModes = Traslation, Fill, Rim, Other
@@ -634,4 +655,4 @@ CNCModes CNCToPAPMode(PAPModes papMode)
   }
 
   return Res;
-}
+}*/

@@ -119,6 +119,7 @@
             this.GBPreview = new System.Windows.Forms.GroupBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.TxtInfo = new System.Windows.Forms.TextBox();
+            this.CBModo = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.sceneControl)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -894,6 +895,7 @@
             // 
             this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox7.Controls.Add(this.CBModo);
             this.groupBox7.Controls.Add(this.button1);
             this.groupBox7.Controls.Add(this.CmBTestSLT);
             this.groupBox7.Controls.Add(this.CmbSalir);
@@ -1079,6 +1081,19 @@
             this.TxtInfo.TextChanged += new System.EventHandler(this.TxtInfo_TextChanged);
             this.TxtInfo.DoubleClick += new System.EventHandler(this.TxtInfo_DoubleClick);
             // 
+            // CBModo
+            // 
+            this.CBModo.FormattingEnabled = true;
+            this.CBModo.Items.AddRange(new object[] {
+            "Traslación",
+            "Relleno",
+            "Bordes"});
+            this.CBModo.Location = new System.Drawing.Point(32, 223);
+            this.CBModo.Name = "CBModo";
+            this.CBModo.Size = new System.Drawing.Size(104, 21);
+            this.CBModo.TabIndex = 25;
+            this.CBModo.Text = "Traslación";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1228,6 +1243,7 @@
         private System.Windows.Forms.TextBox TxtInfo;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button CmBCenterView;
+        private System.Windows.Forms.ComboBox CBModo;
     }
 }
 

@@ -28,6 +28,7 @@ class PAP {
     PAPModes GetModo(void);
     void ClearSteps(void);
     void SetSteps(long Steps, PAPModes Modo);
+    void SetSteps(long Steps);
     long RemainSteps(void);
     int DoStep(void);
     long DoSteps(long Steps);

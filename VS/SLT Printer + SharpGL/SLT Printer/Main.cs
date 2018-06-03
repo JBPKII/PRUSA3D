@@ -706,7 +706,21 @@ namespace SLT_Printer
             Stroke Origen = new Stroke();
             Origen.Destino = new VertexSLT(0.0, 0.0, 0.0);
             Origen.Pendiente = true;
-            Origen.Mode = Modes.ModeTraslation;
+            //Origen.Mode = Modes.ModeTraslation;
+
+            switch (CBModo.SelectedItem)
+            {
+                case "Relleno":
+                    Origen.Mode = Modes.ModoFill;
+                    break;
+                case "Bordes":
+                    Origen.Mode = Modes.ModoRim;
+                    break;
+                case "Traslación":
+                default:
+                    Origen.Mode = Modes.ModeTraslation;
+                    break;
+            }
 
             Modelo.SendStroke(ref Origen);
         }
@@ -719,7 +733,20 @@ namespace SLT_Printer
                 Stroke Origen = new Stroke();
                 Origen.Destino = new VertexSLT(X, Y, Z);
                 Origen.Pendiente = true;
-                Origen.Mode = Modes.ModeTraslation;
+
+                switch (CBModo.SelectedItem)
+                {
+                    case "Relleno":
+                        Origen.Mode = Modes.ModoFill;
+                        break;
+                    case "Bordes":
+                        Origen.Mode = Modes.ModoRim;
+                        break;
+                    case "Traslación":
+                    default:
+                        Origen.Mode = Modes.ModeTraslation;
+                        break;
+                }
 
                 Modelo.SendStroke(ref Origen);
             }
