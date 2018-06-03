@@ -13,8 +13,8 @@ namespace SLT_Printer.SLT
         public double DeltaLayer = 0.25;
         private double _ZCalculo = 0.0;
 
-        private Stroke[] _LayerActual;
-        private IList<Stroke> _LayerCalculo;
+        private StrokeSLT[] _LayerActual;
+        private IList<StrokeSLT> _LayerCalculo;
 
         private bool _GeneratingLayer = false;
         private bool _Paused = false;//variable para PAUSAR la impresión
@@ -62,7 +62,7 @@ namespace SLT_Printer.SLT
             }
         }
 
-        private Stroke _Trazo;
+        
 
         public SolidSLT Solido;
 
@@ -87,8 +87,8 @@ namespace SLT_Printer.SLT
 
             _AnguloLayer = 0.0;
 
-            _LayerActual = new Stroke[0];
-            _LayerCalculo = new Stroke[0];
+            _LayerActual = new StrokeSLT[0];
+            _LayerCalculo = new StrokeSLT[0];
 
             _Printing = false;
             _Paused = false;
@@ -218,6 +218,8 @@ namespace SLT_Printer.SLT
 
         private void _Draw()
         {
+            StrokeSLT _Trazo = null;
+
             _Printing = true;
 
             _AnguloLayer = 0.0;
@@ -246,7 +248,7 @@ namespace SLT_Printer.SLT
 
             if (_ZCalculo <= Solido.Top)
             {
-                _Trazo = new Stroke();
+                _Trazo = new StrokeSLT();
 
                 if (_LayerActual.Count() > 0)
                 {
@@ -254,7 +256,7 @@ namespace SLT_Printer.SLT
                 }
                 else
                 {
-                    _Trazo.Destino = new VertexSLT(0.0, 0.0, _ZCalculo);
+                    _Trazo.Destino = new VertexSLT(0.0, 0.0, _ZTrazado);
                 }
 
                 _Trazo.Mode = Modes.ModeTraslation;
@@ -271,7 +273,9 @@ namespace SLT_Printer.SLT
 
                 while (AnteriorTrazado)
                 {
-                    AnteriorTrazado = NextStroke();//lo almacena en _trazo
+                    _Trazo = NextStroke();//lo almacena en _trazo
+
+                    AnteriorTrazado = (_Trazo != null);
 
                     //Envía los sucesivos trazos
                     while(!_SendNextStroke)
@@ -315,7 +319,7 @@ namespace SLT_Printer.SLT
             _Printing = false;
 
             //presenta el trazado
-            Stroke trzPresent = new Stroke();
+            StrokeSLT trzPresent = new StrokeSLT();
             trzPresent.Destino = new VertexSLT(_Trazo.Destino.X, _Trazo.Destino.Y, _Trazo.Destino.Z + 50.0/*mm*/);
             trzPresent.E = 0.0;
             trzPresent.Mode = Modes.ModeTraslation;
@@ -356,7 +360,7 @@ namespace SLT_Printer.SLT
 
         private void _ChangeLayer()
         {
-            _LayerActual = new Stroke[_LayerCalculo.Count];
+            _LayerActual = new StrokeSLT[_LayerCalculo.Count];
 
             for (int i = 0; i < _LayerCalculo.Count; i++)
             {
@@ -367,7 +371,7 @@ namespace SLT_Printer.SLT
                 }
             }
 
-            _LayerCalculo = new List<Stroke>();
+            _LayerCalculo = new List<StrokeSLT>();
         }
 
         double _AnguloLayer = 0.0;
@@ -380,7 +384,7 @@ namespace SLT_Printer.SLT
         {
             _GeneratingLayer = true;
 
-            _LayerCalculo = new List<Stroke>();
+            _LayerCalculo = new List<StrokeSLT>();
 
             IList<LineSLT> Corte = new List<LineSLT>();
             //obtiene cada uno de los segmentos y puntos aislados de la sección
@@ -390,7 +394,7 @@ namespace SLT_Printer.SLT
             Poligonos TempPols = new Poligonos(Corte);
 
 
-            IList<Stroke> ResEq = TempPols.TrazarPerimetro(Modes.ModoRim);
+            IList<StrokeSLT> ResEq = TempPols.TrazarPerimetro(Modes.ModoRim);
 
             /*if (ResEq.Count == 0)
             {
@@ -410,7 +414,7 @@ namespace SLT_Printer.SLT
             }
             else
             {*/
-                foreach (Stroke t in ResEq)
+                foreach (StrokeSLT t in ResEq)
                 {
                     _LayerCalculo.Add(t);
                 }
@@ -447,10 +451,10 @@ namespace SLT_Printer.SLT
 
             _GeneratingLayer = false;
         }
-
-        private IList<Stroke> _GenerateShell(Poligonos Pols, double AnchoBoquilla, double Grosor)
+        analizar el uso de las capas de trabajo y cálculo y reprogramar el proceso, tener en cuenta que se pueden producir capas sin trazos, teneer en cuenta el bbox.z del poligono 
+        private IList<StrokeSLT> _GenerateShell(Poligonos Pols, double AnchoBoquilla, double Grosor)
         {
-            IList<Stroke> Res = new List<Stroke>();
+            IList<StrokeSLT> Res = new List<StrokeSLT>();
 
             //borde exterior i=0 no se calcula como shell
             //bordes para formar el shell i<= int.Parse((Grosor/AnchoBoquilla).ToString())
@@ -460,9 +464,9 @@ namespace SLT_Printer.SLT
                 Poligonos PolsEq = Pols.Equidista(i * AnchoBoquilla);
 
                 //Obtengo la ruta del polígono
-                IList<Stroke> ResEq = PolsEq.TrazarPerimetro(Modes.ModoFill);
+                IList<StrokeSLT> ResEq = PolsEq.TrazarPerimetro(Modes.ModoFill);
 
-                foreach (Stroke t in ResEq)
+                foreach (StrokeSLT t in ResEq)
                 {
                     Res.Add(t);
                 }
@@ -471,9 +475,9 @@ namespace SLT_Printer.SLT
             return Res;
         }
 
-        private IList<Stroke> _GenerateFill(Poligonos Pols, double AnchoBoquilla, double Porcentaje, double AnguloTrama)
+        private IList<StrokeSLT> _GenerateFill(Poligonos Pols, double AnchoBoquilla, double Porcentaje, double AnguloTrama)
         {
-            IList<Stroke> Res = new List<Stroke>();
+            IList<StrokeSLT> Res = new List<StrokeSLT>();
 
             if(Porcentaje > 1.0)
             {
@@ -516,7 +520,7 @@ namespace SLT_Printer.SLT
                     {
                         for (int i = TempSegmentos.Count - 1; i >= 0; i--)
                         {
-                            Stroke TT = new Stroke();
+                            StrokeSLT TT = new StrokeSLT();
 
                             //trazo de traslación
                             TT.Mode = Modes.ModeTraslation;
@@ -537,7 +541,7 @@ namespace SLT_Printer.SLT
                     {
                         for (int i = 0; i < TempSegmentos.Count; i++)
                         {
-                            Stroke TT = new Stroke();
+                            StrokeSLT TT = new StrokeSLT();
 
                             //trazo de traslación
                             TT.Mode = Modes.ModeTraslation;
@@ -568,27 +572,31 @@ namespace SLT_Printer.SLT
             return Res;
         }
 
-        public Stroke TrazoActual
+
+        public StrokeSLT NextStroke()
         {
-            get
+            StrokeSLT ResTrazo = null;
+            if(_LayerActual.Length == 0)
             {
-                return _Trazo;
+                _ChangeLayer();
+
+                ResTrazo = new StrokeSLT();
+                ResTrazo.Pendiente = true;
+                ResTrazo.Mode = Modes.ModeTraslation;
+                ResTrazo.Destino = new VertexSLT(0.0, 0.0, _ZTrazado);
+
+                _GenerateLayer();
             }
-        }
 
-
-        public bool NextStroke()
-        {
-            bool Res = true;
             for (int i = 0; i < _LayerActual.Length; i++)
             {
                 if(_LayerActual[i].Pendiente)
                 {
                     _LayerActual[i].Pendiente = false;
-                    if(i==(_LayerActual.Length-1))
+                    if (i == (_LayerActual.Length - 1))
                     {
                         //Último trazo
-                        Stroke TempTrazo = new Stroke();
+                        StrokeSLT TempTrazo = new StrokeSLT();
                         TempTrazo.Pendiente = true;
                         TempTrazo.Mode = Modes.ModeTraslation;
                         TempTrazo.Destino = _LayerActual[i].Destino;
@@ -601,7 +609,7 @@ namespace SLT_Printer.SLT
                         if (_LayerCalculo.Count == 0)
                         {
                             //Ha terminado
-                            Res = false;
+                            ResTrazo = null;
                         }
                         else
                         {
@@ -614,22 +622,22 @@ namespace SLT_Printer.SLT
                             /*_TGenerarLayer = new Thread(new ThreadStart(_GeneraLayer));
                             _TGenerarLayer.Start();*/
                         }
-                        _Trazo = TempTrazo;
+                        ResTrazo = TempTrazo;
                     }
                     else
                     {
                         //Siguiente trazo
-                        _Trazo = _LayerActual[i + 1];
+                        ResTrazo = _LayerActual[i + 1];
                     }
                     break;
                 }
             }
-            return Res;
+            return ResTrazo;
         }
 
         #region interprete de comandos
 
-        public bool SendStroke(ref Stroke Trazo, double mmMaterial = 0.0)
+        public bool SendStroke(ref StrokeSLT Trazo, double mmMaterial = 0.0)
         {
             bool Res = false;
 

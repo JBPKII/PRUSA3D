@@ -121,14 +121,14 @@ namespace SLT_Printer
             return Res;
         }
 
-        public IList<Stroke> TrazarPerimetro(Modes M)
+        public IList<StrokeSLT> TrazarPerimetro(Modes M)
         {
-            IList<Stroke> Res = new List<Stroke>();
+            IList<StrokeSLT> Res = new List<StrokeSLT>();
 
             foreach (Poligono P in _Poligonos)
             {
-                IList<Stroke> ResP = P.TrazarPerimetro(M);
-                foreach (Stroke tP in ResP)
+                IList<StrokeSLT> ResP = P.TrazarPerimetro(M);
+                foreach (StrokeSLT tP in ResP)
                 {
                     Res.Add(tP);
                 }
@@ -293,20 +293,20 @@ namespace SLT_Printer
             return Res;
         }
 
-        public IList<Stroke> TrazarPerimetro(Modes M)
+        public IList<StrokeSLT> TrazarPerimetro(Modes M)
         {
-            IList<Stroke> Res = new List<Stroke>();
+            IList<StrokeSLT> Res = new List<StrokeSLT>();
 
-            IList<Stroke> ResExt = _Exterior.TrazarPerimetro(M);
-            foreach (Stroke tE in ResExt)
+            IList<StrokeSLT> ResExt = _Exterior.TrazarPerimetro(M);
+            foreach (StrokeSLT tE in ResExt)
             {
                 Res.Add(tE);
             }
 
             foreach (Shape S in _Islas)
             {
-                IList<Stroke> ResIsl = S.TrazarPerimetro(M);
-                foreach (Stroke tI in ResExt)
+                IList<StrokeSLT> ResIsl = S.TrazarPerimetro(M);
+                foreach (StrokeSLT tI in ResExt)
                 {
                     Res.Add(tI);
                 }
@@ -939,15 +939,15 @@ namespace SLT_Printer
             return Res;
         }
 
-        public IList<Stroke> TrazarPerimetro(Modes M)
+        public IList<StrokeSLT> TrazarPerimetro(Modes M)
         {
-            IList<Stroke> Res = new List<Stroke>();
+            IList<StrokeSLT> Res = new List<StrokeSLT>();
 
             if (_Puntos.Count > 0)
             {
                 foreach (Punto p in _Puntos)
                 {
-                    Stroke TempTrazo = new Stroke();
+                    StrokeSLT TempTrazo = new StrokeSLT();
                     TempTrazo.Pendiente = true;
                     if (Res.Count == 0)
                     {
@@ -963,7 +963,7 @@ namespace SLT_Printer
                 }
 
                 //cierro
-                Stroke TempT = new Stroke();
+                StrokeSLT TempT = new StrokeSLT();
                 TempT.Pendiente = true;
                 TempT.Mode = Modes.ModoRim;
                 TempT.Destino = new VertexSLT(_Puntos[0].X, _Puntos[0].Y, _Puntos[0].Z);

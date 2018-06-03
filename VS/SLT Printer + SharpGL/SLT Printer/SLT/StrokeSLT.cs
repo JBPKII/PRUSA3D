@@ -2,13 +2,29 @@
 
 namespace SLT_Printer.SLT
 {
-    struct Stroke
+    internal class StrokeSLT
     {
         public Modes Mode;
         //public VertexSLT Inicio;
         public VertexSLT Destino;
         public bool Pendiente;
         public double E;
+
+        public StrokeSLT()
+        {
+            Mode = Modes.ModeTraslation;
+            Destino = new VertexSLT(0.0, 0.0, 0.0);
+            Pendiente = true;
+            E = 0.0;
+        }
+
+        public StrokeSLT(Modes mode, VertexSLT destino, bool pendiente, double e)
+        {
+            Mode = mode;
+            Destino = destino;
+            Pendiente = pendiente;
+            E = e;
+        }
 
         public string ToPrinter()
         {

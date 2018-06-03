@@ -703,7 +703,7 @@ namespace SLT_Printer
 
         private void CmBOrigen_Click(object sender, EventArgs e)
         {
-            Stroke Origen = new Stroke();
+            StrokeSLT Origen = new StrokeSLT();
             Origen.Destino = new VertexSLT(0.0, 0.0, 0.0);
             Origen.Pendiente = true;
             //Origen.Mode = Modes.ModeTraslation;
@@ -730,7 +730,7 @@ namespace SLT_Printer
             double X, Y, Z;
             if (double.TryParse(TxtGoToX.Text.Replace('.', ','), out X) && double.TryParse(TxtGoToY.Text.Replace('.', ','), out Y) && double.TryParse(TxtGoToZ.Text.Replace('.', ','), out Z))
             {
-                Stroke Origen = new Stroke();
+                StrokeSLT Origen = new StrokeSLT();
                 Origen.Destino = new VertexSLT(X, Y, Z);
                 Origen.Pendiente = true;
 
