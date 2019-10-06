@@ -11,8 +11,8 @@ namespace SLT_Printer
         private const string constExtruder = "Extruder";
 
         private static System.IO.Ports.SerialPort SerialPortToArduino;
-        private static ModelSLT Modelo;
-
+        //private static ModelSLT Modelo;
+        PrintController Controller;
 
         //private SolidoSLT SolSLt = new SolidoSLT();
         double Aspecto;
@@ -44,16 +44,18 @@ namespace SLT_Printer
             sceneControl.Cursor = Cursors.Cross;
             sceneControl.Scene.RenderBoundingVolumes = MostrarBBox;
             sceneControl.DrawFPS = MostrarFPS;
+            sceneControl.FrameRate = 60;
 
             Aspecto = sceneControl.Scene.CurrentCamera.AspectRatio;
 
             SerialPortToArduino = new System.IO.Ports.SerialPort(SerialPortDefaultPortName, SerialPortDefaultBaudRate);
-            
-            Modelo = new ModelSLT(ref SerialPortToArduino);
 
-            Modelo.Information += OnInformation;
-            Modelo.ChangeXYZ += OnChangeXYZ;
-            Modelo.Warning += OnWarning;
+            //Modelo = new ModelSLT(ref SerialPortToArduino);
+            Controller = new PrintController(ref SerialPortToArduino);
+
+            Controller.Interpreter.Information += OnInformation;
+            Controller.Interpreter.ChangeXYZ += OnChangeXYZ;
+            Controller.Interpreter.Warning += OnWarning;
         }
 
         delegate void SetInformationCallback(string Warn);
@@ -224,12 +226,12 @@ namespace SLT_Printer
             }
             else
             {
-                Modelo.Solido.LeeSLT(TxtFileSLT.Text);
+                Controller.Model.Solido.LeeSLT(TxtFileSLT.Text);
 
-                if (Modelo.Solido.NumFallos > 0)
+                if (Controller.Model.Solido.NumFallos > 0)
                 {
                     TxtWarning.Text = "\nWRN - Carga del fichero SLT KO:";
-                    foreach (string str in Modelo.Solido.Fallos)
+                    foreach (string str in Controller.Model.Solido.Fallos)
                     {
                         TxtWarning.Text += ("\nWRN - - " + str);
                     }
@@ -242,13 +244,13 @@ namespace SLT_Printer
                 //Renderiza el resultado
                 //Actualiza el punto de vista
 
-                VistaOjo[0] = float.Parse((Modelo.Solido.Centro.X - Modelo.Solido.Ancho * 2).ToString());
-                VistaOjo[1] = float.Parse((Modelo.Solido.Centro.Y - Modelo.Solido.Largo * 2).ToString());
-                VistaOjo[2] = float.Parse((Modelo.Solido.Centro.Z + Modelo.Solido.Alto * 2).ToString());
+                VistaOjo[0] = float.Parse((Controller.Model.Solido.Centro.X - Controller.Model.Solido.Ancho * 2).ToString());
+                VistaOjo[1] = float.Parse((Controller.Model.Solido.Centro.Y - Controller.Model.Solido.Largo * 2).ToString());
+                VistaOjo[2] = float.Parse((Controller.Model.Solido.Centro.Z + Controller.Model.Solido.Alto * 2).ToString());
 
-                VistaCentro[0] = float.Parse(Modelo.Solido.Centro.X.ToString());
-                VistaCentro[1] = float.Parse(Modelo.Solido.Centro.Y.ToString());
-                VistaCentro[2] = float.Parse(Modelo.Solido.Centro.Z.ToString());
+                VistaCentro[0] = float.Parse(Controller.Model.Solido.Centro.X.ToString());
+                VistaCentro[1] = float.Parse(Controller.Model.Solido.Centro.Y.ToString());
+                VistaCentro[2] = float.Parse(Controller.Model.Solido.Centro.Z.ToString());
 
                 UpdateViewPoint(true);
 
@@ -269,9 +271,9 @@ namespace SLT_Printer
             TSPGB.Value = 5;
             this.Refresh();
 
-            if (Modelo.Solido.NumFallos == 0)
+            if (Controller.Model.Solido.NumFallos == 0)
             {
-                Res = Modelo.Solido.TestSLT();
+                Res = Controller.Model.Solido.TestSLT();
 
                 TSPGB.Value = 100;
                 this.Refresh();
@@ -290,7 +292,7 @@ namespace SLT_Printer
             else
             {
                 TxtWarning.Text += "\nWRN - Carga y Test del fichero SLT KO:";
-                foreach (string str in Modelo.Solido.Fallos)
+                foreach (string str in Controller.Model.Solido.Fallos)
                 {
                     TxtWarning.Text += ("\nWRN - - " + str);
                 }
@@ -316,7 +318,7 @@ namespace SLT_Printer
 
         private void UpdateViewPoint(bool LoadedModel)
         {
-            Modelo.Solido.Renderiza(ref sceneControl, LoadedModel, LoadedModel, Modelo.ZTrazado, MostrarBBox);
+            Controller.Model.Solido.Renderiza(ref sceneControl, LoadedModel, LoadedModel, Controller.Model.ZTrazado, MostrarBBox);
 
             LookAtCamera LAC = new LookAtCamera();
 
@@ -339,15 +341,16 @@ namespace SLT_Printer
             {
                 BaseRadius = 0.0,
                 Height = 5.0,
-                TopRadius = 2.0
+                TopRadius = 2.0,
             };
 
             SharpGL.SceneGraph.Quadrics.Cylinder cylinderTop = new SharpGL.SceneGraph.Quadrics.Cylinder
             {
                 BaseRadius = 2.0,
-                Height = 10.0,
+                Height = 20.0,
                 TopRadius = 2.0
             };
+            
             SharpGL.SceneGraph.Transformations.LinearTransformation linearTransformation = new SharpGL.SceneGraph.Transformations.LinearTransformation
             {
                 TranslateZ = 5
@@ -362,7 +365,7 @@ namespace SLT_Printer
             {
                 Name = constExtruder
             };
-
+            
             sceneControl.Scene.SceneContainer.AddChild(extruder);
 
             extruder.AddChild(cylinder);
@@ -509,9 +512,9 @@ namespace SLT_Printer
         {
             try
             {
-                Modelo.Solido.Tx = Convert.ToSingle(TxtTx.Text);
-                Modelo.Solido.Ty = Convert.ToSingle(TxtTy.Text);
-                Modelo.Solido.Tz = Convert.ToSingle(TxtTz.Text);
+                Controller.Model.Solido.Tx = Convert.ToSingle(TxtTx.Text);
+                Controller.Model.Solido.Ty = Convert.ToSingle(TxtTy.Text);
+                Controller.Model.Solido.Tz = Convert.ToSingle(TxtTz.Text);
             }
             catch (System.Exception sysEx)
             {
@@ -520,9 +523,9 @@ namespace SLT_Printer
             }
             finally
             {
-                TxtTx.Text = Modelo.Solido.Tx.ToString();
-                TxtTy.Text = Modelo.Solido.Ty.ToString();
-                TxtTz.Text = Modelo.Solido.Tz.ToString();
+                TxtTx.Text = Controller.Model.Solido.Tx.ToString();
+                TxtTy.Text = Controller.Model.Solido.Ty.ToString();
+                TxtTz.Text = Controller.Model.Solido.Tz.ToString();
                 UpdateViewPoint(false);
             }
         }
@@ -537,7 +540,7 @@ namespace SLT_Printer
 
             Conf.Dispose();
 
-            if (SerialPortToArduino.IsOpen && Modelo.Solido.PassTest)
+            if (SerialPortToArduino.IsOpen && Controller.Model.Solido.PassTest)
             {
                 CmBIniciar.Enabled = true;
             }
@@ -557,7 +560,7 @@ namespace SLT_Printer
 
         private void CmBIniciarTest_Click(object sender, EventArgs e)
         {
-            Modelo.Log += this.OnLog;
+            Controller.Interpreter.Log += this.OnLog;
 
             Iniciar(true);
         }
@@ -571,13 +574,11 @@ namespace SLT_Printer
         {
             this.Enabled = false;
             //Realiza la impresión del modelo
-            Modelo.Draw(isTest);
-
-                System.Threading.Thread.Sleep(1000);
+            Controller.Print(isTest);
 
             this.Enabled = true;
 
-            if(Modelo.Printing)
+            if(Controller.Status== PrinterStatus.Printing)
             {
                 CmBTestSLT.Enabled = false;
                 CmBIniciar.Enabled = false;
@@ -649,11 +650,11 @@ namespace SLT_Printer
 
         private void _RefrescoImpresion()
         {
-            while (Modelo.Printing)
+            while (Controller.Status == PrinterStatus.Printing)
             {
                 _RefrescoEscena();
 
-                System.Threading.Thread.Sleep(500);
+                System.Threading.Thread.Sleep(100);
             }
 
             System.Windows.Forms.MessageBox.Show("Impresión terminada.");
@@ -666,22 +667,21 @@ namespace SLT_Printer
 
         private void CmBPausar_Click(object sender, EventArgs e)
         {
-            if(Modelo.Paused)
+            if(Controller.Status == PrinterStatus.Pause)
             {
-                Modelo.ResumeDraw();
+                Controller.Resume();
                 CmBPausar.Text = "Pausar";
             }
             else
             {
-                Modelo.PauseDraw();
+                Controller.Pause();
                 CmBPausar.Text = "Reanudar";
             }
-            
         }
 
         private void CmBDetener_Click(object sender, EventArgs e)
         {
-            Modelo.StopDraw();
+            Controller.Stop();
 
             CmBTestSLT.Enabled = true;
             CmBIniciar.Enabled = true;
@@ -700,11 +700,11 @@ namespace SLT_Printer
 
         private void Main_Closing(object sender, FormClosingEventArgs e)
         {
-            if (Modelo.Printing)
+            if (Controller.Status== PrinterStatus.Printing)
             {
                 if (System.Windows.Forms.MessageBox.Show("La impresión se detendrá ¿Está seguro?", "Cerrar:", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                 {
-                    Modelo.StopDraw();
+                    Controller.Stop();
                 }
                 else
                 {
@@ -734,7 +734,7 @@ namespace SLT_Printer
                     break;
             }
 
-            Modelo.SendStroke(Origen);
+            Controller.Interpreter.SendStroke(Origen);
         }
 
         private void CmBGoTo_Click(object sender, EventArgs e)
@@ -760,7 +760,7 @@ namespace SLT_Printer
                         break;
                 }
 
-                Modelo.SendStroke(Origen);
+                Controller.Interpreter.SendStroke(Origen);
             }
             else
             {
@@ -773,14 +773,14 @@ namespace SLT_Printer
         {
             FrmShowLog WarningLog = new FrmShowLog("Warning:", ((TextBox)sender).Text);
             WarningLog.Show(this);
-            Modelo.Warning += WarningLog.OnLog;
+            Controller.Interpreter.Warning += WarningLog.OnLog;
         }
 
         private void TxtInfo_DoubleClick(object sender, EventArgs e)
         {
             FrmShowLog InformationLog = new FrmShowLog("Information:", ((TextBox)sender).Text);
             InformationLog.Show(this);
-            Modelo.Information += InformationLog.OnLog;
+            Controller.Interpreter.Information += InformationLog.OnLog;
         }
 
         private System.IO.StreamWriter sw = null;

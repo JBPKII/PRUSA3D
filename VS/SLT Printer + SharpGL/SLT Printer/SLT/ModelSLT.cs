@@ -1,81 +1,78 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
 
 namespace SLT_Printer.SLT
 {
     enum Modes { ModeTraslation = 1, ModoFill = 2, ModoRim = 4 }
 
-    class ModelSLT
+    internal class ModelSLT
     {
         public SolidSLT Solido;
 
-        private Thread _TImprimir;
-        private bool _IsTest = false;
+        //private Thread _TImprimir;
+        //private bool _IsTest = false;
         // private Thread _TGenerarLayer;
 
-        private static System.IO.Ports.SerialPort _serialPort;
+        //private static System.IO.Ports.SerialPort _serialPort;
 
         public double ZCalculo { get; private set; } = 0.0;
         public double ZTrazado { get; private set; } = double.NaN;
 
         // private bool _SendNextStroke = true;
 
-        public bool Printing { get; private set; } = false;
+        //public bool Printing { get; private set; } = false;
 
         public double DeltaLayer = 0.25;
 
-        private int CurrentStrokeIndex = 0;
-        private StrokeSLT[] _LayerActual;
-        private IList<StrokeSLT> _LayerCalculo;
+        public StrokeSLT[] LayerActual { get; private set; }
+        public IList<StrokeSLT> LayerCalculo { get; private set; }
 
-        private bool _GeneratingLayer = false;
-        private bool _Stoped = false;//variable para DETENER la impresión
+        //private bool _GeneratingLayer = false;
+        //private bool _Stoped = false;//variable para DETENER la impresión
 
-        public bool Paused { get; private set; } = false;
+        //public bool Paused { get; private set; } = false;
 
-        private bool Stoped
+        //private bool Stoped
+        //{
+        //    get
+        //    {
+        //        return _Stoped;
+        //    }
+
+        //    set
+        //    {
+        //        _Stoped = true;
+        //        FrmCierre FrmC = new FrmCierre();
+
+        //        FrmC.Show();
+        //        FrmC.PGB.Visible = true;
+
+        //        FrmC.Update();
+
+        //        FrmC.PGB.Value = 20;
+        //        Thread.Sleep(300);
+        //        FrmC.PGB.Value = 40;
+        //        Thread.Sleep(300);
+        //        FrmC.PGB.Value = 60;
+        //        Thread.Sleep(300);
+        //        FrmC.PGB.Value = 80;
+        //        Thread.Sleep(300);
+        //        FrmC.PGB.Value = 100;
+        //        Thread.Sleep(800);
+
+        //        FrmC.Update();
+
+        //        FrmC.Close();
+        //    }
+        //}
+
+
+        public ModelSLT(/*ref System.IO.Ports.SerialPort serialPort*/)
         {
-            get
-            {
-                return _Stoped;
-            }
-
-            set
-            {
-                _Stoped = true;
-                FrmCierre FrmC = new FrmCierre();
-
-                FrmC.Show();
-                FrmC.PGB.Visible = true;
-
-                FrmC.Update();
-
-                FrmC.PGB.Value = 20;
-                Thread.Sleep(300);
-                FrmC.PGB.Value = 40;
-                Thread.Sleep(300);
-                FrmC.PGB.Value = 60;
-                Thread.Sleep(300);
-                FrmC.PGB.Value = 80;
-                Thread.Sleep(300);
-                FrmC.PGB.Value = 100;
-                Thread.Sleep(800);
-
-                FrmC.Update();
-
-                FrmC.Close();
-            }
-        }
-
-
-        public ModelSLT(ref System.IO.Ports.SerialPort serialPort)
-        {
-            _serialPort = serialPort;
+            /*_serialPort = serialPort;
             _serialPort.DtrEnable = true;
             _serialPort.ReceivedBytesThreshold = 1;
-            _serialPort.DataReceived += _Port_DataReceived;
+            _serialPort.DataReceived += _Port_DataReceived;*/
 
             Solido = new SolidSLT();
 
@@ -86,25 +83,21 @@ namespace SLT_Printer.SLT
 
             _AnguloLayer = 0.0;
 
-            _LayerActual = new StrokeSLT[0];
-            _LayerCalculo = new StrokeSLT[0];
+            LayerActual = new StrokeSLT[0];
+            LayerCalculo = new StrokeSLT[0];
 
-            Printing = false;
+            /*Printing = false;
             Paused = false;
-            _Stoped = false;
+            _Stoped = false;*/
 
             //_TImprimir = new Thread(new ThreadStart(_Trazar));
             //_TGenerarLayer = new Thread(new ThreadStart(_GeneraLayer));
         }
 
-        void Solido_Changed(object sender, EventArgs e)
+        protected virtual void Solido_Changed(object sender, EventArgs e)
         {
-            if (Printing)
-            {
-                Stoped = true;
-            }
+            ModelChange?.Invoke();
         }
-
 
         private IList<VertexSLT> Intersection(LoopSLT Loop)
         {
@@ -175,7 +168,7 @@ namespace SLT_Printer.SLT
             return Res;
         }
 
-        public void Draw(bool isTest)
+        /*public void Draw(bool isTest)
         {
             _IsTest = isTest;
 
@@ -189,132 +182,132 @@ namespace SLT_Printer.SLT
                 //avisa de que ya está en ejecución
                 System.Windows.Forms.MessageBox.Show("Proceso de impresión ejecutándose.");
             }
-        }
+        }*/
 
-        bool IsTrazando = false;
+        //bool IsTrazando = false;
 
-        private void _Draw()
-        {
-            StrokeSLT _Trazo = null;
+        //private void _Draw()
+        //{
+            //StrokeSLT _Trazo = null;
 
-            Printing = true;
+            //Printing = true;
 
-            _AnguloLayer = 0.0;
-            ZCalculo = 0.0;
+            //_AnguloLayer = 0.0;
+            //ZCalculo = 0.0;
 
-            /*_TGenerarLayer = new Thread(new ThreadStart(_GeneraLayer));
-            _TGenerarLayer.Start();
-            _GenerandoLayer = true;*/
+            ///*_TGenerarLayer = new Thread(new ThreadStart(_GeneraLayer));
+            //_TGenerarLayer.Start();
+            //_GenerandoLayer = true;*/
 
-            SendTemperature(160.0);
+            //SendTemperature(160.0);
 
-            _GenerateLayer();
+            //_GenerateLayer();
 
-            /*while(_GenerandoLayer )
-            {
-                System.Threading.Thread.Sleep(500);
-            }*/
+            ///*while(_GenerandoLayer )
+            //{
+            //    System.Threading.Thread.Sleep(500);
+            //}*/
 
-            _ChangeLayer();
+            //_ChangeLayer();
 
-            /*_TGenerarLayer = new Thread(new ThreadStart(_GeneraLayer));
-            _TGenerarLayer.Start();*/
+            ///*_TGenerarLayer = new Thread(new ThreadStart(_GeneraLayer));
+            //_TGenerarLayer.Start();*/
 
-            _GenerateLayer();
+            //_GenerateLayer();
 
 
-            if (ZCalculo <= Solido.Top)
-            {
-                IsTrazando = true;
+            //if (ZCalculo <= Solido.Top)
+            //{
+            //    IsTrazando = true;
 
-                _Trazo = new StrokeSLT();
+            //    _Trazo = new StrokeSLT();
 
-                if (_LayerActual.Count() > 0)
-                {
-                    _Trazo.Destino = _LayerActual[0].Destino;
-                }
-                else
-                {
-                    _Trazo.Destino = new VertexSLT(0.0, 0.0, ZTrazado);
-                }
+            //    if (_LayerActual.Count() > 0)
+            //    {
+            //        _Trazo.Destino = _LayerActual[0].Destino;
+            //    }
+            //    else
+            //    {
+            //        _Trazo.Destino = new VertexSLT(0.0, 0.0, ZTrazado);
+            //    }
 
-                _Trazo.Mode = Modes.ModeTraslation;
-                _Trazo.Pendiente = true;
+            //    _Trazo.Mode = Modes.ModeTraslation;
+            //    _Trazo.Pendiente = true;
 
-                //Para calcular la distancia del trazado
-                lastPoint = new Punto(_Trazo.Destino.X, _Trazo.Destino.Y, _Trazo.Destino.Z);
+            //    //Para calcular la distancia del trazado
+            //    lastPoint = new Punto(_Trazo.Destino.X, _Trazo.Destino.Y, _Trazo.Destino.Z);
 
-                //Envía el trazo
-                SendStroke(_Trazo);
+            //    //Envía el trazo
+            //    SendStroke(_Trazo);
 
        
                 
 
-                while (IsTrazando)
-                {
-                    /*_Trazo = NextStroke();//lo almacena en _trazo
+            //    while (IsTrazando)
+            //    {
+            //        /*_Trazo = NextStroke();//lo almacena en _trazo
 
-                    AnteriorTrazado = (_Trazo != null);
+            //        AnteriorTrazado = (_Trazo != null);
 
-                    //Envía los sucesivos trazos
-                    while(!_SendNextStroke)
-                    {
-                        //hace tiempo hasta que termina de enviar el comando
-                        Thread.Sleep(30);
-                    }
+            //        //Envía los sucesivos trazos
+            //        while(!_SendNextStroke)
+            //        {
+            //            //hace tiempo hasta que termina de enviar el comando
+            //            Thread.Sleep(30);
+            //        }
 
-                    if (SendStroke(ref _Trazo, AntDest.Distancia(new Punto(_Trazo.Destino.X, _Trazo.Destino.Y, AntDest.Z))))
-                    {
-                        AntDest = new Punto(_Trazo.Destino.X, _Trazo.Destino.Y, _Trazo.Destino.Z);
-                    }
+            //        if (SendStroke(ref _Trazo, AntDest.Distancia(new Punto(_Trazo.Destino.X, _Trazo.Destino.Y, AntDest.Z))))
+            //        {
+            //            AntDest = new Punto(_Trazo.Destino.X, _Trazo.Destino.Y, _Trazo.Destino.Z);
+            //        }
 
-                    //_SendNBextStroke = false;*/
+            //        //_SendNBextStroke = false;*/
 
-                    if (Stoped)
-                    {
-                        if (_GeneratingLayer)
-                        {
-                            //_TGenerarLayer.Abort();
-                            _GeneratingLayer = false;
-                        }
-                        ZTrazado = double.NaN;
-                        break;
-                    }
+            //        if (Stoped)
+            //        {
+            //            if (_GeneratingLayer)
+            //            {
+            //                //_TGenerarLayer.Abort();
+            //                _GeneratingLayer = false;
+            //            }
+            //            ZTrazado = double.NaN;
+            //            break;
+            //        }
 
-                    while (Paused)
-                    {
-                        System.Threading.Thread.Sleep(300);
-                    }
+            //        while (Paused)
+            //        {
+            //            System.Threading.Thread.Sleep(300);
+            //        }
 
-                    System.Threading.Thread.Sleep(1000);
-                }
-            }
+            //        System.Threading.Thread.Sleep(1000);
+            //    }
+            //}
 
-            SendTemperature();
+            //SendTemperature();
 
-            ZTrazado = double.NaN;
-            Paused = false;
-            _Stoped = false;
+            //ZTrazado = double.NaN;
+            //Paused = false;
+            //_Stoped = false;
 
-            // Fin del trazado
-            Printing = false;
+            //// Fin del trazado
+            //Printing = false;
 
-            // Presenta el trazado
-            StrokeSLT trzPresent = new StrokeSLT();
-            trzPresent.Destino = new VertexSLT(_Trazo.Destino.X, _Trazo.Destino.Y, _Trazo.Destino.Z + 50.0/*mm*/);
-            trzPresent.E = 0.0;
-            trzPresent.Mode = Modes.ModeTraslation;
-            trzPresent.Pendiente = true;
-            SendStroke(trzPresent);
+            //// Presenta el trazado
+            //StrokeSLT trzPresent = new StrokeSLT();
+            //trzPresent.Destino = new VertexSLT(_Trazo.Destino.X, _Trazo.Destino.Y, _Trazo.Destino.Z + 50.0/*mm*/);
+            //trzPresent.E = 0.0;
+            //trzPresent.Mode = Modes.ModeTraslation;
+            //trzPresent.Pendiente = true;
+            //SendStroke(trzPresent);
 
-            trzPresent.Destino = new VertexSLT(0.0, 0.0, _Trazo.Destino.Z + 50.0);
-            trzPresent.E = 0.0;
-            trzPresent.Mode = Modes.ModeTraslation;
-            trzPresent.Pendiente = true;
-            SendStroke(trzPresent);
-        }
+            //trzPresent.Destino = new VertexSLT(0.0, 0.0, _Trazo.Destino.Z + 50.0);
+            //trzPresent.E = 0.0;
+            //trzPresent.Mode = Modes.ModeTraslation;
+            //trzPresent.Pendiente = true;
+            //SendStroke(trzPresent);
+        //}
 
-        public void PauseDraw()
+        /*public void PauseDraw()
         {
             if (Printing)
             {
@@ -337,18 +330,18 @@ namespace SLT_Printer.SLT
                 Stoped = true;
                 // _SendNextStroke = false;
             }
-        }
+        }*/
 
-        private void _ChangeLayer()
+        internal void ChangeLayer()
         {
-            _LayerActual = new StrokeSLT[_LayerCalculo.Count];
+            LayerActual = new StrokeSLT[LayerCalculo.Count];
 
-            for (int i = 0; i < _LayerCalculo.Count; i++)
+            for (int i = 0; i < LayerCalculo.Count; i++)
             {
-                _LayerActual[i] = _LayerCalculo[i];
+                LayerActual[i] = LayerCalculo[i];
             }
 
-            _LayerCalculo = new List<StrokeSLT>();
+            LayerCalculo = new List<StrokeSLT>();
         }
 
         double _AnguloLayer = 0.0;
@@ -357,12 +350,12 @@ namespace SLT_Printer.SLT
         double _PorcentajeRelleno = 0.25;
 
         
-        private void _GenerateLayer()
+        internal void GenerateLayer()
         {
             //_GeneratingLayer = true;
             if (ZCalculo <= Solido.Top)
             {
-                _LayerCalculo = new List<StrokeSLT>();
+                LayerCalculo = new List<StrokeSLT>();
 
                 IList<LineSLT> Corte = new List<LineSLT>();
                 //obtiene cada uno de los segmentos y puntos aislados de la sección
@@ -394,7 +387,7 @@ namespace SLT_Printer.SLT
                 {*/
                 foreach (StrokeSLT t in ResEq)
                 {
-                    _LayerCalculo.Add(t);
+                    LayerCalculo.Add(t);
                 }
                 //}
 
@@ -431,7 +424,7 @@ namespace SLT_Printer.SLT
             }
             else
             {
-                _LayerCalculo = null;
+                LayerCalculo = null;
             }
         }
         // TODO: analizar el uso de las capas de trabajo y cálculo y reprogramar el proceso, tener en cuenta que se pueden producir capas sin trazos, teneer en cuenta el bbox.z del poligono 
@@ -555,17 +548,35 @@ namespace SLT_Printer.SLT
             return Res;
         }
 
+        public StrokeSLT FirstStroke()
+        {
+            StrokeSLT ResTrazo = new StrokeSLT();
+
+            if (LayerActual.Length > 0)
+            {
+                ResTrazo.Destino = LayerActual[0].Destino;
+            }
+            else
+            {
+                ResTrazo.Destino = new VertexSLT(0.0, 0.0, ZTrazado);
+            }
+
+            ResTrazo.Mode = Modes.ModeTraslation;
+            ResTrazo.Pendiente = true;
+
+            return ResTrazo;
+        }
 
         public StrokeSLT NextStroke()
         {
             StrokeSLT ResTrazo = null;
 
             // Only for cuit to next layer
-            if(_LayerActual.Length == 0)
+            if(LayerActual.Length == 0)
             {
-                _ChangeLayer();
+                ChangeLayer();
 
-                _GenerateLayer();
+                GenerateLayer();
 
                 ResTrazo = new StrokeSLT();
                 ResTrazo.Pendiente = true;
@@ -574,26 +585,26 @@ namespace SLT_Printer.SLT
 
             }
 
-            for (int i = 0; i < _LayerActual.Length; i++)
+            for (int i = 0; i < LayerActual.Length; i++)
             {
-                if(_LayerActual[i].Pendiente)
+                if(LayerActual[i].Pendiente)
                 {
-                    _LayerActual[i].Pendiente = false;
+                    LayerActual[i].Pendiente = false;
 
-                    if (i == (_LayerActual.Length - 1))
+                    if (i == (LayerActual.Length - 1))
                     {
                         //Último trazo
                         StrokeSLT TempTrazo = new StrokeSLT();
                         TempTrazo.Pendiente = true;
                         TempTrazo.Mode = Modes.ModeTraslation;
-                        TempTrazo.Destino = _LayerActual[i].Destino;
+                        TempTrazo.Destino = LayerActual[i].Destino;
 
                         /*while (_GenerandoLayer)
                         {
                             System.Threading.Thread.Sleep(300);
                         }*/
 
-                        if (_LayerCalculo == null)
+                        if (LayerCalculo == null)
                         {
                             //Ha terminado
                             ResTrazo = null;
@@ -601,11 +612,11 @@ namespace SLT_Printer.SLT
                         else
                         {
                             //Carga y continúa con la siguiente capa
-                            _ChangeLayer();
+                            ChangeLayer();
 
-                            TempTrazo.Destino = _LayerActual[0].Destino;
+                            TempTrazo.Destino = LayerActual[0].Destino;
 
-                            _GenerateLayer();
+                            GenerateLayer();
                             /*_TGenerarLayer = new Thread(new ThreadStart(_GeneraLayer));
                             _TGenerarLayer.Start();*/
                         }
@@ -614,14 +625,15 @@ namespace SLT_Printer.SLT
                     else
                     {
                         //Siguiente trazo
-                        ResTrazo = _LayerActual[i + 1];
+                        ResTrazo = LayerActual[i + 1];
                     }
                     break;
                 }
             }
             return ResTrazo;
         }
-
+        
+        /*
         #region interprete de comandos
 
         public bool SendStroke(StrokeSLT Trazo, double mmMaterial = 0.0)
@@ -755,7 +767,7 @@ namespace SLT_Printer.SLT
                                 _SendNextStroke = true;
                             }
                             OnLog("Comando: " + Tipo);
-                            break;*/
+                            break;*//*
                         case "BFR":
                             if (Comando == "FULL")
                             {
@@ -823,15 +835,10 @@ namespace SLT_Printer.SLT
         public event ChangedXYZEventHandler ChangeXYZ;
         public event InformationEventHandler Information;
         public event WarningEventHandler Warning;
-        public event LogEventHandler Log;
+        public event LogEventHandler Log;*/
 
+        public event ModelChangeEventHandler ModelChange;
     }
-    // A delegate type for hooking up change notifications.
-    public delegate void ChangedXYZEventHandler(double X,double Y,double Z);
-    // A delegate type for hooking up change notifications.
-    public delegate void InformationEventHandler(string Info);
-    // A delegate type for hooking up change notifications.
-    public delegate void WarningEventHandler(string Warning);
-    // A delegate type for hooking up change notifications.
-    public delegate void LogEventHandler(string Log);
+
+    public delegate void ModelChangeEventHandler();
 }

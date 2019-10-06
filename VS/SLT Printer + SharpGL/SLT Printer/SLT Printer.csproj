@@ -73,6 +73,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PrintController.cs" />
     <Compile Include="FrmCierre.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +92,7 @@
     <Compile Include="FrmShowLog.Designer.cs">
       <DependentUpon>FrmShowLog.cs</DependentUpon>
     </Compile>
+    <Compile Include="PrinterInterpreter.cs" />
     <Compile Include="SLT\IntersectionsSLT.cs" />
     <Compile Include="SLT\ModelSLT.cs" />
     <Compile Include="Main.cs">

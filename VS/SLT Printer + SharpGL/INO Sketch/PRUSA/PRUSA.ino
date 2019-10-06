@@ -235,11 +235,11 @@ int NextIndex(int Index)
   //Serial.println(Temp);
 
   //The next calculated index is de current input index. Return current index again for 'wait'
-  if (Temp == InputIndex)
+  /*if (Temp == InputIndex)
   {
     Temp = Index;
   }
-  return Temp;
+  return Temp;*/
 }
 
 void serialEvent()
@@ -254,7 +254,7 @@ void serialEvent()
         Serial.println("BFRFULL");
         SendWARNBuffer = true;
       }
-      break;
+      //break;
     }
     else
     {
