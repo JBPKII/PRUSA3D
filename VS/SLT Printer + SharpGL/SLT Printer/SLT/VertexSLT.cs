@@ -4,21 +4,19 @@ namespace SLT_Printer.SLT
 {
     public class VertexSLT
     {
-        double _X;
-        double _Y;
         double _Z;
 
         public VertexSLT()
         {
-            _X = double.NaN;
-            _Y = double.NaN;
+            X = double.NaN;
+            Y = double.NaN;
             _Z = double.NaN;
         }
 
         public VertexSLT(double X, double Y, double Z)
         {
-            _X = X;
-            _Y = Y;
+            this.X = X;
+            this.Y = Y;
             _Z = Z;
         }
 
@@ -26,7 +24,7 @@ namespace SLT_Printer.SLT
         {
             get
             {
-                if (double.IsNaN(_X) || double.IsNaN(_Y) || double.IsNaN(_Z))
+                if (double.IsNaN(X) || double.IsNaN(Y) || double.IsNaN(_Z))
                 {
                     return false;
                 }
@@ -37,20 +35,8 @@ namespace SLT_Printer.SLT
             }
         }
 
-        public double X
-        {
-            get
-            {
-                return _X;
-            }
-        }
-        public double Y
-        {
-            get
-            {
-                return _Y;
-            }
-        }
+        public double X { get; private set; }
+        public double Y { get; private set; }
         public double Z
         {
             get
@@ -63,14 +49,14 @@ namespace SLT_Printer.SLT
         {
             get
             {
-                return (float)_X;
+                return (float)X;
             }
         }
         public float Yf
         {
             get
             {
-                return (float)_Y;
+                return (float)Y;
             }
         }
         public float Zf
@@ -83,8 +69,8 @@ namespace SLT_Printer.SLT
 
         public void Trasladar(VertexSLT T)
         {
-            _X += T.X;
-            _Y += T.Y;
+            X += T.X;
+            Y += T.Y;
             _Z += T.Z;
         }
 

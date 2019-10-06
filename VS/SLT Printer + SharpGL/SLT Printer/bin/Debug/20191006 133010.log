@@ -1,0 +1,1831 @@
+READ: INFTemperatura Extrusor1 = 149.56ºC
+SEND: M =1
+X =0.000
+Y =0.000
+Z =0.200
+E =0.000
+RUN
+
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.37ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 151.57ºC
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperatura Driver Y = 41.37ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 152.58ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.37ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 151.91ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.37ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 150.23ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.37ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 153.92ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.37ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 153.58ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.48ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 150.90ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.37ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 148.89ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.37ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 152.24ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.37ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 150.90ºC
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperatura Driver Y = 41.48ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 151.24ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.48ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 151.24ºC
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperatura Driver Y = 41.48ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 156.59ºC
+READ: INFTemperatura Driver X = 27.40ºC
+READ: INFTemperatura Driver Y = 41.26ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 146.55ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.48ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 150.90ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.37ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 150.23ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.37ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 149.90ºC
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperatura Driver Y = 41.48ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 149.56ºC
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperatura Driver Y = 41.48ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 148.22ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.48ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 147.89ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.48ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 147.55ºC
+READ: INFTemperatura Driver X = 27.40ºC
+READ: INFTemperatura Driver Y = 41.48ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 151.24ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.48ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 148.56ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.48ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 147.55ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.48ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 145.88ºC
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperatura Driver Y = 41.48ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 148.56ºC
+READ: INFTemperatura Driver X = 27.40ºC
+READ: INFTemperatura Driver Y = 41.48ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 148.56ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.48ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 148.89ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.37ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 147.89ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.37ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 148.56ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.37ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 147.89ºC
+READ: INFTemperatura Driver X = 27.40ºC
+READ: INFTemperatura Driver Y = 41.37ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 145.55ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.37ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 150.57ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.37ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 147.89ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.37ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 148.56ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.37ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 145.88ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.37ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 148.22ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.37ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 152.58ºC
+READ: INFTemperatura Driver X = 27.40ºC
+READ: INFTemperatura Driver Y = 41.37ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 149.23ºC
+READ: INFTemperatura Driver X = 27.40ºC
+READ: INFTemperatura Driver Y = 41.48ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 147.22ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.37ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 147.22ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.37ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 147.22ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.48ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 150.90ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.48ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 146.89ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.48ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 149.23ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.48ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 147.89ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.37ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 148.22ºC
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperatura Driver Y = 41.48ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 146.55ºC
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperatura Driver Y = 41.48ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 146.55ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.48ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 147.89ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.48ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 146.55ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.48ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 148.89ºC
+READ: INFTemperatura Driver X = 27.07ºC
+READ: INFTemperatura Driver Y = 41.58ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 148.89ºC
+READ: INFTemperatura Driver X = 27.07ºC
+READ: INFTemperatura Driver Y = 41.58ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 147.89ºC
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperaturar Drivers = 100.00%
+READ:  41.91ºC
+Comando no reconocido:  41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 150.57ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =0.400
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.40ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 150.23ºC
+READ: WRNNo se ha reconocido el comando: 'entilado0.000'.
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.80ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 149.90ºC
+READ: XYZ0.00;0.00;0.20
+READ: INFTemperatura Extrusor1 = 147.22ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =0.600
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.80ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 153.58ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.80ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 150.23ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.80ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 148.22ºC
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperatura Driver Y = 41.80ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 154.92ºC
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperatura Driver Y = 41.80ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 152.24ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 149.90ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 150.90ºC
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperatura Driver Y = 41.80ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 151.57ºC
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 149.56ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 147.55ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 149.56ºC
+READ: INFTemperatura Driver X = 27.40ºC
+READ: INFTemperatura Driver Y = 41.80ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 149.23ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 149.23ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.80ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 150.90ºC
+READ: INFTemperatura Driver X = 27.07ºC
+READ: INFTemperatura Driver Y = 41.80ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 149.90ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.80ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 149.90ºC
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperatura Driver Y = 41.80ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 145.88ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.80ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 152.58ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.80ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 149.23ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 149.23ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 148.22ºC
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperatura Driver Y = 41.80ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 151.57ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.80ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 147.89ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =0.800
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 147.55ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 148.56ºC
+READ: XYZ0.00;0.00;0.40
+READ: INFTemperatura Extrusor1 = 151.24ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =1.000
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 147.22ºC
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperatura Driver Y = 41.80ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 144.88ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.80ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 147.89ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.80ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 153.25ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 148.56ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 147.55ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 148.22ºC
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 146.89ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 140.86ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 147.22ºC
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 151.57ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 147.89ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 146.55ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 147.22ºC
+READ: INFTemperatura Driver X = 27.40ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 145.21ºC
+READ: INFTemperatura Driver X = 27.40ºC
+READ: INFTemperatura Driver Y = 41.80ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 146.89ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 148.22ºC
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperatura Driver Y = 41.80ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 144.54ºC
+READ: INFTemperatura Driver X = 27.40ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 144.54ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 146.89ºC
+READ: INFTemperatura Driver X = 27.40ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 148.56ºC
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 150.90ºC
+READ: INFTemperatura Driver X = 27.40ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 146.89ºC
+READ: INFTemperatura Driver X = 27.40ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 146.89ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 142.87ºC
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 144.88ºC
+READ: INFTemperatura Driver X = 27.40ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+Comando re-encolado: %
+Comando re-encolado: %
+READ: % 42.13ºC
+Comando no reconocido: % 42.13ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ:  42.13ºC
+Comando no reconocido:  42.13ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 149.56ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =1.200
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.13ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 147.55ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =1.400
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: WRNNo se ha reconocido el comando: '=0%'.
+READ: WRNNo se ha reconocido el comando: 'riv0.000'.
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 148.89ºC
+READ: XYZ0.00;0.00;0.60
+READ: INFTemperatura Extrusor1 = 149.90ºC
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 149.90ºC
+READ: XYZ0.00;0.00;0.80
+READ: INFTemperatura Extrusor1 = 149.56ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =1.600
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.13ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 151.91ºC
+READ: XYZ0.00;0.00;1.20
+READ: INFTemperatura Extrusor1 = 149.90ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =1.800
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 151.24ºC
+READ: XYZ0.00;0.00;1.60
+READ: INFTemperatura Extrusor1 = 155.59ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =2.000
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.13ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 150.23ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =2.200
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 149.90ºC
+READ: XYZ0.00;0.00;1.80
+READ: INFTemperatura Extrusor1 = 148.56ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =2.400
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 150.57ºC
+READ: XYZ0.00;0.00;2.00
+READ: INFTemperatura Extrusor1 = 148.56ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =2.600
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 151.57ºC
+READ: XYZ0.00;0.00;2.20
+READ: INFTemperatura Extrusor1 = 154.92ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =2.800
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 150.23ºC
+READ: XYZ0.00;0.00;2.40
+READ: INFTemperatura Extrusor1 = 150.23ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =3.000
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.13ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 149.56ºC
+READ: XYZ0.00;0.00;2.60
+READ: INFTemperatura Extrusor1 = 151.91ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =3.200
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 150.23ºC
+READ: XYZ0.00;0.00;2.80
+READ: INFTemperatura Extrusor1 = 149.23ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =3.400
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 151.24ºC
+READ: XYZ0.00;0.00;3.00
+READ: INFTemperatura Extrusor1 = 147.55ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =3.600
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 149.90ºC
+READ: XYZ0.00;0.00;3.20
+READ: INFTemperatura Extrusor1 = 149.90ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =3.800
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 148.89ºC
+READ: XYZ0.00;0.00;3.40
+READ: INFTemperatura Extrusor1 = 150.57ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =4.000
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 146.22ºC
+READ: XYZ0.00;0.00;3.60
+READ: INFTemperatura Extrusor1 = 149.56ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =4.200
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.13ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 149.90ºC
+READ: XYZ0.00;0.00;3.80
+READ: INFTemperatura Extrusor1 = 149.23ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =4.400
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 150.23ºC
+READ: XYZ0.00;0.00;4.00
+READ: INFTemperatura Extrusor1 = 151.91ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =4.600
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 151.57ºC
+READ: XYZ0.00;0.00;4.20
+READ: INFTemperatura Extrusor1 = 150.23ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =4.800
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 149.90ºC
+READ: XYZ0.00;0.00;4.40
+READ: INFTemperatura Extrusor1 = 155.92ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =5.000
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.13ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 148.22ºC
+READ: XYZ0.00;0.00;4.59
+READ: INFTemperatura Extrusor1 = 148.89ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =5.200
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 149.23ºC
+READ: XYZ0.00;0.00;4.80
+READ: INFTemperatura Extrusor1 = 152.58ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =5.400
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 150.90ºC
+READ: XYZ0.00;0.00;5.00
+READ: INFTemperatura Extrusor1 = 150.23ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =5.600
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 149.90ºC
+READ: XYZ0.00;0.00;5.20
+READ: INFTemperatura Extrusor1 = 151.24ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =5.800
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 151.91ºC
+READ: XYZ0.00;0.00;5.40
+READ: INFTemperatura Extrusor1 = 149.90ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =6.000
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 146.22ºC
+READ: XYZ0.00;0.00;5.60
+READ: INFTemperatura Extrusor1 = 149.23ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =6.200
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 152.91ºC
+READ: XYZ0.00;0.00;5.80
+READ: INFTemperatura Extrusor1 = 153.58ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =6.400
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 145.55ºC
+READ: XYZ0.00;0.00;6.00
+READ: INFTemperatura Extrusor1 = 156.26ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =6.600
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 149.90ºC
+READ: XYZ0.00;0.00;6.20
+READ: INFTemperatura Extrusor1 = 149.23ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =6.800
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 153.92ºC
+READ: XYZ0.00;0.00;6.40
+READ: INFTemperatura Extrusor1 = 153.25ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =7.000
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 151.24ºC
+READ: XYZ0.00;0.00;6.60
+READ: INFTemperatura Extrusor1 = 149.56ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =7.200
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 149.90ºC
+READ: XYZ0.00;0.00;6.80
+READ: INFTemperatura Extrusor1 = 149.56ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =7.400
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 150.23ºC
+READ: XYZ0.00;0.00;7.00
+READ: INFTemperatura Extrusor1 = 147.22ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =7.600
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 148.22ºC
+READ: XYZ0.00;0.00;7.20
+READ: INFTemperatura Extrusor1 = 154.92ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =7.800
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 150.57ºC
+READ: XYZ0.00;0.00;7.40
+READ: INFTemperatura Extrusor1 = 152.58ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =8.000
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 149.90ºC
+READ: XYZ0.00;0.00;7.60
+READ: INFTemperatura Extrusor1 = 153.58ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =8.200
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 148.89ºC
+READ: XYZ0.00;0.00;7.80
+READ: INFTemperatura Extrusor1 = 150.90ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =8.400
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 148.56ºC
+READ: XYZ0.00;0.00;8.00
+READ: INFTemperatura Extrusor1 = 150.90ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =8.600
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 150.57ºC
+READ: XYZ0.00;0.00;8.20
+READ: INFTemperatura Extrusor1 = 147.89ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =8.800
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.40ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 149.56ºC
+READ: XYZ0.00;0.00;8.40
+READ: INFTemperatura Extrusor1 = 149.56ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =9.000
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 144.88ºC
+READ: XYZ0.00;0.00;8.60
+READ: INFTemperatura Extrusor1 = 151.57ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =9.200
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 148.89ºC
+READ: XYZ0.00;0.00;8.80
+READ: INFTemperatura Extrusor1 = 148.22ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =9.400
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 150.90ºC
+READ: XYZ0.00;0.00;9.00
+READ: INFTemperatura Extrusor1 = 148.89ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =9.600
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 149.23ºC
+READ: XYZ0.00;0.00;9.20
+READ: INFTemperatura Extrusor1 = 148.89ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =9.800
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 151.57ºC
+READ: XYZ0.00;0.00;9.40
+READ: INFTemperatura Extrusor1 = 148.22ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =10.000
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 149.23ºC
+READ: XYZ0.00;0.00;9.60
+READ: INFTemperatura Extrusor1 = 148.56ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =10.200
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 146.55ºC
+READ: XYZ0.00;0.00;9.80
+READ: INFTemperatura Extrusor1 = 148.22ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =10.400
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 151.91ºC
+READ: XYZ0.00;0.00;10.00
+READ: INFTemperatura Extrusor1 = 150.57ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =10.600
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 150.57ºC
+READ: XYZ0.00;0.00;10.20
+READ: INFTemperatura Extrusor1 = 149.23ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =10.800
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 150.23ºC
+READ: XYZ0.00;0.00;10.40
+READ: INFTemperatura Extrusor1 = 149.56ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =11.000
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 149.23ºC
+READ: XYZ0.00;0.00;10.60
+READ: INFTemperatura Extrusor1 = 151.57ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =11.200
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 149.56ºC
+READ: XYZ0.00;0.00;10.80
+READ: INFTemperatura Extrusor1 = 149.23ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =11.400
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 148.22ºC
+READ: XYZ0.00;0.00;11.00
+READ: INFTemperatura Extrusor1 = 149.23ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =11.600
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 149.90ºC
+READ: XYZ0.00;0.00;11.20
+READ: INFTemperatura Extrusor1 = 147.89ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =11.800
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 149.23ºC
+READ: XYZ0.00;0.00;11.40
+READ: INFTemperatura Extrusor1 = 151.91ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =12.000
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 151.24ºC
+READ: XYZ0.00;0.00;11.60
+READ: INFTemperatura Extrusor1 = 149.56ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =12.200
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 42.02ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 150.23ºC
+READ: XYZ0.00;0.00;11.80
+READ: INFTemperatura Extrusor1 = 149.90ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =12.400
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 147.55ºC
+READ: XYZ0.00;0.00;12.00
+READ: INFTemperatura Extrusor1 = 148.89ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =12.600
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 147.22ºC
+READ: XYZ0.00;0.00;12.20
+READ: INFTemperatura Extrusor1 = 151.91ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =12.800
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 147.55ºC
+READ: XYZ0.00;0.00;12.40
+READ: INFTemperatura Extrusor1 = 148.22ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =13.000
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 152.91ºC
+READ: XYZ0.00;0.00;12.60
+READ: INFTemperatura Extrusor1 = 150.23ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =13.200
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 145.88ºC
+READ: XYZ0.00;0.00;12.80
+READ: INFTemperatura Extrusor1 = 149.56ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =13.400
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 149.56ºC
+READ: XYZ0.00;0.00;13.00
+READ: INFTemperatura Extrusor1 = 148.56ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =13.600
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 154.25ºC
+READ: XYZ0.00;0.00;13.20
+READ: INFTemperatura Extrusor1 = 148.22ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =13.800
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.18ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 148.22ºC
+READ: XYZ0.00;0.00;13.40
+READ: INFTemperatura Extrusor1 = 146.55ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =14.000
+E =0.000
+RUN
+
+Comando: BFREMPTY
+READ: INFTemperatura Driver X = 27.29ºC
+READ: INFTemperatura Driver Y = 41.91ºC
+READ: INFTemperatura Driver Z = -29.78ºC
+READ: INFTemperatura Driver E1 = -29.78ºC
+READ: INFPotencia Ventilador Drivers = 100.00%
+READ: INFTemperatura Extrusor1 = 148.89ºC
+READ: XYZ0.00;0.00;13.60
+READ: INFTemperatura Extrusor1 = 148.22ºC
+READ: BFREMPTY
+SEND: M =1
+X =0.000
+Y =0.000
+Z =14.200
+E 

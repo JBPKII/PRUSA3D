@@ -2,39 +2,25 @@
 {
     public class Segmento
     {
-        Punto _Inicio;
-        Punto _Final;
         double _Longitud;
 
         public Segmento()
         {
-            _Inicio = new Punto();
-            _Final = new Punto();
+            Inicio = new Punto();
+            Final = new Punto();
             _Longitud = double.NaN;
         }
 
         public Segmento(Punto Inicio, Punto Final)
         {
-            _Inicio = Inicio;
-            _Final = Final;
+            this.Inicio = Inicio;
+            this.Final = Final;
             _Longitud = double.NaN;
         }
 
-        public Punto Inicio
-        {
-            get
-            {
-                return _Inicio;
-            }
-        }
+        public Punto Inicio { get; }
 
-        public Punto Final
-        {
-            get
-            {
-                return _Final;
-            }
-        }
+        public Punto Final { get; }
 
         double Longitud
         {
@@ -42,7 +28,7 @@
             {
                 if (double.IsNaN(_Longitud))
                 {
-                    _Longitud = _Inicio.Distancia(_Final);
+                    _Longitud = Inicio.Distancia(Final);
                 }
 
                 return _Longitud;
@@ -163,13 +149,13 @@
                 if (double.IsPositiveInfinity(ma))
                 {
                     //this es vertical
-                    resX = this._Inicio.X;
+                    resX = this.Inicio.X;
                     resY = mb * (resX - Segm.Inicio.X) + Segm.Inicio.Y;
                 }
                 else if (double.IsPositiveInfinity(mb))
                 {
                     //Segm es vertical
-                    resX = Segm._Inicio.X;
+                    resX = Segm.Inicio.X;
                     resY = ma * (resX - this.Inicio.X) + this.Inicio.Y;
                 }
                 else
@@ -180,7 +166,7 @@
                 }
 
                 //calculo resZ
-                resZ = this._Inicio.Z;
+                resZ = this.Inicio.Z;
 
                 Int = new Punto(resX, resY, resZ);
                 return true;
@@ -191,11 +177,11 @@
         {
             //Equidistancia > 0 => equidisa hacia la izquierda
 
-            Punto V1 = new Punto(this._Inicio.X,
-                                this._Inicio.Y,
+            Punto V1 = new Punto(this.Inicio.X,
+                                this.Inicio.Y,
                                 0.0);//2D
-            Punto V2 = new Punto(this._Final.X,
-                                this._Final.Y,
+            Punto V2 = new Punto(this.Final.X,
+                                this.Final.Y,
                                 0.0);//2D
 
             Punto V = new Punto(V2.X - V1.X,
@@ -221,8 +207,8 @@
                                     0.0);
 
                 Segmento Res = new Segmento(
-                    new Punto(this._Inicio.X + u.X, this._Inicio.Y + u.Y, this._Inicio.Z + u.Z),
-                    new Punto(this._Final.X + u.X, this._Final.Y + u.Y, this._Final.Z + u.Z));
+                    new Punto(this.Inicio.X + u.X, this.Inicio.Y + u.Y, this.Inicio.Z + u.Z),
+                    new Punto(this.Final.X + u.X, this.Final.Y + u.Y, this.Final.Z + u.Z));
 
                 return Res;
             }

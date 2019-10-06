@@ -5,29 +5,25 @@ namespace SLT_Printer
 {
     public class Punto
     {
-        double _X;
-        double _Y;
-        double _Z;
-
         public Punto()
         {
-            _X = double.NaN;
-            _Y = double.NaN;
-            _Z = double.NaN;
+            X = double.NaN;
+            Y = double.NaN;
+            Z = double.NaN;
         }
 
         public Punto(double X, double Y, double Z)
         {
-            _X = X;
-            _Y = Y;
-            _Z = Z;
+            this.X = X;
+            this.Y = Y;
+            this.Z = Z;
         }
 
         public bool EsValido
         {
             get
             {
-                if(!double.IsNaN(_X) && !double.IsNaN(_Y) && !double.IsNaN(_Z))
+                if(!double.IsNaN(X) && !double.IsNaN(Y) && !double.IsNaN(Z))
                 {
                     return true;
                 }
@@ -44,7 +40,7 @@ namespace SLT_Printer
             const double Margen = 0.00001;
             if (this.EsValido && P.EsValido)
             {
-                if (Math.Abs(this._X - P._X) < Margen && Math.Abs(this._Y - P._Y) < Margen && Math.Abs(this._Z - P._Z) < Margen)
+                if (Math.Abs(this.X - P.X) < Margen && Math.Abs(this.Y - P.Y) < Margen && Math.Abs(this.Z - P.Z) < Margen)
                 {
                     Res = true;
                 }
@@ -53,29 +49,11 @@ namespace SLT_Printer
             return Res;
         }
 
-        public double X
-        {
-            get
-            {
-                return _X;
-            }
-        }
+        public double X { get; }
 
-        public double Y
-        {
-            get
-            {
-                return _Y;
-            }
-        }
+        public double Y { get; }
 
-        public double Z
-        {
-            get
-            {
-                return _Z;
-            }
-        }
+        public double Z { get; }
 
         public double Distancia(Punto Pto)
         {
@@ -87,13 +65,10 @@ namespace SLT_Printer
 
     public class BBox
     {
-        Punto _InfIzq; //minimos
-        Punto _SupDer; //Máximos
-
         private void _Inicializa()
         {
-            _InfIzq = new Punto();
-            _SupDer = new Punto();
+            Minimos = new Punto();
+            Maximos = new Punto();
         }
 
         public BBox()
@@ -105,33 +80,21 @@ namespace SLT_Printer
         {
             _Inicializa();
 
-            _InfIzq = InferiorIzquierda;
-            _SupDer = SuperiorDerecha;
+            Minimos = InferiorIzquierda;
+            Maximos = SuperiorDerecha;
         }
 
-        public Punto Minimos
-        {
-            get
-            {
-                return _InfIzq;
-            }
-        }
+        public Punto Minimos { get; private set; }
 
-        public Punto Maximos
-        {
-            get
-            {
-                return _SupDer;
-            }
-        }
+        public Punto Maximos { get; private set; }
 
         public Punto Centro
         {
             get
             {
-                return new Punto((_SupDer.X - _InfIzq.X) / 2,
-                                (_SupDer.Y - _InfIzq.Y) / 2,
-                                (_SupDer.Z - _InfIzq.Z) / 2);
+                return new Punto((Maximos.X - Minimos.X) / 2,
+                                (Maximos.Y - Minimos.Y) / 2,
+                                (Maximos.Z - Minimos.Z) / 2);
             }
         }
 
@@ -139,9 +102,9 @@ namespace SLT_Printer
         {
             get
             {
-                if (_SupDer.EsValido && _InfIzq.EsValido)
+                if (Maximos.EsValido && Minimos.EsValido)
                 {
-                    return _InfIzq.Distancia(_SupDer);
+                    return Minimos.Distancia(Maximos);
                 }
                 else
                 {
@@ -153,46 +116,46 @@ namespace SLT_Printer
         public void Actualizar(Punto Punto)
         {
             //si cualquiera no es válido lo reemplaza
-            if (!_InfIzq.EsValido || !_SupDer.EsValido)
+            if (!Minimos.EsValido || !Maximos.EsValido)
             {
-                if (!_InfIzq.EsValido)
+                if (!Minimos.EsValido)
                 {
-                    _InfIzq = Punto;
+                    Minimos = Punto;
                 }
 
-                if (!_SupDer.EsValido)
+                if (!Maximos.EsValido)
                 {
-                    _SupDer = Punto;
+                    Maximos = Punto;
                 }
             }
             else
             {
                 //compara con _InfIzq
-                if(Punto.X<_InfIzq.X )
+                if(Punto.X<Minimos.X )
                 {
-                    _InfIzq = new Punto(Punto.X, _InfIzq.Y, _InfIzq.Z);
+                    Minimos = new Punto(Punto.X, Minimos.Y, Minimos.Z);
                 }
-                if (Punto.Y < _InfIzq.Y)
+                if (Punto.Y < Minimos.Y)
                 {
-                    _InfIzq = new Punto(_InfIzq.X, Punto.Y, _InfIzq.Z);
+                    Minimos = new Punto(Minimos.X, Punto.Y, Minimos.Z);
                 }
-                if (Punto.Z < _InfIzq.Z)
+                if (Punto.Z < Minimos.Z)
                 {
-                    _InfIzq = new Punto(_InfIzq.X, _InfIzq.Y, Punto.Z);
+                    Minimos = new Punto(Minimos.X, Minimos.Y, Punto.Z);
                 }
 
                 //compara con _SupDer
-                if (Punto.X > _SupDer.X)
+                if (Punto.X > Maximos.X)
                 {
-                    _SupDer = new Punto(Punto.X, _SupDer.Y, _SupDer.Z);
+                    Maximos = new Punto(Punto.X, Maximos.Y, Maximos.Z);
                 }
-                if (Punto.Y > _SupDer.Y)
+                if (Punto.Y > Maximos.Y)
                 {
-                    _SupDer = new Punto(_SupDer.X, Punto.Y, _SupDer.Z);
+                    Maximos = new Punto(Maximos.X, Punto.Y, Maximos.Z);
                 }
-                if (Punto.Z > _SupDer.Z)
+                if (Punto.Z > Maximos.Z)
                 {
-                    _SupDer = new Punto(_SupDer.X, _SupDer.Y, Punto.Z);
+                    Maximos = new Punto(Maximos.X, Maximos.Y, Punto.Z);
                 }
             }
         }

@@ -104,6 +104,7 @@
             this.CmBOrigen = new System.Windows.Forms.Button();
             this.CmBGoTo = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.CBModo = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.CmBTestSLT = new System.Windows.Forms.Button();
             this.CmbSalir = new System.Windows.Forms.Button();
@@ -119,7 +120,7 @@
             this.GBPreview = new System.Windows.Forms.GroupBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.TxtInfo = new System.Windows.Forms.TextBox();
-            this.CBModo = new System.Windows.Forms.ComboBox();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.sceneControl)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -132,6 +133,10 @@
             this.groupBox7.SuspendLayout();
             this.GBPreview.SuspendLayout();
             this.groupBox9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // sceneControl
@@ -145,7 +150,7 @@
             this.sceneControl.OpenGLVersion = SharpGL.Version.OpenGLVersion.OpenGL2_1;
             this.sceneControl.RenderContextType = SharpGL.RenderContextType.NativeWindow;
             this.sceneControl.RenderTrigger = SharpGL.RenderTrigger.TimerBased;
-            this.sceneControl.Size = new System.Drawing.Size(473, 331);
+            this.sceneControl.Size = new System.Drawing.Size(523, 362);
             this.sceneControl.TabIndex = 5;
             this.sceneControl.Load += new System.EventHandler(this.sceneControl_Load);
             this.sceneControl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.sceneControl_MouseMove);
@@ -155,7 +160,7 @@
             // 
             this.groupBox1.Controls.Add(this.groupBox6);
             this.groupBox1.Controls.Add(this.groupBox5);
-            this.groupBox1.Location = new System.Drawing.Point(12, 216);
+            this.groupBox1.Location = new System.Drawing.Point(9, 210);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(340, 202);
             this.groupBox1.TabIndex = 0;
@@ -439,7 +444,7 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox4.Controls.Add(this.TxtZ);
             this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Controls.Add(this.label13);
@@ -449,7 +454,7 @@
             this.groupBox4.Controls.Add(this.TxtX);
             this.groupBox4.Controls.Add(this.label12);
             this.groupBox4.Controls.Add(this.label8);
-            this.groupBox4.Location = new System.Drawing.Point(358, 368);
+            this.groupBox4.Location = new System.Drawing.Point(358, 393);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(479, 51);
             this.groupBox4.TabIndex = 7;
@@ -554,7 +559,7 @@
             this.groupBox2.Controls.Add(this.TxtFileSLT);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.CmBAbrirSLT);
-            this.groupBox2.Location = new System.Drawing.Point(12, 12);
+            this.groupBox2.Location = new System.Drawing.Point(9, 6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(340, 198);
             this.groupBox2.TabIndex = 1;
@@ -785,11 +790,12 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox3.Controls.Add(this.TxtWarning);
-            this.groupBox3.Location = new System.Drawing.Point(12, 425);
+            this.groupBox3.Location = new System.Drawing.Point(3, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(340, 62);
+            this.groupBox3.Size = new System.Drawing.Size(340, 70);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Advertencias:";
@@ -803,7 +809,7 @@
             this.TxtWarning.Multiline = true;
             this.TxtWarning.Name = "TxtWarning";
             this.TxtWarning.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.TxtWarning.Size = new System.Drawing.Size(328, 37);
+            this.TxtWarning.Size = new System.Drawing.Size(328, 45);
             this.TxtWarning.TabIndex = 0;
             this.TxtWarning.DoubleClick += new System.EventHandler(this.TxtWarning_DoubleClick);
             // 
@@ -815,10 +821,10 @@
             this.toolStripSeparator,
             this.toolStripSeparator1,
             this.TSPGB});
-            this.TS1.Location = new System.Drawing.Point(0, 490);
+            this.TS1.Location = new System.Drawing.Point(0, 527);
             this.TS1.Name = "TS1";
             this.TS1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.TS1.Size = new System.Drawing.Size(1023, 25);
+            this.TS1.Size = new System.Drawing.Size(1064, 25);
             this.TS1.TabIndex = 2;
             this.TS1.Text = "toolStrip1";
             // 
@@ -913,12 +919,25 @@
             this.groupBox7.Controls.Add(this.CmBOrigen);
             this.groupBox7.Controls.Add(this.CmBDetener);
             this.groupBox7.Controls.Add(this.CmBPausar);
-            this.groupBox7.Location = new System.Drawing.Point(843, 12);
+            this.groupBox7.Location = new System.Drawing.Point(890, 6);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(168, 407);
+            this.groupBox7.Size = new System.Drawing.Size(171, 438);
             this.groupBox7.TabIndex = 13;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Operaciones:";
+            // 
+            // CBModo
+            // 
+            this.CBModo.FormattingEnabled = true;
+            this.CBModo.Items.AddRange(new object[] {
+            "Traslación",
+            "Relleno",
+            "Bordes"});
+            this.CBModo.Location = new System.Drawing.Point(32, 223);
+            this.CBModo.Name = "CBModo";
+            this.CBModo.Size = new System.Drawing.Size(104, 21);
+            this.CBModo.TabIndex = 25;
+            this.CBModo.Text = "Traslación";
             // 
             // button1
             // 
@@ -944,7 +963,7 @@
             // CmbSalir
             // 
             this.CmbSalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CmbSalir.Location = new System.Drawing.Point(87, 378);
+            this.CmbSalir.Location = new System.Drawing.Point(90, 409);
             this.CmbSalir.Name = "CmbSalir";
             this.CmbSalir.Size = new System.Drawing.Size(75, 23);
             this.CmbSalir.TabIndex = 22;
@@ -958,7 +977,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtGoToZ.Location = new System.Drawing.Point(32, 197);
             this.TxtGoToZ.Name = "TxtGoToZ";
-            this.TxtGoToZ.Size = new System.Drawing.Size(104, 20);
+            this.TxtGoToZ.Size = new System.Drawing.Size(107, 20);
             this.TxtGoToZ.TabIndex = 21;
             this.TxtGoToZ.Text = "0.0000";
             this.TxtGoToZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -976,7 +995,7 @@
             // 
             this.label24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(142, 200);
+            this.label24.Location = new System.Drawing.Point(145, 200);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(23, 13);
             this.label24.TabIndex = 19;
@@ -988,7 +1007,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtGoToY.Location = new System.Drawing.Point(32, 171);
             this.TxtGoToY.Name = "TxtGoToY";
-            this.TxtGoToY.Size = new System.Drawing.Size(104, 20);
+            this.TxtGoToY.Size = new System.Drawing.Size(107, 20);
             this.TxtGoToY.TabIndex = 18;
             this.TxtGoToY.Text = "0.0000";
             this.TxtGoToY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1006,7 +1025,7 @@
             // 
             this.label26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(142, 174);
+            this.label26.Location = new System.Drawing.Point(145, 174);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(23, 13);
             this.label26.TabIndex = 16;
@@ -1018,7 +1037,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtGoToX.Location = new System.Drawing.Point(32, 145);
             this.TxtGoToX.Name = "TxtGoToX";
-            this.TxtGoToX.Size = new System.Drawing.Size(104, 20);
+            this.TxtGoToX.Size = new System.Drawing.Size(107, 20);
             this.TxtGoToX.TabIndex = 15;
             this.TxtGoToX.Text = "0.0000";
             this.TxtGoToX.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1036,7 +1055,7 @@
             // 
             this.label28.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(142, 148);
+            this.label28.Location = new System.Drawing.Point(145, 148);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(23, 13);
             this.label28.TabIndex = 13;
@@ -1048,21 +1067,22 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.GBPreview.Controls.Add(this.sceneControl);
-            this.GBPreview.Location = new System.Drawing.Point(358, 12);
+            this.GBPreview.Location = new System.Drawing.Point(355, 6);
             this.GBPreview.Name = "GBPreview";
-            this.GBPreview.Size = new System.Drawing.Size(479, 350);
+            this.GBPreview.Size = new System.Drawing.Size(529, 381);
             this.GBPreview.TabIndex = 14;
             this.GBPreview.TabStop = false;
             this.GBPreview.Text = "Vista previa:";
             // 
             // groupBox9
             // 
-            this.groupBox9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox9.Controls.Add(this.TxtInfo);
-            this.groupBox9.Location = new System.Drawing.Point(358, 425);
+            this.groupBox9.Location = new System.Drawing.Point(349, 3);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(653, 62);
+            this.groupBox9.Size = new System.Drawing.Size(712, 70);
             this.groupBox9.TabIndex = 15;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Información:";
@@ -1076,37 +1096,41 @@
             this.TxtInfo.Multiline = true;
             this.TxtInfo.Name = "TxtInfo";
             this.TxtInfo.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.TxtInfo.Size = new System.Drawing.Size(641, 37);
+            this.TxtInfo.Size = new System.Drawing.Size(700, 45);
             this.TxtInfo.TabIndex = 0;
             this.TxtInfo.TextChanged += new System.EventHandler(this.TxtInfo_TextChanged);
             this.TxtInfo.DoubleClick += new System.EventHandler(this.TxtInfo_DoubleClick);
             // 
-            // CBModo
+            // splitContainer1
             // 
-            this.CBModo.FormattingEnabled = true;
-            this.CBModo.Items.AddRange(new object[] {
-            "Traslación",
-            "Relleno",
-            "Bordes"});
-            this.CBModo.Location = new System.Drawing.Point(32, 223);
-            this.CBModo.Name = "CBModo";
-            this.CBModo.Size = new System.Drawing.Size(104, 21);
-            this.CBModo.TabIndex = 25;
-            this.CBModo.Text = "Traslación";
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox4);
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox7);
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
+            this.splitContainer1.Panel1.Controls.Add(this.GBPreview);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.groupBox3);
+            this.splitContainer1.Panel2.Controls.Add(this.groupBox9);
+            this.splitContainer1.Size = new System.Drawing.Size(1064, 527);
+            this.splitContainer1.SplitterDistance = 447;
+            this.splitContainer1.TabIndex = 16;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1023, 515);
-            this.Controls.Add(this.groupBox9);
-            this.Controls.Add(this.GBPreview);
-            this.Controls.Add(this.groupBox7);
+            this.ClientSize = new System.Drawing.Size(1064, 552);
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.TS1);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox1);
             this.MinimumSize = new System.Drawing.Size(1039, 553);
             this.Name = "Main";
             this.Text = "SLT Printer:";
@@ -1132,6 +1156,10 @@
             this.GBPreview.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1244,6 +1272,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button CmBCenterView;
         private System.Windows.Forms.ComboBox CBModo;
+        private System.Windows.Forms.SplitContainer splitContainer1;
     }
 }
 

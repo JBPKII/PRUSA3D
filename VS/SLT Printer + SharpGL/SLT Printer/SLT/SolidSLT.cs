@@ -15,9 +15,6 @@ namespace SLT_Printer.SLT
         private const string constDesignPrimitives = "Design Primitives";
         private const string constDesignGrid = "Design Time Grid";
         private const string constDesignAxie = "Design Time Axies";
-
-        private string _Nombre;
-        private IList<string> _Fallos;
         private IList<FacetSLT> _Facets;
         private VertexSLT _IzqFrontInf;
         private VertexSLT _DerPostSup;
@@ -26,9 +23,6 @@ namespace SLT_Printer.SLT
         private double _Ancho;
         private double _Largo;
         private double _Alto;
-
-        private bool _PassTest;
-
         private double _Tx;
         private double _Ty;
         private double _Tz;
@@ -123,27 +117,15 @@ namespace SLT_Printer.SLT
             }
         }
 
-        public string Nombre
-        {
-            get
-            {
-                return _Nombre;
-            }
-        }
+        public string Nombre { get; private set; }
 
-        public IList<string> Fallos
-        {
-            get
-            {
-                return _Fallos;
-            }
-        }
+        public IList<string> Fallos { get; private set; }
 
         public int NumFallos
         {
             get
             {
-                return _Fallos.Count();
+                return Fallos.Count();
             }
         }
 
@@ -206,13 +188,7 @@ namespace SLT_Printer.SLT
             }
         }
 
-        public bool PassTest
-        {
-            get
-            {
-                return _PassTest;
-            }
-        }
+        public bool PassTest { get; private set; }
 
         // An event that clients can use to be notified whenever the
         // elements of the list change.
@@ -227,12 +203,12 @@ namespace SLT_Printer.SLT
         private void _Inicializa()
         {
             //Inicializa las variables
-            _Nombre = "";
-            _Fallos = new List<string>();
+            Nombre = "";
+            Fallos = new List<string>();
             _Facets = new List<FacetSLT>();
             _IzqFrontInf = new VertexSLT();
             _DerPostSup = new VertexSLT();
-            _PassTest = false;
+            PassTest = false;
 
             _Centro = new VertexSLT();
             _Ancho = double.NaN;
@@ -364,7 +340,7 @@ namespace SLT_Printer.SLT
 
             if (LineaSLT.StartsWith("solid "))
             {
-                _Nombre = LineaSLT.Substring(5);
+                Nombre = LineaSLT.Substring(5);
 
                 bool FinSolido = false;
                 bool EnFacet = false;
@@ -385,7 +361,7 @@ namespace SLT_Printer.SLT
                         //facet normal ni nj nk
                         if (EnOuterLoop)
                         {
-                            _Fallos.Add("Lectura SLT ASCII: Nueva Faceta sin cierre correcto de Vértices");
+                            Fallos.Add("Lectura SLT ASCII: Nueva Faceta sin cierre correcto de Vértices");
                             Res = false;
                         }
                         else
@@ -399,7 +375,7 @@ namespace SLT_Printer.SLT
                             }
                             else
                             {
-                                _Fallos.Add("Lectura SLT ASCII: El Vector Normal de la Faceta no tiene 3 domensiones");
+                                Fallos.Add("Lectura SLT ASCII: El Vector Normal de la Faceta no tiene 3 domensiones");
                                 Res = false;
                             }
                         }
@@ -410,7 +386,7 @@ namespace SLT_Printer.SLT
                     {
                         if (EnOuterLoop)
                         {
-                            _Fallos.Add("Lectura SLT ASCII: Inicio de Loop sin cierre del anterior");
+                            Fallos.Add("Lectura SLT ASCII: Inicio de Loop sin cierre del anterior");
                             Res = false;
                         }
                         else
@@ -431,13 +407,13 @@ namespace SLT_Printer.SLT
                             }
                             else
                             {
-                                _Fallos.Add("Lectura SLT ASCII: Un Vértice de la Faceta no tiene 3 domensiones");
+                                Fallos.Add("Lectura SLT ASCII: Un Vértice de la Faceta no tiene 3 domensiones");
                                 Res = false;
                             }
                         }
                         else
                         {
-                            _Fallos.Add("Lectura SLT ASCII: Vértice fuera de un Loop o una Faceta");
+                            Fallos.Add("Lectura SLT ASCII: Vértice fuera de un Loop o una Faceta");
                             Res = false;
                         }
                     }
@@ -450,7 +426,7 @@ namespace SLT_Printer.SLT
                         }
                         else
                         {
-                            _Fallos.Add("Lectura SLT ASCII: Cierre de Loop incorrecto");
+                            Fallos.Add("Lectura SLT ASCII: Cierre de Loop incorrecto");
                             Res = false;
                         }
 
@@ -467,20 +443,20 @@ namespace SLT_Printer.SLT
                             }
                             else
                             {
-                                _Fallos.Add("Lectura SLT ASCII: Faceta no válida");
+                                Fallos.Add("Lectura SLT ASCII: Faceta no válida");
                                 Res = false;
                             }
                         }
                         else
                         {
-                            _Fallos.Add("Lectura SLT ASCII: Fin de Faceta no válida");
+                            Fallos.Add("Lectura SLT ASCII: Fin de Faceta no válida");
                             Res = false;
                         }
 
                         TempFacet = new FacetSLT();
                         EnFacet = false;
                     }
-                    else if (LineaSLT=="endsolid " + _Nombre)
+                    else if (LineaSLT=="endsolid " + Nombre)
                     {
                         //Fin de sólido
                         if (!EnFacet && !EnOuterLoop)
@@ -489,7 +465,7 @@ namespace SLT_Printer.SLT
                         }
                         else
                         {
-                            _Fallos.Add("Lectura SLT ASCII: Fin de solido sin cierre correcto de Facetas o Vértices");
+                            Fallos.Add("Lectura SLT ASCII: Fin de solido sin cierre correcto de Facetas o Vértices");
                             Res = false;
                         }
                     }
@@ -503,7 +479,7 @@ namespace SLT_Printer.SLT
             else
             {
                 Res = false;
-                _Fallos.Add("Lectura SLT ASCII: El Fichero no comienza por 'solid '");
+                Fallos.Add("Lectura SLT ASCII: El Fichero no comienza por 'solid '");
             }
             SR.Close();
             SR.Dispose();
@@ -556,7 +532,7 @@ namespace SLT_Printer.SLT
                     char TempChar = BR.ReadChar();
                     if(TempChar != '\0')
                     {
-                        _Nombre += TempChar;
+                        Nombre += TempChar;
                     }
                 }
 
@@ -594,7 +570,7 @@ namespace SLT_Printer.SLT
                         else
                         {
                             Res = false;
-                            _Fallos.Add("Lectura SLT Binario: Faceta no válida");
+                            Fallos.Add("Lectura SLT Binario: Faceta no válida");
                         }
 
                         TempLoop = new LoopSLT();
@@ -604,7 +580,7 @@ namespace SLT_Printer.SLT
                 else
                 {
                     Res = false;
-                    _Fallos.Add("Lectura SLT Binario: Número de triángulos nulo o igual a 0");
+                    Fallos.Add("Lectura SLT Binario: Número de triángulos nulo o igual a 0");
                 }
 
                 BR.Close();
@@ -615,7 +591,7 @@ namespace SLT_Printer.SLT
             else
             {
                 Res = false;
-                _Fallos.Add("Lectura SLT Binario: El Fichero comienza por 'solid '");
+                Fallos.Add("Lectura SLT Binario: El Fichero comienza por 'solid '");
             }
             
             return Res;
@@ -663,7 +639,7 @@ namespace SLT_Printer.SLT
                     {
                         //Fallo, cara con menos de tres vértices
                         Res = false;
-                        _Fallos.Add("Test SLT: Loop con menos de 3 vértices");
+                        Fallos.Add("Test SLT: Loop con menos de 3 vértices");
                     }
                 }
             }
@@ -714,11 +690,11 @@ namespace SLT_Printer.SLT
                 if (ConteoVertices[i].Value < 3)
                 {
                     Res = false;
-                    _Fallos.Add("Test SLT: Fallo en la Regla vértice a vértice");
+                    Fallos.Add("Test SLT: Fallo en la Regla vértice a vértice");
                 }
             }
 
-            _PassTest = Res;
+            PassTest = Res;
 
             return Res;
         }

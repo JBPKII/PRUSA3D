@@ -93,7 +93,7 @@ void loop()
     //Serial.print("INF" + CommandType);
     //Serial.println("|" + Command);
     //Serial.end();
-
+    
     if (CommandType == "X =")
     {
       char carray[Command.length() + 1];
@@ -135,6 +135,9 @@ void loop()
     }
     else if (CommandType == "RUN")
     {
+      Serial.println("BFREMPTY");
+      SendWait = true;
+      
       CNCRouter.DefineDestino(X, Y, Z, E, Modo);
       E = 0.0f;//es incremental no absoluta como X, Y y Z
       CNCRouter.Run(false);
@@ -180,7 +183,7 @@ void loop()
     }
 
     Commands[CurrentIndex] = ""; //Borra el último command
-    SendWait = false;
+    CurrentIndex = NextIndex(CurrentIndex);
   }
   else
   {
@@ -200,7 +203,6 @@ void loop()
     //...
   }
 
-  CurrentIndex = NextIndex(CurrentIndex);
 }
 
 boolean RunCommand()
@@ -281,11 +283,11 @@ void serialEvent()
         LastCommand += inChar;
       }
 
-      if (!Serial.available())
+      /*if (!Serial.available())
       {
         Serial.println("BFREMPTY");
         SendWait = true;
-      }
+      }*/
     }
   }
 }

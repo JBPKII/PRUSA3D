@@ -48,6 +48,7 @@ namespace SLT_Printer
             Aspecto = sceneControl.Scene.CurrentCamera.AspectRatio;
 
             SerialPortToArduino = new System.IO.Ports.SerialPort(SerialPortDefaultPortName, SerialPortDefaultBaudRate);
+            
             Modelo = new ModelSLT(ref SerialPortToArduino);
 
             Modelo.Information += OnInformation;
@@ -554,12 +555,23 @@ namespace SLT_Printer
 
         #region Trazado
 
-        
+        private void CmBIniciarTest_Click(object sender, EventArgs e)
+        {
+            Modelo.Log += this.OnLog;
+
+            Iniciar(true);
+        }
+
         private void CmBIniciar_Click(object sender, EventArgs e)
+        {
+            Iniciar(false);
+        }
+        
+        private void Iniciar(bool isTest)
         {
             this.Enabled = false;
             //Realiza la impresión del modelo
-            Modelo.Draw();
+            Modelo.Draw(isTest);
 
                 System.Threading.Thread.Sleep(1000);
 
@@ -722,7 +734,7 @@ namespace SLT_Printer
                     break;
             }
 
-            Modelo.SendStroke(ref Origen);
+            Modelo.SendStroke(Origen);
         }
 
         private void CmBGoTo_Click(object sender, EventArgs e)
@@ -748,7 +760,7 @@ namespace SLT_Printer
                         break;
                 }
 
-                Modelo.SendStroke(ref Origen);
+                Modelo.SendStroke(Origen);
             }
             else
             {
@@ -756,12 +768,6 @@ namespace SLT_Printer
             }
         }
 
-        private void CmBIniciarTest_Click(object sender, EventArgs e)
-        {
-            Modelo.Log += this.OnLog;
-
-            CmBIniciar_Click(sender, e);
-        }
 
         private void TxtWarning_DoubleClick(object sender, EventArgs e)
         {

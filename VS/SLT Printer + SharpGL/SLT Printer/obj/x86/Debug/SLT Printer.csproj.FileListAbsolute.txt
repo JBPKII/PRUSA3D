@@ -46,7 +46,6 @@ E:\JORGE\Programas propios\ARDUINO\02 Prusa\VS\SLT Printer + SharpGL\SLT Printer
 E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\bin\Debug\SLT Printer.exe.config
 E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\bin\Debug\SLT Printer.exe
 E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\bin\Debug\SLT Printer.pdb
-E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\bin\Debug\GlmNet.dll
 E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\bin\Debug\SharpGL.dll
 E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\bin\Debug\SharpGL.SceneGraph.dll
 E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\bin\Debug\SharpGL.WinForms.dll
@@ -62,3 +61,6 @@ E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT 
 E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT Printer.exe
 E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT Printer.pdb
 E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\obj\x86\Debug\SLT Printer.csprojAssemblyReference.cache
+E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\bin\Debug\SharpGL.xml
+E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\bin\Debug\SharpGL.SceneGraph.xml
+E:\PROGRAMAS GIT\PRUSA3D\VS\SLT Printer + SharpGL\SLT Printer\bin\Debug\SharpGL.WinForms.xml

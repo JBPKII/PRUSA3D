@@ -7,12 +7,11 @@ namespace SLT_Printer
     class Poligonos
     {
         IList<Poligono> _Poligonos;
-        BBox _Bownding;
 
         private void _Inicializa()
         {
             _Poligonos = new List<Poligono>();
-            _Bownding = new BBox();
+            Bownding = new BBox();
         }
 
         public Poligonos()
@@ -63,8 +62,8 @@ namespace SLT_Printer
                     }
 
                     this._Poligonos.Add(TempPol);
-                    _Bownding.Actualizar(TempPol.Bownding.Maximos);
-                    _Bownding.Actualizar(TempPol.Bownding.Minimos);
+                    Bownding.Actualizar(TempPol.Bownding.Maximos);
+                    Bownding.Actualizar(TempPol.Bownding.Minimos);
                 }
             }
 
@@ -74,25 +73,19 @@ namespace SLT_Printer
                 {
                     Poligono restPol = new Poligono(Pols[r]);
                     this._Poligonos.Add(restPol);
-                    _Bownding.Actualizar(restPol.Bownding.Maximos);
-                    _Bownding.Actualizar(restPol.Bownding.Minimos);
+                    Bownding.Actualizar(restPol.Bownding.Maximos);
+                    Bownding.Actualizar(restPol.Bownding.Minimos);
                 }
             }
         }
 
-        public BBox Bownding
-        {
-            get
-            {
-                return _Bownding;
-            }
-        }
+        public BBox Bownding { get; private set; }
 
         public void Add(Poligono Poligono)
         {
             _Poligonos.Add(Poligono);
-            _Bownding.Actualizar(Poligono.Bownding.Maximos);
-            _Bownding.Actualizar(Poligono.Bownding.Minimos);
+            Bownding.Actualizar(Poligono.Bownding.Maximos);
+            Bownding.Actualizar(Poligono.Bownding.Minimos);
         }
 
         public void Add(IList<Poligono> Poligonos)
@@ -100,8 +93,8 @@ namespace SLT_Printer
             foreach (Poligono p in Poligonos)
             {
                 _Poligonos.Add(p);
-                _Bownding.Actualizar(p.Bownding.Maximos);
-                _Bownding.Actualizar(p.Bownding.Minimos);
+                Bownding.Actualizar(p.Bownding.Maximos);
+                Bownding.Actualizar(p.Bownding.Minimos);
             }
         }
 
@@ -157,14 +150,13 @@ namespace SLT_Printer
         Shape _Exterior;
         IList<Shape> _Islas;
         double _area;
-        BBox _Bownding;
 
         private void _Inicializa()
         {
             _Exterior = new Shape();
             _Islas = new List<Shape>();
             _area = double.NaN;
-            _Bownding = new BBox();
+            Bownding = new BBox();
         }
 
         public Poligono()
@@ -176,7 +168,7 @@ namespace SLT_Printer
         {
             _Inicializa();
             _Exterior = S;
-            _Bownding = new BBox(S.Bownding.Minimos, S.Bownding.Maximos);
+            Bownding = new BBox(S.Bownding.Minimos, S.Bownding.Maximos);
         }
 
         public Poligono(IList<LineSLT> Bordes)
@@ -206,8 +198,8 @@ namespace SLT_Printer
             {
                 _Exterior = _Exterior.Inverso;
             }
-            _Bownding.Actualizar(_Exterior.Bownding.Maximos);
-            _Bownding.Actualizar(_Exterior.Bownding.Minimos);
+            Bownding.Actualizar(_Exterior.Bownding.Maximos);
+            Bownding.Actualizar(_Exterior.Bownding.Minimos);
 
             for (int i = 0; i < _Islas.Count; i++)
             {
@@ -215,18 +207,12 @@ namespace SLT_Printer
                 {
                     _Islas[i] = _Islas[i].Inverso;
                 }
-                _Bownding.Actualizar(_Islas[i].Bownding.Maximos);
-                _Bownding.Actualizar(_Islas[i].Bownding.Minimos);
+                Bownding.Actualizar(_Islas[i].Bownding.Maximos);
+                Bownding.Actualizar(_Islas[i].Bownding.Minimos);
             }
         }
 
-        public BBox Bownding
-        {
-            get
-            {
-                return _Bownding;
-            }
-        }
+        public BBox Bownding { get; private set; }
 
         public void AddIsla(Shape Isla)
         {
@@ -239,8 +225,8 @@ namespace SLT_Printer
                 _Islas.Add(Isla);
             }
 
-            _Bownding.Actualizar(Isla.Bownding.Maximos);
-            _Bownding.Actualizar(Isla.Bownding.Minimos);
+            Bownding.Actualizar(Isla.Bownding.Maximos);
+            Bownding.Actualizar(Isla.Bownding.Minimos);
         }
 
         public double Superficie
@@ -336,13 +322,12 @@ namespace SLT_Printer
     {
         IList<Punto> _Puntos;
         double _area;
-        BBox _Bownding;
 
         private void _Inicializa()
         {
             _Puntos = new List<Punto>();
             _area = double.NaN;
-            _Bownding = new BBox();
+            Bownding = new BBox();
         }
 
         public Shape()
@@ -356,7 +341,7 @@ namespace SLT_Printer
             foreach (Punto p in Puntos)
             {
                 _Puntos.Add(p);
-                _Bownding.Actualizar(p);
+                Bownding.Actualizar(p);
             }
         }
 
@@ -367,30 +352,24 @@ namespace SLT_Printer
             {
                 Punto p = new Punto(v.X, v.Y, v.Z);
                 _Puntos.Add(p);
-                _Bownding.Actualizar(p);
+                Bownding.Actualizar(p);
             }
         }
 
-        public BBox Bownding
-        {
-            get
-            {
-                return _Bownding;
-            }
-        }
+        public BBox Bownding { get; private set; }
 
         public void AddPunto(Punto Punto)
         {
             _area = double.NaN; //ya no es válido cualquier valor anterior del área.
             _Puntos.Add(Punto);
-            _Bownding.Actualizar(Punto);
+            Bownding.Actualizar(Punto);
         }
 
         public void AddPunto(int Indice, Punto Punto)
         {
             _area = double.NaN; //ya no es válido cualquier valor anterior del área.
             _Puntos.Insert(Indice, Punto);
-            _Bownding.Actualizar(Punto);
+            Bownding.Actualizar(Punto);
         }
 
         public void AddPunto(VertexSLT Vertex)

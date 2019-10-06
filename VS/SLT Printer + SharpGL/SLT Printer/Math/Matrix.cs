@@ -4,33 +4,25 @@ namespace SLT_Printer
 {
     class Matrix
     {
-        private decimal[,] matriz; 
+        public decimal[,] Value { get; }
 
-        public decimal[,] Matriz
-        {
-            get
-            {
-                return matriz;
-            }
-        }
- 
         public Matrix(decimal[,] m) 
         { 
-            matriz = m; 
+            Value = m; 
         } 
  
         public decimal[,] Suma(decimal[,] m) 
         { 
             decimal[,] Sumada = new decimal[m.GetLength(0), m.GetLength(1)]; 
  
-            if (matriz.GetLength(0) != m.GetLength(0) || matriz.GetLength(1) != m.GetLength(1)) 
+            if (Value.GetLength(0) != m.GetLength(0) || Value.GetLength(1) != m.GetLength(1)) 
                 throw new Exception("Las matrices son impoisibles de sumar"); 
  
             for (int i = 0; i < m.GetLength(0); i++) 
             { 
                 for (int j = 0; j < m.GetLength(1); j++) 
                 { 
-                    Sumada[i, j] = m[i, j] + matriz[i, j]; 
+                    Sumada[i, j] = m[i, j] + Value[i, j]; 
                 } 
             } 
  
@@ -39,13 +31,13 @@ namespace SLT_Printer
  
         public decimal[,] EscalarMult(decimal escalar) 
         { 
-            decimal[,] multiplicada = new decimal[matriz.GetLength(0), matriz.GetLength(1)]; 
+            decimal[,] multiplicada = new decimal[Value.GetLength(0), Value.GetLength(1)]; 
  
-            for (int i = 0; i < matriz.GetLength(0); i++) 
+            for (int i = 0; i < Value.GetLength(0); i++) 
             { 
-                for (int j = 0; j < matriz.GetLength(1); j++) 
+                for (int j = 0; j < Value.GetLength(1); j++) 
                 { 
-                    multiplicada[i, j] = escalar * matriz[i, j]; 
+                    multiplicada[i, j] = escalar * Value[i, j]; 
                 } 
             } 
  
@@ -54,7 +46,7 @@ namespace SLT_Printer
  
         public decimal[,] Resta(decimal[,] m) 
         { 
-            if (matriz.GetLength(0) != m.GetLength(0) || matriz.GetLength(1) != m.GetLength(1)) 
+            if (Value.GetLength(0) != m.GetLength(0) || Value.GetLength(1) != m.GetLength(1)) 
                 throw new Exception("Las matrices son impoisibles de restar"); 
  
             Matrix matriz1 = new Matrix(m); 
@@ -86,9 +78,9 @@ namespace SLT_Printer
  
         public decimal Determinante() 
         { 
-            if (matriz.GetLength(0) != matriz.GetLength(1)) 
+            if (Value.GetLength(0) != Value.GetLength(1)) 
                 throw new Exception("Matriz no cuadrada"); 
-            return Determinante(this.matriz); 
+            return Determinante(this.Value); 
         } 
         private decimal Determinante(decimal[,] m) 
         { 
@@ -131,23 +123,23 @@ namespace SLT_Printer
         { 
             decimal[] soluciones = new decimal[terminos.Length]; 
  
-            decimal determinante = Determinante(matriz); 
+            decimal determinante = Determinante(Value); 
  
-            for (int j = 0; j < matriz.GetLength(1); j++) 
+            for (int j = 0; j < Value.GetLength(1); j++) 
             { 
-                soluciones[j] = Determinante(SustCol(matriz, terminos, j)) / determinante; 
+                soluciones[j] = Determinante(SustCol(Value, terminos, j)) / determinante; 
             } 
             return soluciones; 
         } 
         public decimal[,] Inversa() 
         { 
             decimal determinante = Determinante(); 
-            decimal[,] result = new decimal[matriz.GetLength(0), matriz.GetLength(1)]; 
+            decimal[,] result = new decimal[Value.GetLength(0), Value.GetLength(1)]; 
             for (int i = 0; i < result.GetLength(0); i++) 
             { 
                 for (int j = 0; j < result.GetLength(1); j++) 
                 { 
-                    result[i, j] = (decimal)Math.Pow(-1, i + j) * Determinante(ElimFilCol(matriz, i, j)); 
+                    result[i, j] = (decimal)Math.Pow(-1, i + j) * Determinante(ElimFilCol(Value, i, j)); 
                 } 
             } 
             result = EscalarMult(Transpuesta(result), 1 / determinante); 
@@ -167,12 +159,12 @@ namespace SLT_Printer
         } 
         public decimal[,] Transpuesta() 
         { 
-            decimal[,] result = new decimal[matriz.GetLength(0), matriz.GetLength(1)]; 
+            decimal[,] result = new decimal[Value.GetLength(0), Value.GetLength(1)]; 
             for (int i = 0; i < result.GetLength(0); i++) 
             { 
                 for (int j = 0; j < result.GetLength(1); j++) 
                 { 
-                    result[i, j] = matriz[j, i]; 
+                    result[i, j] = Value[j, i]; 
                 } 
             } 
             return result; 
@@ -194,26 +186,26 @@ namespace SLT_Printer
         } 
         public decimal[,] ProductoMatrices(decimal[,] b) 
         { 
-            if (matriz.GetLength(1) != b.GetLength(0)) 
+            if (Value.GetLength(1) != b.GetLength(0)) 
                 throw new Exception("No se puede multiplicar"); 
-            decimal[,] result = new decimal[matriz.GetLength(0), b.GetLength(1)]; 
+            decimal[,] result = new decimal[Value.GetLength(0), b.GetLength(1)]; 
             for (int i = 0; i < result.GetLength(0); i++) 
                 for (int j = 0; j < result.GetLength(1); j++) 
-                    for (int k = 0; k < matriz.GetLength(1); k++) 
+                    for (int k = 0; k < Value.GetLength(1); k++) 
                     { 
-                        result[i, j] += matriz[i, k] * b[k, j]; 
+                        result[i, j] += Value[i, k] * b[k, j]; 
                     } 
             return result; 
         } 
         public decimal[,] Gauss() 
         { 
             bool sePuedeContinuar = true; 
-            decimal[,] result = new decimal[matriz.GetLength(0), matriz.GetLength(1)]; 
+            decimal[,] result = new decimal[Value.GetLength(0), Value.GetLength(1)]; 
             for (int i = 0; i < result.GetLength(0); i++) 
             { 
                 for (int j = 0; j < result.GetLength(1); j++) 
                 { 
-                    result[i, j] = matriz[i, j]; 
+                    result[i, j] = Value[i, j]; 
                 } 
  
             } 
