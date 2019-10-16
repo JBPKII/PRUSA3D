@@ -49,7 +49,7 @@ namespace SLT_Printer
             Aspecto = sceneControl.Scene.CurrentCamera.AspectRatio;
 
             SerialPortToArduino = new System.IO.Ports.SerialPort(SerialPortDefaultPortName, SerialPortDefaultBaudRate);
-
+            
             //Modelo = new ModelSLT(ref SerialPortToArduino);
             Controller = new PrintController(ref SerialPortToArduino);
 
@@ -578,7 +578,7 @@ namespace SLT_Printer
 
             this.Enabled = true;
 
-            if(Controller.Status== PrinterStatus.Printing)
+            if(Controller.Status == PrinterStatus.Printing)
             {
                 CmBTestSLT.Enabled = false;
                 CmBIniciar.Enabled = false;
@@ -672,7 +672,7 @@ namespace SLT_Printer
                 Controller.Resume();
                 CmBPausar.Text = "Pausar";
             }
-            else
+            else if(Controller.Status == PrinterStatus.Printing)
             {
                 Controller.Pause();
                 CmBPausar.Text = "Reanudar";
@@ -787,25 +787,29 @@ namespace SLT_Printer
         delegate void SetLogCallback(string Warn);
         public void OnLog(string Log)
         {
-            // InvokeRequired required compares the thread ID of the
-            // calling thread to the thread ID of the creating thread.
-            // If these threads are different, it returns true.
-            if (this.InvokeRequired)
+            try
             {
-                SetLogCallback d = new SetLogCallback(OnLog);
-                this.Invoke(d, new object[] { Log });
-            }
-            else
-            {
-                if (sw == null)
+                // InvokeRequired required compares the thread ID of the
+                // calling thread to the thread ID of the creating thread.
+                // If these threads are different, it returns true.
+                if (this.InvokeRequired)
                 {
-                    sw = new System.IO.StreamWriter(string.Format(  "{0}\\{1}.log", 
-                                                                    System.Environment.CurrentDirectory, 
-                                                                    System.DateTime.Now.ToString("yyyyMMdd HHmmss")),true);
+                    SetLogCallback d = new SetLogCallback(OnLog);
+                    this.Invoke(d, new object[] { Log });
                 }
+                else
+                {
+                    if (sw == null)
+                    {
+                        sw = new System.IO.StreamWriter(string.Format(  "{0}\\{1}.log", 
+                                                                        System.Environment.CurrentDirectory, 
+                                                                        System.DateTime.Now.ToString("yyyyMMdd HHmmss")),true);
+                    }
 
-                sw.WriteLine(Log);
+                    sw.WriteLine(Log);
+                }
             }
+            catch(Exception) { }
         }
 
         int InfoTemperature = 40;//ºC

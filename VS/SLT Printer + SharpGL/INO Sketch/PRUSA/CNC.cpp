@@ -61,7 +61,7 @@ void CNC::Attach(byte EnabledX, byte StepX, byte DirectionX, byte M0X, byte M1X,
   _PinTRIACFusor = TRIACFusor;
   pinMode(_PinTRIACFusor, OUTPUT);
 
-  SetTempFusor(100, true);//Cambiar a true
+  //SetTempFusor(100, true);
 
   PAPMotorX.SetModo(PAPModes::Traslation);
   PAPMotorY.SetModo(PAPModes::Traslation);
@@ -174,13 +174,19 @@ void CNC::DefineDestino(float X, float Y, float Z, float E, PAPModes Modo)
   //Calcula los semipasos hasta el paso completo
   _RestoPasosY = _RestoPasosY - (Pasos % _GetLongStepDivisor(Modo));//Resto para un paso completo
 
-  float MicropasoZ = _PasoZ;// / (float)1;//Tamaño del micropaso en mm
-  Pasos = (long)((Z - _CurrentZ) / MicropasoZ);//micropasos hasta la posicion más cercana
+  float MicropasoZ = _PasoZ / _GetFloatStepDivisor(PAPMotorZ.GetModo());// / (float)1;//Tamaño del micropaso en mm
+  Pasos = (long)((Z - _CurrentZ) / _PasoZ);//micropasos hasta la posicion más cercana
   PAPMotorZ.SetSteps(Pasos);
   //Serial.print("PAPMotorZ Pasos = ");
   //Serial.println(Pasos);
   //Calcula los semipasos hasta el paso completo
   _RestoPasosZ = _RestoPasosZ - (Pasos % (long)1);//Resto para un paso completo
+
+  float MicropasoE = _PasoE / _GetFloatStepDivisor(PAPMotorE.GetModo());//Tamaño del micropaso en mm
+  Pasos = (long)(E / MicropasoE);//micropasos hasta la posicion más cercana
+  PAPMotorE.SetSteps(Pasos);
+  //Serial.print("PAPMotorE Pasos = ");
+  //Serial.println(Pasos);
 }
 
 float CNC::_GetFloatStepDivisor(PAPModes Modo)
@@ -309,14 +315,14 @@ void CNC::Run(bool Resto)
     {
       //Serial.print("Bucle For i = ");
       //Serial.println(i);
-      if (((i - 1) % 10) == 0)
+      /*if (((i - 1) % 10) == 0)
       {
         XYZSerial();
         if (((i - 1) % 1000) == 0)
         {
           RegulaFusor(false);
         }
-      }
+      }*/
 
       //noInterrupts();
       {
@@ -410,7 +416,7 @@ void CNC::Run(bool Resto)
         //Ubico Z
         //if(PAPMotorZ.RemainSteps()==0)
         {
-          _CurrentZ += (float)(_PasoZ / 1.0f) * (float)TempZ;
+          _CurrentZ += (float)(_PasoZ / _GetFloatStepDivisor(PAPMotorZ.GetModo())) * (float)TempZ;
         }
       }
       //interrupts();

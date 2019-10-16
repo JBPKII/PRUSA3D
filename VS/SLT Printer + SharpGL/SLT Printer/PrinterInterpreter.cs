@@ -13,9 +13,12 @@ namespace SLT_Printer
         {
             SerialPort = serialPort;
 
+            serialPort.ReadTimeout = 300;
+            serialPort.WriteTimeout = 1000;
             serialPort.DtrEnable = true;
             serialPort.ReceivedBytesThreshold = 1;
             serialPort.DataReceived += Port_DataReceived;
+            if (!serialPort.IsOpen) serialPort.Open();
         }
 
         internal bool SendStroke(StrokeSLT Trazo, double mmMaterial = 0.0)
@@ -79,113 +82,113 @@ namespace SLT_Printer
 
         private void Port_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
-            while (SerialPort.BytesToRead > 0)
+            lock (_LastCommand)
             {
-                char TempChar = Convert.ToChar(Convert.ToByte(SerialPort.ReadByte()));
+                while (SerialPort.BytesToRead > 0)
+                {
+                    char TempChar = Convert.ToChar(Convert.ToByte(SerialPort.ReadByte()));
 
-                if (TempChar == '\n' || TempChar == '\r')
-                {
-                    //Interpreta el comando
-                    if (_LastCommand != "" && ReadCommand())
+                    if (TempChar == '\n' || TempChar == '\r')
                     {
-                        _LastCommand = "";
+                        //Interpreta el comando
+                        if (_LastCommand != "" && ReadCommand())
+                        {
+                            _LastCommand = "";
+                        }
                     }
-                }
-                else if (TempChar != 'Â')
-                {
-                    _LastCommand += TempChar;
+                    else if (TempChar != 'Â')
+                    {
+                        _LastCommand += TempChar;
+                    }
                 }
             }
         }
 
-        Punto lastPoint = new Punto(0.0, 0.0, 0.0);
+        //Punto lastPoint = new Punto(0.0, 0.0, 0.0);
         private bool ReadCommand()
         {
             bool Executed = false;
 
-            lock (_LastCommand)
+            if (_LastCommand != null && _LastCommand.Length > 3)
             {
-                if (_LastCommand != null && _LastCommand.Length > 3)
+                string Tipo = _LastCommand.Substring(0, 3);
+                string Comando = _LastCommand.Substring(3);
+
+                OnLog("READ: " + Tipo + Comando);
+
+                Executed = true;
+
+                switch (Tipo)
                 {
-                    string Tipo = _LastCommand.Substring(0, 3);
-                    string Comando = _LastCommand.Substring(3);
+                    case "XYZ":
+                        //Muestra la posición
+                        string[] temp = Comando.Split(';');
+                        try
+                        {
+                            OnChangeXYZ(Convert.ToSingle(temp[0]), Convert.ToSingle(temp[1]), Convert.ToSingle(temp[2]));
+                        }
+                        catch (System.Exception)
+                        {
+                            OnChangeXYZ(double.NaN, double.NaN, double.NaN);
+                        }
+                        break;
+                    case "INF":
+                        //Información del funcionamiento
+                        OnInformation(Comando);
+                        break;
+                    case "WRN":
+                        //Advertencia
+                        OnWarning(Comando);
+                        break;
+                    /*case "DON"://E
+                        if (Comando == "E")
+                        {
+                            _SendNBextStroke = true;
+                        }
+                        OnLog("Comando: " + Tipo);
+                        break;*/
+                    /*case "WAI"://TING
+                        if (Comando == "TING")
+                        {
+                            _SendNextStroke = true;
+                        }
+                        OnLog("Comando: " + Tipo);
+                        break;*/
+                    case "BFR":
+                        if (Comando == "FULL")
+                        {
+                            // _SendNextStroke = false;
+                        }
+                        else if (Comando == "EMPTY")
+                        {
+                            // _SendNextStroke = true;
+                            OnRequireCommand();
+                            /*StrokeSLT strokeSLT = NextStroke();
 
-                    OnLog("READ: " + Tipo + Comando);
+                            if (IsTrazando && strokeSLT != null)
+                            {
+                                double distance = lastPoint.Distancia(new Punto(strokeSLT.Destino.X, strokeSLT.Destino.Y, ZTrazado));
+                                lastPoint = new Punto(strokeSLT.Destino.X, strokeSLT.Destino.Y, ZTrazado);
 
-                    Executed = true;
-
-                    switch (Tipo)
-                    {
-                        case "XYZ":
-                            //Muestra la posición
-                            string[] temp = Comando.Split(';');
-                            try
-                            {
-                                OnChangeXYZ(Convert.ToSingle(temp[0]), Convert.ToSingle(temp[1]), Convert.ToSingle(temp[2]));
+                                SendStroke(strokeSLT, distance);
                             }
-                            catch (System.Exception)
+                            else
                             {
-                                OnChangeXYZ(double.NaN, double.NaN, double.NaN);
-                            }
-                            break;
-                        case "INF":
-                            //Información del funcionamiento
-                            OnInformation(Comando);
-                            break;
-                        case "WRN":
-                            //Advertencia
-                            OnWarning(Comando);
-                            break;
-                        /*case "DON"://E
-                            if (Comando == "E")
-                            {
-                                _SendNBextStroke = true;
-                            }
-                            OnLog("Comando: " + Tipo);
-                            break;*/
-                        /*case "WAI"://TING
-                            if (Comando == "TING")
-                            {
-                                _SendNextStroke = true;
-                            }
-                            OnLog("Comando: " + Tipo);
-                            break;*/
-                        case "BFR":
-                            if (Comando == "FULL")
-                            {
-                                // _SendNextStroke = false;
-                            }
-                            else if (Comando == "EMPTY")
-                            {
-                                // _SendNextStroke = true;
-                                OnRequireCommand();
-                                /*StrokeSLT strokeSLT = NextStroke();
-
-                                if (IsTrazando && strokeSLT != null)
-                                {
-                                    double distance = lastPoint.Distancia(new Punto(strokeSLT.Destino.X, strokeSLT.Destino.Y, ZTrazado));
-                                    lastPoint = new Punto(strokeSLT.Destino.X, strokeSLT.Destino.Y, ZTrazado);
-
-                                    SendStroke(strokeSLT, distance);
-                                }
-                                else
-                                {
-                                    IsTrazando = false;
-                                }*/
-                            }
-                            OnLog("Comando: " + Tipo + Comando);
-                            break;
-                        default:
-                            OnInformation("El tipo de comando '" + Tipo + "' con valor '" + Comando + "' no se reconoce.");
-                            OnLog("Comando no reconocido: " + _LastCommand);
-                            break;
-                    }
+                                IsTrazando = false;
+                            }*/
+                        }
+                        OnLog("Comando: " + Tipo + Comando);
+                        break;
+                    default:
+                        OnInformation("El tipo de comando '" + Tipo + "' con valor '" + Comando + "' no se reconoce.");
+                        OnLog("Comando no reconocido: " + _LastCommand);
+                        break;
                 }
-                else
-                {
-                    Executed = false;
-                    OnLog("Comando re-encolado: " + _LastCommand);
-                }
+            }
+            else
+            {
+                Executed = false;
+                OnLog("Comando re-encolado: " + _LastCommand);
             }
 
             return Executed;

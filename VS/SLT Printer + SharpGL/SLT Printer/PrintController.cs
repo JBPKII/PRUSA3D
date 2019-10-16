@@ -29,8 +29,12 @@ namespace SLT_Printer
         {
             if (Status != PrinterStatus.Printing)
             {
+                Status = PrinterStatus.Printing;
+
                 Interpreter.IsTest = isTest;
                 Interpreter.RequireCommand += PrinterInterpreter_RequireCommand;
+
+                Interpreter.SendTemperature(225.0);
 
                 /*if (_TImprimir == null || !_TImprimir.IsAlive)
                 {
@@ -50,8 +54,6 @@ namespace SLT_Printer
                 /*_TGenerarLayer = new Thread(new ThreadStart(_GeneraLayer));
                 _TGenerarLayer.Start();
                 _GenerandoLayer = true;*/
-
-                Interpreter.SendTemperature(160.0);
 
                 Model.GenerateLayer();
 
@@ -104,22 +106,24 @@ namespace SLT_Printer
 
         public void Pause()
         {
-            try
+            if (Status == PrinterStatus.Printing)
             {
-                Interpreter.RequireCommand -= PrinterInterpreter_RequireCommand;
+                Status = PrinterStatus.Pause;
+                try
+                {
+                    Interpreter.RequireCommand -= PrinterInterpreter_RequireCommand;
+                }
+                catch (Exception) { }
             }
-            catch (Exception)
-            { }
-            Status = PrinterStatus.Pause;
         }
 
         public void Resume()
         {
             if (Status == PrinterStatus.Pause)
             {
+                Status = PrinterStatus.Printing;
                 Interpreter.RequireCommand += PrinterInterpreter_RequireCommand;
                 PrinterInterpreter_RequireCommand();
-                Status = PrinterStatus.Printing;
             }
         }
 

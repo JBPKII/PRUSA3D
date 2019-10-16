@@ -62,12 +62,13 @@ class CNC {
     //byte _Modo;
 
     //Modificar para calibrar el dispositivo
-    static const float _PasoX = 0.20f;//mm
-    static const float _PasoY = 0.20f;//mm
+    static const float _PasoX = 0.200f;//mm
+    static const float _PasoY = 0.200f;//mm
     static const float _PasoZ = 0.005f;//mm
+    static const float _PasoE = 3.520f;//mm
 
     //Modificar para establecer los morgenes de seguridad
-    static const long _PasosSepTraslacion = -50;
+    static const long _PasosSepTraslacion = -100;
     static const long _PasosExtTraslacion = 5;
 
     int _RestoPasosX, _RestoPasosY, _RestoPasosZ;

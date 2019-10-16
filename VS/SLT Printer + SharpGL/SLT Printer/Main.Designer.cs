@@ -97,7 +97,6 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.TSPGB = new System.Windows.Forms.ToolStripProgressBar();
             this.OFD = new System.Windows.Forms.OpenFileDialog();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.CmBIniciar = new System.Windows.Forms.Button();
             this.CmBDetener = new System.Windows.Forms.Button();
             this.CmBPausar = new System.Windows.Forms.Button();
@@ -1229,7 +1228,6 @@
         private System.Windows.Forms.TextBox textBox13;
         private System.Windows.Forms.TextBox textBox14;
         private System.Windows.Forms.OpenFileDialog OFD;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button CmBIniciar;
         private System.Windows.Forms.Button CmBDetener;
         private System.Windows.Forms.Button CmBPausar;

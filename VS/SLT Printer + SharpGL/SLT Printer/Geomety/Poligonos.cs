@@ -117,13 +117,46 @@ namespace SLT_Printer
         public IList<StrokeSLT> TrazarPerimetro(Modes M)
         {
             IList<StrokeSLT> Res = new List<StrokeSLT>();
+            Punto lastPoint = null;
 
             foreach (Poligono P in _Poligonos)
             {
                 IList<StrokeSLT> ResP = P.TrazarPerimetro(M);
+
+                // Añade la aproximación de la boquilla al primer polígono
+                if (ResP != null && ResP.Count > 0)
+                {
+                    Res.Add(new StrokeSLT(Modes.ModeTraslation, ResP[0].Destino, true, 0.0));
+                }
+
                 foreach (StrokeSLT tP in ResP)
                 {
+                    Punto currentPoit = new Punto(tP.Destino.X, tP.Destino.Y, tP.Destino.Z);
+
+                    if (lastPoint != null)
+                    {
+                        switch (tP.Mode)
+                        {
+                            case Modes.ModoFill:
+                                tP.E = 0.75 * currentPoit.Distancia(lastPoint);
+                                break;
+                            case Modes.ModoRim:
+                                tP.E = 1 * currentPoit.Distancia(lastPoint);
+                                break;
+                            case Modes.ModeTraslation:
+                            default:
+                                tP.E = 0.0;
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        tP.E = 0.0;
+                    }
+
                     Res.Add(tP);
+
+                    lastPoint = currentPoit;
                 }
             }
 

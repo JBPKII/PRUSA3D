@@ -7,9 +7,9 @@ namespace SLT_Printer
     {
         public System.IO.Ports.SerialPort SerialPortConex;
 
-        public FrmConexion(ref System.IO.Ports.SerialPort SerialPort1)
+        public FrmConexion(ref System.IO.Ports.SerialPort serialPort)
         {
-            SerialPortConex = SerialPort1;
+            SerialPortConex = serialPort;
 
             InitializeComponent();
         }

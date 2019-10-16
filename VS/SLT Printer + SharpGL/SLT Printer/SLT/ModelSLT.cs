@@ -385,6 +385,7 @@ namespace SLT_Printer.SLT
                 }
                 else
                 {*/
+
                 foreach (StrokeSLT t in ResEq)
                 {
                     LayerCalculo.Add(t);
@@ -584,6 +585,12 @@ namespace SLT_Printer.SLT
                 ResTrazo.Destino = new VertexSLT(0.0, 0.0, ZTrazado);
 
             }
+            /*else
+            {
+                ResTrazo = LayerActual[0];
+                ResTrazo.Pendiente = true;
+                ResTrazo.Mode = Modes.ModeTraslation;
+            }*/
 
             for (int i = 0; i < LayerActual.Length; i++)
             {
